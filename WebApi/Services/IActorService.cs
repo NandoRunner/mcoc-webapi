@@ -5,10 +5,10 @@ namespace WebApi.Services
 {
     public interface IActorService
     {
-        Actor Create(Actor person);
+        Actor Create(Actor actor);
         Actor FindById(long id);
         List<Actor> FindAll();
-        //Actor Update(Actor person);
+        //Actor Update(Actor actor);
         //void Delete(long id);
     }
 }

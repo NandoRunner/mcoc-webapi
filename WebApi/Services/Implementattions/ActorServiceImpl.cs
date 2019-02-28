@@ -21,18 +21,18 @@ namespace WebApi.Services.Implementattions
         // nesse momento adicionamos o objeto ao contexto
         // e finalmente salvamos as mudanças no contexto
         // na base de dados
-        public Actor Create(Actor person)
+        public Actor Create(Actor actor)
         {
             try
             {
-                _context.Add(person);
+                _context.Add(actor);
                 _context.SaveChanges();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            return person;
+            return actor;
         }
 
         // Método responsável por retornar uma pessoa
@@ -48,20 +48,20 @@ namespace WebApi.Services.Implementattions
         }
 
         // Método responsável por atualizar uma pessoa
-        public Actor Update(Actor person)
+        public Actor Update(Actor actor)
         {
             // Verificamos se a pessoa existe na base
             // Se não existir retornamos uma instancia vazia de pessoa
-            if (!Exists(person.Id)) return new Actor();
+            if (!Exists(actor.Id)) return new Actor();
 
             // Pega o estado atual do registro no banco
             // seta as alterações e salva
-            var result = _context.Actors.SingleOrDefault(b => b.Id == person.Id);
+            var result = _context.Actors.SingleOrDefault(b => b.Id == actor.Id);
             if (result != null)
             {
                 try
                 {
-                    _context.Entry(result).CurrentValues.SetValues(person);
+                    _context.Entry(result).CurrentValues.SetValues(actor);
                     _context.SaveChanges();
                 }
                 catch (Exception ex)
