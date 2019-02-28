@@ -5,13 +5,13 @@ using WebApi.Model.Context;
 using System;
 using System.Linq;
 
-namespace WebApi.Services.Implementattions
+namespace WebApi.Business.Implementattions
 {
-    public class ActorMovieServiceImpl : IActorMovieService
+    public class ActorMovieBusinessImpl : IActorMovieBusiness
     {
         private MySQLContext _context;
 
-        public ActorMovieServiceImpl(MySQLContext context)
+        public ActorMovieBusinessImpl(MySQLContext context)
         {
             _context = context;
         }

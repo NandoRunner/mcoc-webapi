@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApi.Model;
-using WebApi.Services;
+using WebApi.Business;
 namespace WebApi.Controllers
 {
 
@@ -14,11 +14,11 @@ namespace WebApi.Controllers
     public class DirectorsController : Controller
     {
         //Declaração do serviço usado
-        private IDirectorService _directorService;
+        private IDirectorBusiness _directorService;
 
         /* Injeção de uma instancia de IDirectorService ao criar
         uma instancia de DirectorController */
-        public DirectorsController(IDirectorService directorService)
+        public DirectorsController(IDirectorBusiness directorService)
         {
             _directorService = directorService;
         }

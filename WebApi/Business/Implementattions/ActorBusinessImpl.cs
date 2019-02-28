@@ -5,14 +5,14 @@ using WebApi.Model.Context;
 using System;
 using System.Linq;
 
-namespace WebApi.Services.Implementattions
+namespace WebApi.Business.Implementattions
 {
-    public class GenreServiceImpl : IGenreService
+    public class ActorBusinessImpl : IActorBusiness
     {
 
         private MySQLContext _context;
 
-        public GenreServiceImpl(MySQLContext context)
+        public ActorBusinessImpl(MySQLContext context)
         {
             _context = context;
         }
@@ -21,47 +21,53 @@ namespace WebApi.Services.Implementattions
         // nesse momento adicionamos o objeto ao contexto
         // e finalmente salvamos as mudanças no contexto
         // na base de dados
-        public Genre Create(Genre genre)
+        public Actor Create(Actor actor)
         {
             try
             {
-                _context.Add(genre);
+                _context.Add(actor);
                 _context.SaveChanges();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            return genre;
+            return actor;
         }
 
         // Método responsável por retornar uma pessoa
-        public Genre FindById(long id)
+        public Actor FindById(long id)
         {
-            return _context.Genres.SingleOrDefault(p => p.Id.Equals(id));
+            return _context.Actors.SingleOrDefault(p => p.Id.Equals(id));
         }
 
-        // Método responsável por retornar todas as pessoas
-        public List<Genre> FindAll()
+        public List<Actor> FindByName(string name)
         {
-            return _context.Genres.ToList();
+            return _context.Actors.Where(a => a.Name.Contains(name)).OrderBy(a => a.Name).ToList();
+        }
+
+
+        // Método responsável por retornar todas as pessoas
+        public List<Actor> FindAll()
+        {
+            return _context.Actors.OrderBy(a => a.Name).ToList();
         }
 
         // Método responsável por atualizar uma pessoa
-        public Genre Update(Genre genre)
+        public Actor Update(Actor actor)
         {
             // Verificamos se a pessoa existe na base
             // Se não existir retornamos uma instancia vazia de pessoa
-            if (!Exists(genre.Id)) return new Genre();
+            if (!Exists(actor.Id)) return new Actor();
 
             // Pega o estado atual do registro no banco
             // seta as alterações e salva
-            var result = _context.Genres.SingleOrDefault(b => b.Id == genre.Id);
+            var result = _context.Actors.SingleOrDefault(b => b.Id == actor.Id);
             if (result != null)
             {
                 try
                 {
-                    _context.Entry(result).CurrentValues.SetValues(genre);
+                    _context.Entry(result).CurrentValues.SetValues(actor);
                     _context.SaveChanges();
                 }
                 catch (Exception ex)
@@ -76,12 +82,12 @@ namespace WebApi.Services.Implementattions
         // uma pessoa a partir de um ID
         public void Delete(long id)
         {
-            var result = _context.Genres.SingleOrDefault(p => p.Id.Equals(id));
+            var result = _context.Actors.SingleOrDefault(p => p.Id.Equals(id));
             try
             {
                 if (result != null)
                 {
-                    _context.Genres.Remove(result);
+                    _context.Actors.Remove(result);
                     _context.SaveChanges();
                 }
             }
@@ -93,7 +99,7 @@ namespace WebApi.Services.Implementattions
 
         private bool Exists(long? id)
         {
-            return _context.Genres.Any(p => p.Id.Equals(id));
+            return _context.Actors.Any(p => p.Id.Equals(id));
         }
     }
 }

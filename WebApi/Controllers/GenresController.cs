@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApi.Model;
-using WebApi.Services;
+using WebApi.Business;
 namespace WebApi.Controllers
 {
 
@@ -14,11 +14,11 @@ namespace WebApi.Controllers
     public class GenresController : Controller
     {
         //Declaração do serviço usado
-        private IGenreService _genreService;
+        private IGenreBusiness _genreService;
 
         /* Injeção de uma instancia de IGenreService ao criar
         uma instancia de GenreController */
-        public GenresController(IGenreService genreService)
+        public GenresController(IGenreBusiness genreService)
         {
             _genreService = genreService;
         }

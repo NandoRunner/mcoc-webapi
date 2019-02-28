@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-    using WebApi.Services;
-    using WebApi.Services.Implementattions;
+    using WebApi.Business;
+    using WebApi.Business.Implementattions;
     using WebApi.Model.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -33,10 +33,10 @@ namespace WebApi
             services.AddApiVersioning();
 
             //Dependency Injection
-            services.AddScoped<IActorService, ActorServiceImpl>();
-            services.AddScoped<IActorMovieService, ActorMovieServiceImpl>();
-            services.AddScoped<IGenreService, GenreServiceImpl>();
-            services.AddScoped<IDirectorService, DirectorServiceImpl>();
+            services.AddScoped<IActorBusiness, ActorBusinessImpl>();
+            services.AddScoped<IActorMovieBusiness, ActorMovieBusinessImpl>();
+            services.AddScoped<IGenreBusiness, GenreBusinessImpl>();
+            services.AddScoped<IDirectorBusiness, DirectorBusinessImpl>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

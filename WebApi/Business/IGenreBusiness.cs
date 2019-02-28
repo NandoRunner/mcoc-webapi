@@ -1,9 +1,9 @@
 ﻿using WebApi.Model;
 using System.Collections.Generic;
 
-namespace WebApi.Services
+namespace WebApi.Business
 {
-    public interface IGenreService
+    public interface IGenreBusiness
     {
         Genre Create(Genre genre);
         Genre FindById(long id);

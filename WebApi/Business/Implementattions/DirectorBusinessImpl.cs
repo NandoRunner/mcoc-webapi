@@ -5,14 +5,14 @@ using WebApi.Model.Context;
 using System;
 using System.Linq;
 
-namespace WebApi.Services.Implementattions
+namespace WebApi.Business.Implementattions
 {
-    public class DirectorServiceImpl : IDirectorService
+    public class DirectorBusinessImpl : IDirectorBusiness
     {
 
         private MySQLContext _context;
 
-        public DirectorServiceImpl(MySQLContext context)
+        public DirectorBusinessImpl(MySQLContext context)
         {
             _context = context;
         }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApi.Model;
-using WebApi.Services;
+using WebApi.Business;
 namespace WebApi.Controllers
 {
 
@@ -14,15 +14,15 @@ namespace WebApi.Controllers
     public class ActorsController : Controller
     {
         //Declaração do serviço usado
-        private IActorService _actorService;
-        private IActorMovieService _amService;
+        private IActorBusiness _actorBusiness;
+        private IActorMovieBusiness _amBusiness;
 
-        /* Injeção de uma instancia de IActorService ao criar
+        /* Injeção de uma instancia de IActorBusiness ao criar
         uma instancia de ActorController */
-        public ActorsController(IActorService actorService, IActorMovieService amService)
+        public ActorsController(IActorBusiness actorBusiness, IActorMovieBusiness amBusiness)
         {
-            _actorService = actorService;
-            _amService = amService;
+            _actorBusiness = actorBusiness;
+            _amBusiness = amBusiness;
         }
 
         //Mapeia as requisições GET para http://localhost:{porta}/api/actor/
@@ -30,7 +30,7 @@ namespace WebApi.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_actorService.FindAll());
+            return Ok(_actorBusiness.FindAll());
         }
 
         //Mapeia as requisições GET para http://localhost:{porta}/api/actor/{id}
@@ -39,7 +39,7 @@ namespace WebApi.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(long id)
         {
-            var actor = _actorService.FindById(id);
+            var actor = _actorBusiness.FindById(id);
             if (actor == null) return NotFound();
             return Ok(actor);
         }
@@ -48,7 +48,7 @@ namespace WebApi.Controllers
         [HttpGet]
         public IActionResult GetByName(string name)
         {
-            var ret = _actorService.FindByName(name);
+            var ret = _actorBusiness.FindByName(name);
             if (ret == null) return NotFound();
             return Ok(ret);
         }
@@ -58,7 +58,7 @@ namespace WebApi.Controllers
         [HttpGet]
         public IActionResult GetMovieCount(int order = (int)enMovieCount.count)
         {
-            var ret = _amService.FindMovieCount((enMovieCount)order);
+            var ret = _amBusiness.FindMovieCount((enMovieCount)order);
             if (ret == null) return NotFound();
             return Ok(ret);
         }
@@ -70,7 +70,7 @@ namespace WebApi.Controllers
         public IActionResult Post([FromBody]Actor actor)
         {
             if (actor == null) return BadRequest();
-            return new  ObjectResult(_actorService.Create(actor));
+            return new  ObjectResult(_actorBusiness.Create(actor));
         }
 
         //Mapeia as requisições PUT para http://localhost:{porta}/api/actor/
@@ -79,7 +79,7 @@ namespace WebApi.Controllers
         //public IActionResult Put([FromBody]Actor actor)
         //{
         //    if (actor == null) return BadRequest();
-        //    return new ObjectResult(_actorService.Update(actor));
+        //    return new ObjectResult(_actorBusiness.Update(actor));
         //}
 
 
@@ -88,7 +88,7 @@ namespace WebApi.Controllers
         //[HttpDelete("{id}")]
         //public IActionResult Delete(int id)
         //{
-        //    _actorService.Delete(id);
+        //    _actorBusiness.Delete(id);
         //    return NoContent();
         //}
     }

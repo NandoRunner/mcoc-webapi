@@ -1,9 +1,9 @@
 ﻿using WebApi.Model;
 using System.Collections.Generic;
 
-namespace WebApi.Services
+namespace WebApi.Business
 {
-    public interface IActorMovieService
+    public interface IActorMovieBusiness
     {
         ActorMovie Create(ActorMovie actormovie);
         ActorMovie FindByActorId(long id);
