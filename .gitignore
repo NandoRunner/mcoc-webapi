@@ -330,5 +330,5 @@ ASALocalRun/
 .mfractor/
 
 # Customizado
-WebApi/appsettings.json
+**/appsettings.json
 
