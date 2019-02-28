@@ -33,6 +33,7 @@ namespace WebApi
             //Dependency Injection
             services.AddScoped<IActorService, ActorServiceImpl>();
             services.AddScoped<IGenreService, GenreServiceImpl>();
+            services.AddScoped<IDirectorService, DirectorServiceImpl>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
