@@ -14,12 +14,14 @@ namespace WebApi.Controllers
     {
         //Declaração do serviço usado
         private IActorService _actorService;
+        private IActorMovieService _amService;
 
         /* Injeção de uma instancia de IActorService ao criar
         uma instancia de ActorController */
-        public ActorsController(IActorService actorService)
+        public ActorsController(IActorService actorService, IActorMovieService amService)
         {
             _actorService = actorService;
+            _amService = amService;
         }
 
         //Mapeia as requisições GET para http://localhost:{porta}/api/actor/
@@ -40,6 +42,26 @@ namespace WebApi.Controllers
             if (actor == null) return NotFound();
             return Ok(actor);
         }
+
+        [Route("[action]/{name}")]
+        [HttpGet]
+        public IActionResult GetByName(string name)
+        {
+            var ret = _actorService.FindByName(name);
+            if (ret == null) return NotFound();
+            return Ok(ret);
+        }
+        
+        [Route("[action]/{order}")]
+        [Route("[action]")]
+        [HttpGet]
+        public IActionResult GetMovieCount(int order = (int)enMovieCount.count)
+        {
+            var ret = _amService.FindMovieCount((enMovieCount)order);
+            if (ret == null) return NotFound();
+            return Ok(ret);
+        }
+
 
         //Mapeia as requisições POST para http://localhost:{porta}/api/actor/
         //O [FromBody] consome o Objeto JSON enviado no corpo da requisição

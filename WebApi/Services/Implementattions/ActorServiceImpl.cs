@@ -41,6 +41,12 @@ namespace WebApi.Services.Implementattions
             return _context.Actors.SingleOrDefault(p => p.Id.Equals(id));
         }
 
+        public List<Actor> FindByName(string name)
+        {
+            return _context.Actors.Where(a => a.Name.Contains(name)).OrderBy(a => a.Name).ToList();
+        }
+
+
         // Método responsável por retornar todas as pessoas
         public List<Actor> FindAll()
         {

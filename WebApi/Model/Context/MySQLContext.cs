@@ -17,5 +17,18 @@ namespace WebApi.Model.Context
         public DbSet<Actor> Actors { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Director> Directors { get; set; }
+
+        public DbSet<ActorMovie> ActorMovies { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ActorMovie>()
+                .HasKey(c => new { c.ActorId, c.MovieId });
+        }
+
+        public DbSet<_vw_mc_ator> vw_mc_ator { get; set; }
+
+
     }
 }

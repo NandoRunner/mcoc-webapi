@@ -32,6 +32,7 @@ namespace WebApi
 
             //Dependency Injection
             services.AddScoped<IActorService, ActorServiceImpl>();
+            services.AddScoped<IActorMovieService, ActorMovieServiceImpl>();
             services.AddScoped<IGenreService, GenreServiceImpl>();
             services.AddScoped<IDirectorService, DirectorServiceImpl>();
         }
