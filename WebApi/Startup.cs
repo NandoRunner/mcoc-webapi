@@ -30,6 +30,8 @@ namespace WebApi
             services.AddDbContext<MySQLContext>(options => options.UseMySql(connection));
             services.AddMvc();
 
+            services.AddApiVersioning();
+
             //Dependency Injection
             services.AddScoped<IActorService, ActorServiceImpl>();
             services.AddScoped<IActorMovieService, ActorMovieServiceImpl>();

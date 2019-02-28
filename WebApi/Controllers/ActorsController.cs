@@ -9,7 +9,8 @@ namespace WebApi.Controllers
     pegando a primeira parte do nome da classe em lower case [Actor]Controller
     e expõe como endpoint REST
     */
-    [Route("api/[controller]")]
+    [ApiVersion("1")]
+    [Route("api/[controller]/v{version:apiVersion}")]
     public class ActorsController : Controller
     {
         //Declaração do serviço usado
