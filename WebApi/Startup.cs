@@ -37,6 +37,7 @@ namespace WebApi
             services.AddScoped<IActorMovieBusiness, ActorMovieBusinessImpl>();
             services.AddScoped<IGenreBusiness, GenreBusinessImpl>();
             services.AddScoped<IDirectorBusiness, DirectorBusinessImpl>();
+            services.AddScoped<IMovieBusiness, MovieBusinessImpl>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

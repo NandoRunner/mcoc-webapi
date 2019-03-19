@@ -5,6 +5,6 @@ using System.Threading.Tasks;
 
 namespace WebApi.Model
 {
-    public enum enMovieCount { none, name, count };
+    public enum enMovieCount { none, name, count, none3, rating, periodo };
     
 }

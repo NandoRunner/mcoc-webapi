@@ -17,6 +17,7 @@ namespace WebApi.Model.Context
         public DbSet<Actor> Actors { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Director> Directors { get; set; }
+        public DbSet<Movie> Movies { get; set; }
 
         public DbSet<ActorMovie> ActorMovies { get; set; }
 
@@ -28,6 +29,10 @@ namespace WebApi.Model.Context
         }
 
         public DbSet<_vw_mc_ator> vw_mc_ator { get; set; }
+
+        public DbSet<_vw_mc_filme_visto> vw_mc_filme_visto { get; set; }
+
+        public DbSet<_vw_mc_filme_ver> vw_mc_filme_ver { get; set; }
 
 
     }
