@@ -7,12 +7,12 @@ using System.Linq;
 
 namespace WebApi.Repository.Implementattions
 {
-    public class MovieBusinessImpl : IMovieBusiness
+    public class MovieRepositoryImpl : IMovieRepository
     {
 
         private MySQLContext _context;
 
-        public MovieBusinessImpl(MySQLContext context)
+        public MovieRepositoryImpl(MySQLContext context)
         {
             _context = context;
         }
@@ -41,59 +41,40 @@ namespace WebApi.Repository.Implementattions
             return _context.Movies.SingleOrDefault(p => p.Id.Equals(id));
         }
 
+        public List<Movie> FindByName(string name)
+        {
+            return _context.Movies.Where(a => a.titulo.Contains(name)).OrderBy(a => a.titulo).ToList();
+        }
+
+
         // Método responsável por retornar todas as pessoas
         public List<Movie> FindAll()
         {
-            return _context.Movies.ToList();
+            return _context.Movies.OrderBy(a => a.titulo).ToList();
         }
 
-        // Método responsável por atualizar uma pessoa
-        public Movie Update(Movie movie)
+        public List<_vw_mc_filme_visto> FindWatched(enMovieCount order)
         {
-            // Verificamos se a pessoa existe na base
-            // Se não existir retornamos uma instancia vazia de pessoa
-            if (!Exists(movie.Id)) return new Movie();
-
-            // Pega o estado atual do registro no banco
-            // seta as alterações e salva
-            var result = _context.Movies.SingleOrDefault(b => b.Id == movie.Id);
-            if (result != null)
+            if (order == enMovieCount.periodo)
             {
-                try
-                {
-                    _context.Entry(result).CurrentValues.SetValues(movie);
-                    _context.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
+                return _context.vw_mc_filme_visto.OrderByDescending(p => p.periodo).ToList();
             }
-            return result;
-        }
-
-        // Método responsável por deletar
-        // uma pessoa a partir de um ID
-        public void Delete(long id)
-        {
-            var result = _context.Movies.SingleOrDefault(p => p.Id.Equals(id));
-            try
+            else
             {
-                if (result != null)
-                {
-                    _context.Movies.Remove(result);
-                    _context.SaveChanges();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
+                return _context.vw_mc_filme_visto.OrderBy(p => p.titulo).ToList();
             }
         }
 
-        private bool Exists(long? id)
+        public List<_vw_mc_filme_ver> FindAvailable(enMovieCount order)
         {
-            return _context.Movies.Any(p => p.Id.Equals(id));
+            if (order == enMovieCount.rating)
+            {
+                return _context.vw_mc_filme_ver.OrderByDescending(p => p.rating).ToList();
+            }
+            else
+            {
+                return _context.vw_mc_filme_ver.OrderBy(p => p.titulo).ToList();
+            }
         }
     }
 }

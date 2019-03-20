@@ -4,96 +4,39 @@ using System.Threading;
 using WebApi.Model.Context;
 using System;
 using System.Linq;
+using WebApi.Repository;
 
 namespace WebApi.Business.Implementattions
 {
     public class DirectorBusinessImpl : IDirectorBusiness
     {
 
-        private MySQLContext _context;
+        private IDirectorRepository _repository;
 
-        public DirectorBusinessImpl(MySQLContext context)
+        public DirectorBusinessImpl(IDirectorRepository repository)
         {
-            _context = context;
+            _repository = repository;
         }
 
-        // Metodo responsável por criar uma nova pessoa
-        // nesse momento adicionamos o objeto ao contexto
-        // e finalmente salvamos as mudanças no contexto
-        // na base de dados
         public Director Create(Director director)
         {
-            try
-            {
-                _context.Add(director);
-                _context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return director;
+			return _repository.Create(director);
         }
 
-        // Método responsável por retornar uma pessoa
         public Director FindById(long id)
         {
-            return _context.Directors.SingleOrDefault(p => p.Id.Equals(id));
+            return _repository.FindById(id);
         }
 
-        // Método responsável por retornar todas as pessoas
+        public List<Director> FindByName(string name)
+        {
+            return _repository.FindByName(name);
+        }
+
         public List<Director> FindAll()
         {
-            return _context.Directors.OrderBy(a => a.Name).ToList();
+            return _repository.FindAll();
         }
 
-        // Método responsável por atualizar uma pessoa
-        public Director Update(Director director)
-        {
-            // Verificamos se a pessoa existe na base
-            // Se não existir retornamos uma instancia vazia de pessoa
-            if (!Exists(director.Id)) return new Director();
-
-            // Pega o estado atual do registro no banco
-            // seta as alterações e salva
-            var result = _context.Directors.SingleOrDefault(b => b.Id == director.Id);
-            if (result != null)
-            {
-                try
-                {
-                    _context.Entry(result).CurrentValues.SetValues(director);
-                    _context.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-            }
-            return result;
-        }
-
-        // Método responsável por deletar
-        // uma pessoa a partir de um ID
-        public void Delete(long id)
-        {
-            var result = _context.Directors.SingleOrDefault(p => p.Id.Equals(id));
-            try
-            {
-                if (result != null)
-                {
-                    _context.Directors.Remove(result);
-                    _context.SaveChanges();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        private bool Exists(long? id)
-        {
-            return _context.Directors.Any(p => p.Id.Equals(id));
-        }
     }
 }

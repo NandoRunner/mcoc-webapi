@@ -10,7 +10,7 @@ namespace WebApi.Repository
         List<Actor> FindByName(string name);
         List<Actor> FindAll();
 
-        //Actor Update(Actor actor);
-        //void Delete(long id);
+        Actor Update(Actor actor);
+        void Delete(long id);
     }
 }

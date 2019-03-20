@@ -7,8 +7,7 @@ namespace WebApi.Repository
     {
         Genre Create(Genre genre);
         Genre FindById(long id);
+        List<Genre> FindByName(string name);
         List<Genre> FindAll();
-        //Actor Update(Actor actor);
-        //void Delete(long id);
     }
 }

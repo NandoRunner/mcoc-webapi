@@ -41,6 +41,12 @@ namespace WebApi.Repository.Implementattions
             return _context.Genres.SingleOrDefault(p => p.Id.Equals(id));
         }
 
+        public List<Genre> FindByName(string name)
+        {
+            return _context.Genres.Where(a => a.Name.Contains(name)).OrderBy(a => a.Name).ToList();
+        }
+
+
         // Método responsável por retornar todas as pessoas
         public List<Genre> FindAll()
         {

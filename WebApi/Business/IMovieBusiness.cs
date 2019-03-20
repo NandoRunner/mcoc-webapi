@@ -12,7 +12,5 @@ namespace WebApi.Business
 
         List<_vw_mc_filme_visto> FindWatched(enMovieCount order);
         List<_vw_mc_filme_ver> FindAvailable(enMovieCount order);
-        //Actor Update(Actor actor);
-        //void Delete(long id);
     }
 }

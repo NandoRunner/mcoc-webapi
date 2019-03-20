@@ -41,6 +41,12 @@ namespace WebApi.Repository.Implementattions
             return _context.Directors.SingleOrDefault(p => p.Id.Equals(id));
         }
 
+        public List<Director> FindByName(string name)
+        {
+            return _context.Directors.Where(a => a.Name.Contains(name)).OrderBy(a => a.Name).ToList();
+        }
+
+
         // Método responsável por retornar todas as pessoas
         public List<Director> FindAll()
         {

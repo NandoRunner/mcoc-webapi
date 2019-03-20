@@ -66,7 +66,7 @@ namespace WebApi.Controllers
 
         //Mapeia as requisições POST para http://localhost:{porta}/api/actor/
         //O [FromBody] consome o Objeto JSON enviado no corpo da requisição
-        [HttpPost]
+        [HttpPost("v{version:apiVersion}")]
         public IActionResult Post([FromBody]Actor actor)
         {
             if (actor == null) return BadRequest();
@@ -75,21 +75,23 @@ namespace WebApi.Controllers
 
         //Mapeia as requisições PUT para http://localhost:{porta}/api/actor/
         //O [FromBody] consome o Objeto JSON enviado no corpo da requisição
-        //[HttpPut("{id}")]
-        //public IActionResult Put([FromBody]Actor actor)
-        //{
-        //    if (actor == null) return BadRequest();
-        //    return new ObjectResult(_actorBusiness.Update(actor));
-        //}
+        [HttpPut("v{version:apiVersion}")]
+        public IActionResult Put([FromBody]Actor actor)
+        {
+            if (actor == null) return BadRequest();
+            var updatedActor = _actorBusiness.Update(actor);
+            if (updatedActor == null) return NoContent(); 
+            return new ObjectResult(updatedActor);
+        }
 
 
         //Mapeia as requisições DELETE para http://localhost:{porta}/api/actor/{id}
         //recebendo um ID como no Path da requisição
-        //[HttpDelete("{id}")]
-        //public IActionResult Delete(int id)
-        //{
-        //    _actorBusiness.Delete(id);
-        //    return NoContent();
-        //}
+        [HttpDelete("v{version:apiVersion}/{id}")]
+        public IActionResult Delete(int id)
+        {
+            _actorBusiness.Delete(id);
+            return NoContent();
+        }
     }
 }

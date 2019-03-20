@@ -7,8 +7,7 @@ namespace WebApi.Business
     {
         Director Create(Director director);
         Director FindById(long id);
+        List<Director> FindByName(string name);
         List<Director> FindAll();
-        //Director Update(Director director);
-        //void Delete(long id);
     }
 }
