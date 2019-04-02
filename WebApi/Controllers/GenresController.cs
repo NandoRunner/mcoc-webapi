@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebApi.Model;
 using WebApi.Business;
+using WebApi.Data.VO;
+
 namespace WebApi.Controllers
 {
 
@@ -45,7 +46,7 @@ namespace WebApi.Controllers
         //Mapeia as requisições POST para http://localhost:{porta}/api/genre/
         //O [FromBody] consome o Objeto JSON enviado no corpo da requisição
         [HttpPost]
-        public IActionResult Post([FromBody]Genre genre)
+        public IActionResult Post([FromBody]GenreVO genre)
         {
             if (genre == null) return BadRequest();
             return new  ObjectResult(_genreService.Create(genre));
@@ -53,21 +54,23 @@ namespace WebApi.Controllers
 
         //Mapeia as requisições PUT para http://localhost:{porta}/api/genre/
         //O [FromBody] consome o Objeto JSON enviado no corpo da requisição
-        //[HttpPut("{id}")]
-        //public IActionResult Put([FromBody]Genre genre)
-        //{
-        //    if (genre == null) return BadRequest();
-        //    return new ObjectResult(_genreService.Update(genre));
-        //}
+        [HttpPut("{id}")]
+        public IActionResult Put([FromBody]GenreVO genre)
+        {
+            if (genre == null) return BadRequest();
+            var updatedGenre = _genreService.Update(genre);
+            if (updatedGenre == null) return NoContent();
+            return new ObjectResult(updatedGenre);
+        }
 
 
         //Mapeia as requisições DELETE para http://localhost:{porta}/api/genre/{id}
         //recebendo um ID como no Path da requisição
-        //[HttpDelete("{id}")]
-        //public IActionResult Delete(int id)
-        //{
-        //    _genreService.Delete(id);
-        //    return NoContent();
-        //}
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _genreService.Delete(id);
+            return NoContent();
+        }
     }
 }
