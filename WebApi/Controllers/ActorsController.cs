@@ -28,6 +28,7 @@ namespace WebApi.Controllers
         //Mapeia as requisições GET para http://localhost:{porta}/api/actor/
         //Get sem parâmetros para o FindAll --> Busca Todos
         [HttpGet]
+        //[HttpPost("v{version:apiVersion}")]
         public IActionResult Get()
         {
             return Ok(_actorBusiness.FindAll());
@@ -66,7 +67,7 @@ namespace WebApi.Controllers
 
         //Mapeia as requisições POST para http://localhost:{porta}/api/actor/
         //O [FromBody] consome o Objeto JSON enviado no corpo da requisição
-        [HttpPost("v{version:apiVersion}")]
+        //[HttpPost("v{version:apiVersion}")]
         public IActionResult Post([FromBody]Actor actor)
         {
             if (actor == null) return BadRequest();
@@ -75,7 +76,7 @@ namespace WebApi.Controllers
 
         //Mapeia as requisições PUT para http://localhost:{porta}/api/actor/
         //O [FromBody] consome o Objeto JSON enviado no corpo da requisição
-        [HttpPut("v{version:apiVersion}")]
+        //[HttpPut("v{version:apiVersion}")]
         public IActionResult Put([FromBody]Actor actor)
         {
             if (actor == null) return BadRequest();
@@ -87,7 +88,7 @@ namespace WebApi.Controllers
 
         //Mapeia as requisições DELETE para http://localhost:{porta}/api/actor/{id}
         //recebendo um ID como no Path da requisição
-        [HttpDelete("v{version:apiVersion}/{id}")]
+        //[HttpDelete("v{version:apiVersion}/{id}")]
         public IActionResult Delete(int id)
         {
             _actorBusiness.Delete(id);
