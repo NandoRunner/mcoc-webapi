@@ -14,6 +14,7 @@ using WebApi.Repository.Implementattions;
 using WebApi.Model.Context;
 using Microsoft.EntityFrameworkCore;
 using Evolve.Migration;
+using WebApi.Repository.Generic;
 
 namespace WebApi
 {
@@ -74,6 +75,8 @@ namespace WebApi
             services.AddScoped<IGenreRepository, GenreRepositoryImpl>();
             services.AddScoped<IDirectorRepository, DirectorRepositoryImpl>();
             services.AddScoped<IMovieRepository, MovieRepositoryImpl>();
+
+            services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

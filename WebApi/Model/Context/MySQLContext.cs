@@ -26,6 +26,21 @@ namespace WebApi.Model.Context
         {
             modelBuilder.Entity<ActorMovie>()
                 .HasKey(c => new { c.ActorId, c.MovieId });
+
+
+            modelBuilder.Entity<Actor>()
+                .Property<long>("Id")
+                    .HasColumnName("ato_ator_id");
+            modelBuilder.Entity<Actor>()
+                .Property<string>("Name")
+                    .HasColumnName("ato_nome");
+
+            modelBuilder.Entity<Genre>()
+                .Property<long>("Id")
+                    .HasColumnName("gen_genero_id");
+            modelBuilder.Entity<Genre>()
+                .Property<string>("Name")
+                    .HasColumnName("gen_nome");
         }
 
         public DbSet<_vw_mc_ator> vw_mc_ator { get; set; }

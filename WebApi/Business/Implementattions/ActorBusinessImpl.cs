@@ -5,15 +5,17 @@ using WebApi.Model.Context;
 using System;
 using System.Linq;
 using WebApi.Repository;
+using WebApi.Repository.Generic;
 
 namespace WebApi.Business.Implementattions
 {
     public class ActorBusinessImpl : IActorBusiness
     {
+        private readonly IRepository<Actor> _repository;
 
-        private IActorRepository _repository;
+        //private IActorRepository _repository;
 
-        public ActorBusinessImpl(IActorRepository repository)
+        public ActorBusinessImpl(IRepository<Actor> repository)
         {
             _repository = repository;
         }
