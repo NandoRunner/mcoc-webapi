@@ -5,12 +5,7 @@ using WebApi.Model.Base;
 namespace WebApi.Model
 {
     [Table("mc_gen_genero")]
-    public class Genre 
+    public class Genre : BaseEntity
     {
-        //[Key]
-        //[Column("gen_genero_id")]
-        public long Id { get; set; }
-        //[Column("gen_nome")]
-        public string Name { get; set; }
     }
 }

@@ -41,6 +41,14 @@ namespace WebApi.Model.Context
             modelBuilder.Entity<Genre>()
                 .Property<string>("Name")
                     .HasColumnName("gen_nome");
+
+            modelBuilder.Entity<Director>()
+                .Property<long>("Id")
+                    .HasColumnName("dir_diretor_id");
+            modelBuilder.Entity<Director>()
+                .Property<string>("Name")
+                    .HasColumnName("dir_nome");
+
         }
 
         public DbSet<_vw_mc_ator> vw_mc_ator { get; set; }

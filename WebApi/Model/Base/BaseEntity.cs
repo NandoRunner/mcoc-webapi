@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace WebApi.Model.Base
 {
-    [DataContract]
+    //[DataContract]
     public class BaseEntity
     {
-        [Key]
-        public virtual long Id { get; set; }
+        public long Id { get; set; }
 
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
     }
 }

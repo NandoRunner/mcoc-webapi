@@ -70,10 +70,7 @@ namespace WebApi
             services.AddScoped<IDirectorBusiness, DirectorBusinessImpl>();
             services.AddScoped<IMovieBusiness, MovieBusinessImpl>();
 			
-			services.AddScoped<IActorRepository, ActorRepositoryImpl>();
             //services.AddScoped<IActorMovieRepository, ActorMovieRepositoryImpl>();
-            services.AddScoped<IGenreRepository, GenreRepositoryImpl>();
-            services.AddScoped<IDirectorRepository, DirectorRepositoryImpl>();
             services.AddScoped<IMovieRepository, MovieRepositoryImpl>();
 
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));

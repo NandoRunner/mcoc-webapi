@@ -5,15 +5,17 @@ using WebApi.Model.Context;
 using System;
 using System.Linq;
 using WebApi.Repository;
+using WebApi.Repository.Generic;
 
 namespace WebApi.Business.Implementattions
 {
     public class GenreBusinessImpl : IGenreBusiness
     {
+        private readonly IRepository<Genre> _repository;
 
-        private IGenreRepository _repository;
+        //private IGenreRepository _repository;
 
-        public GenreBusinessImpl(IGenreRepository repository)
+        public GenreBusinessImpl(IRepository<Genre> repository)
         {
             _repository = repository;
         }
