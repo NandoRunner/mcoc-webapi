@@ -58,9 +58,9 @@ namespace WebApi.Controllers
         {
             var ret = _actorBusiness.FindMovieCount((enMovieCount)order);
             if (ret == null) return NotFound();
-            ActorResponse ar = new ActorResponse();
-            ar.server_response = ret;
-            return Ok(ar);
+            ViewResponse<_vw_mc_ator> vr = new ViewResponse<_vw_mc_ator>();
+            vr.server_response = ret;
+            return Ok(vr);
         }
 
 

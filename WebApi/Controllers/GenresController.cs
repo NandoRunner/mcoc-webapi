@@ -60,9 +60,9 @@ namespace WebApi.Controllers
         {
             var ret = _genreService.FindMovieCount((enMovieCount)order);
             if (ret == null) return NotFound();
-            GenreResponse ar = new GenreResponse();
-            ar.server_response = ret;
-            return Ok(ar);
+            ViewResponse<_vw_mc_genero> vr = new ViewResponse<_vw_mc_genero>();
+            vr.server_response = ret;
+            return Ok(vr);
         }
 
         //Mapeia as requisições POST para http://localhost:{porta}/api/genre/

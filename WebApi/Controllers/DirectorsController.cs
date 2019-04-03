@@ -58,9 +58,9 @@ namespace WebApi.Controllers
         {
             var ret = _directorService.FindMovieCount((enMovieCount)order);
             if (ret == null) return NotFound();
-            DirectorResponse ar = new DirectorResponse();
-            ar.server_response = ret;
-            return Ok(ar);
+            ViewResponse<_vw_mc_diretor> vr = new ViewResponse<_vw_mc_diretor>();
+            vr.server_response = ret;
+            return Ok(vr);
         }
         //Mapeia as requisições POST para http://localhost:{porta}/api/director/
         //O [FromBody] consome o Objeto JSON enviado no corpo da requisição
