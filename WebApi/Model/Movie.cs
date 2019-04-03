@@ -21,4 +21,9 @@ namespace WebApi.Model
         public DateTime? periodo { get; set; }
         public DateTime update { get; set; }
     }
+
+    public class MovieResponse
+    {
+
+    }
 }

@@ -41,7 +41,27 @@ namespace WebApi.Controllers
             if (director == null) return NotFound();
             return Ok(director);
         }
+        
+        [Route("[action]/{name}")]
+        [HttpGet]
+        public IActionResult GetByName(string name)
+        {
+            var ret = _directorService.FindByName(name);
+            if (ret == null) return NotFound();
+            return Ok(ret);
+        }
 
+        [Route("[action]/{order}")]
+        [Route("[action]")]
+        [HttpGet]
+        public IActionResult GetMovieCount(int order = (int)enMovieCount.count)
+        {
+            var ret = _directorService.FindMovieCount((enMovieCount)order);
+            if (ret == null) return NotFound();
+            DirectorResponse ar = new DirectorResponse();
+            ar.server_response = ret;
+            return Ok(ar);
+        }
         //Mapeia as requisições POST para http://localhost:{porta}/api/director/
         //O [FromBody] consome o Objeto JSON enviado no corpo da requisição
         [HttpPost]
@@ -53,21 +73,23 @@ namespace WebApi.Controllers
 
         //Mapeia as requisições PUT para http://localhost:{porta}/api/director/
         //O [FromBody] consome o Objeto JSON enviado no corpo da requisição
-        //[HttpPut("{id}")]
-        //public IActionResult Put([FromBody]Director director)
-        //{
-        //    if (director == null) return BadRequest();
-        //    return new ObjectResult(_directorService.Update(director));
-        //}
+        [HttpPut("{id}")]
+        public IActionResult Put([FromBody]Director director)
+        {
+            if (director == null) return BadRequest();
+            var updatedDirector = _directorService.Update(director);
+            if (updatedDirector == null) return NoContent();
+            return new ObjectResult(updatedDirector);
+        }
 
 
         //Mapeia as requisições DELETE para http://localhost:{porta}/api/director/{id}
         //recebendo um ID como no Path da requisição
-        //[HttpDelete("{id}")]
-        //public IActionResult Delete(int id)
-        //{
-        //    _directorService.Delete(id);
-        //    return NoContent();
-        //}
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _directorService.Delete(id);
+            return NoContent();
+        }
     }
 }

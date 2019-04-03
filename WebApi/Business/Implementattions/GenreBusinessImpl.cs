@@ -17,12 +17,13 @@ namespace WebApi.Business.Implementattions
 
         private readonly GenreConverter _converter;
 
-        //private IGenreRepository _repository;
+        private readonly IViewRepository<_vw_mc_genero> _vrep;
 
-        public GenreBusinessImpl(IRepository<Genre> repository)
+        public GenreBusinessImpl(IRepository<Genre> repository, IViewRepository<_vw_mc_genero> vrep)
         {
             _repository = repository;
             _converter = new GenreConverter();
+            _vrep = vrep;
         }
 
         public GenreVO Create(GenreVO genre)
@@ -58,6 +59,11 @@ namespace WebApi.Business.Implementattions
         {
             _repository.Delete(id);
 
+        }
+
+        public List<_vw_mc_genero> FindMovieCount(enMovieCount order)
+        {
+            return _vrep.FindMovieCount(order);
         }
     }
 }

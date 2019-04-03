@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using WebApi.Data.VO;
+using WebApi.Model;
 
 namespace WebApi.Business
 {
@@ -12,5 +13,7 @@ namespace WebApi.Business
 
         GenreVO Update(GenreVO genre);
         void Delete(long id);
+
+        List<_vw_mc_genero> FindMovieCount(enMovieCount order);
     }
 }

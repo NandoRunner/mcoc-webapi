@@ -65,15 +65,15 @@ namespace WebApi
 
             //Dependency Injection
             services.AddScoped<IActorBusiness, ActorBusinessImpl>();
-            services.AddScoped<IActorMovieBusiness, ActorMovieBusinessImpl>();
             services.AddScoped<IGenreBusiness, GenreBusinessImpl>();
             services.AddScoped<IDirectorBusiness, DirectorBusinessImpl>();
-            services.AddScoped<IMovieBusiness, MovieBusinessImpl>();
-			
-            //services.AddScoped<IActorMovieRepository, ActorMovieRepositoryImpl>();
-            services.AddScoped<IMovieRepository, MovieRepositoryImpl>();
 
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
+
+            services.AddScoped(typeof(IViewRepository<>), typeof(ViewRepositoryImpl<>));
+
+            services.AddScoped<IMovieBusiness, MovieBusinessImpl>();
+            services.AddScoped<IMovieRepository, MovieRepositoryImpl>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

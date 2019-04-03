@@ -15,20 +15,17 @@ namespace WebApi.Controllers
     {
         //Declaração do serviço usado
         private IActorBusiness _actorBusiness;
-        private IActorMovieBusiness _amBusiness;
-
+        
         /* Injeção de uma instancia de IActorBusiness ao criar
         uma instancia de ActorController */
-        public ActorsController(IActorBusiness actorBusiness, IActorMovieBusiness amBusiness)
+        public ActorsController(IActorBusiness actorBusiness)
         {
             _actorBusiness = actorBusiness;
-            _amBusiness = amBusiness;
         }
 
         //Mapeia as requisições GET para http://localhost:{porta}/api/actor/
         //Get sem parâmetros para o FindAll --> Busca Todos
         [HttpGet]
-        //[HttpPost("v{version:apiVersion}")]
         public IActionResult Get()
         {
             return Ok(_actorBusiness.FindAll());
@@ -59,9 +56,11 @@ namespace WebApi.Controllers
         [HttpGet]
         public IActionResult GetMovieCount(int order = (int)enMovieCount.count)
         {
-            var ret = _amBusiness.FindMovieCount((enMovieCount)order);
+            var ret = _actorBusiness.FindMovieCount((enMovieCount)order);
             if (ret == null) return NotFound();
-            return Ok(ret);
+            ActorResponse ar = new ActorResponse();
+            ar.server_response = ret;
+            return Ok(ar);
         }
 
 

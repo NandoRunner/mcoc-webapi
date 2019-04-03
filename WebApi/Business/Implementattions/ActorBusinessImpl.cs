@@ -13,11 +13,13 @@ namespace WebApi.Business.Implementattions
     {
         private readonly IRepository<Actor> _repository;
 
-        //private IActorRepository _repository;
+        private readonly IViewRepository<_vw_mc_ator> _vrep;
 
-        public ActorBusinessImpl(IRepository<Actor> repository)
+
+        public ActorBusinessImpl(IRepository<Actor> repository, IViewRepository<_vw_mc_ator> vrep)
         {
             _repository = repository;
+            _vrep = vrep;
         }
 
         public Actor Create(Actor actor)
@@ -50,5 +52,9 @@ namespace WebApi.Business.Implementattions
             _repository.Delete(id);
         }
 
+        public List<_vw_mc_ator> FindMovieCount(enMovieCount order)
+        {
+            return _vrep.FindMovieCount(order);
+        }
     }
 }

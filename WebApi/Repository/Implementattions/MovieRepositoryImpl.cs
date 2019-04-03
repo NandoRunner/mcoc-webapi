@@ -9,7 +9,6 @@ namespace WebApi.Repository.Implementattions
 {
     public class MovieRepositoryImpl : IMovieRepository
     {
-
         private MySQLContext _context;
 
         public MovieRepositoryImpl(MySQLContext context)

@@ -13,11 +13,13 @@ namespace WebApi.Business.Implementattions
     {
         private readonly IRepository<Director> _repository;
 
-        //private IDirectorRepository _repository;
+        private readonly IViewRepository<_vw_mc_diretor> _vrep;
 
-        public DirectorBusinessImpl(IRepository<Director> repository)
+
+        public DirectorBusinessImpl(IRepository<Director> repository, IViewRepository<_vw_mc_diretor> vrep)
         {
             _repository = repository;
+            _vrep = vrep;
         }
 
         public Director Create(Director director)
@@ -40,5 +42,19 @@ namespace WebApi.Business.Implementattions
             return _repository.FindAll();
         }
 
+        public Director Update(Director director)
+        {
+            return  _repository.Update(director);
+        }
+
+        public void Delete(long id)
+        {
+            _repository.Delete(id);
+        }
+
+        public List<_vw_mc_diretor> FindMovieCount(enMovieCount order)
+        {
+            return _vrep.FindMovieCount(order);
+        }
     }
 }

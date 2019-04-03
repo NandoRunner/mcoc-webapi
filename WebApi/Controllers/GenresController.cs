@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApi.Business;
 using WebApi.Data.VO;
+using WebApi.Model;
 
 namespace WebApi.Controllers
 {
@@ -41,6 +42,27 @@ namespace WebApi.Controllers
             var genre = _genreService.FindById(id);
             if (genre == null) return NotFound();
             return Ok(genre);
+        }
+
+        [Route("[action]/{name}")]
+        [HttpGet]
+        public IActionResult GetByName(string name)
+        {
+            var ret = _genreService.FindByName(name);
+            if (ret == null) return NotFound();
+            return Ok(ret);
+        }
+
+        [Route("[action]/{order}")]
+        [Route("[action]")]
+        [HttpGet]
+        public IActionResult GetMovieCount(int order = (int)enMovieCount.count)
+        {
+            var ret = _genreService.FindMovieCount((enMovieCount)order);
+            if (ret == null) return NotFound();
+            GenreResponse ar = new GenreResponse();
+            ar.server_response = ret;
+            return Ok(ar);
         }
 
         //Mapeia as requisições POST para http://localhost:{porta}/api/genre/

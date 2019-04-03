@@ -9,5 +9,10 @@ namespace WebApi.Business
         Director FindById(long id);
         List<Director> FindByName(string name);
         List<Director> FindAll();
+
+        Director Update(Director director);
+        void Delete(long id);
+
+        List<_vw_mc_diretor> FindMovieCount(enMovieCount order);
     }
 }

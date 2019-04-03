@@ -12,5 +12,7 @@ namespace WebApi.Business
 
         Actor Update(Actor actor);
         void Delete(long id);
+
+        List<_vw_mc_ator> FindMovieCount(enMovieCount order);
     }
 }
