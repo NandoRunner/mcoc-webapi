@@ -15,6 +15,7 @@ using WebApi.Model.Context;
 using Microsoft.EntityFrameworkCore;
 using Evolve.Migration;
 using WebApi.Repository.Generic;
+using Microsoft.Net.Http.Headers;
 
 namespace WebApi
 {
@@ -59,7 +60,16 @@ namespace WebApi
             }
 
 
-            services.AddMvc();
+            //services.AddMvc();
+
+            services.AddMvc(options =>
+            {
+                options.RespectBrowserAcceptHeader = true;
+                options.FormatterMappings.SetMediaTypeMappingForFormat("xml", MediaTypeHeaderValue.Parse("text/xml"));
+                options.FormatterMappings.SetMediaTypeMappingForFormat("json", MediaTypeHeaderValue.Parse("application/json"));
+
+            })
+            .AddXmlSerializerFormatters();
 
             services.AddApiVersioning(option => option.ReportApiVersions = true);
 

@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace WebApi.Model.Base
 {
-    //[DataContract]
+    [DataContract]
     public class BaseInterEntity
     {
+        [DataMember(Order = 1)]
         public long id_a { get; set; }
 
+        [DataMember(Order = 2)]
         public long id_b { get; set; }
     }
 }
