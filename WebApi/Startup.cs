@@ -68,7 +68,14 @@ namespace WebApi
             services.AddScoped<IGenreBusiness, GenreBusinessImpl>();
             services.AddScoped<IDirectorBusiness, DirectorBusinessImpl>();
 
+            services.AddScoped<IMccAllianceBusiness, MccAllianceBusinessImpl>();
+            services.AddScoped<IMccUserBusiness, MccUserBusinessImpl>();
+
+            services.AddScoped<IMccUserAllianceBusiness, MccUserAllianceBusinessImpl>();
+
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
+            services.AddScoped(typeof(IRepositoryInter<>), typeof(GenericRepositoryInter<>));
+
 
             services.AddScoped(typeof(IViewRepository<>), typeof(ViewRepositoryImpl<>));
 

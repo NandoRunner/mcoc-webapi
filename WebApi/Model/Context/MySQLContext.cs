@@ -19,6 +19,11 @@ namespace WebApi.Model.Context
         public DbSet<Director> Directors { get; set; }
         public DbSet<Movie> Movies { get; set; }
 
+        public DbSet<MccAlliance> MccAlliances { get; set; }
+        public DbSet<MccUser> MccUsers { get; set; }
+
+        public DbSet<MccUserAlliance> MccUserAlliances { get; set; }
+
         public DbSet<_vw_mc_ator> vw_mc_ator { get; set; }
         public DbSet<_vw_mc_diretor> vw_mc_diretor { get; set; }
         public DbSet<_vw_mc_filme_visto> vw_mc_filme_visto { get; set; }
@@ -27,27 +32,35 @@ namespace WebApi.Model.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<MccUserAlliance>()
+                .Property<long>("id_a").HasColumnName("user_id");
+            modelBuilder.Entity<MccUserAlliance>()
+                .Property<long>("id_b").HasColumnName("alliance_id");
+
+            modelBuilder.Entity<MccUserAlliance>()
+               .HasKey(c => new { c.id_a, c.id_b });
+
             modelBuilder.Entity<Actor>()
-                .Property<long>("Id").HasColumnName("ato_ator_id");
+                .Property<long?>("id").HasColumnName("ato_ator_id");
             modelBuilder.Entity<Actor>()
-                .Property<string>("Name").HasColumnName("ato_nome");
+                .Property<string>("name").HasColumnName("ato_nome");
 
             modelBuilder.Entity<Genre>()
-                .Property<long>("Id").HasColumnName("gen_genero_id");
+                .Property<long?>("id").HasColumnName("gen_genero_id");
             modelBuilder.Entity<Genre>()
-                .Property<string>("Name").HasColumnName("gen_nome");
+                .Property<string>("name").HasColumnName("gen_nome");
 
             modelBuilder.Entity<Director>()
-                .Property<long>("Id").HasColumnName("dir_diretor_id");
+                .Property<long?>("id").HasColumnName("dir_diretor_id");
             modelBuilder.Entity<Director>()
-                .Property<string>("Name").HasColumnName("dir_nome");
+                .Property<string>("name").HasColumnName("dir_nome");
 
             modelBuilder.Entity<_vw_mc_ator>()
-                .Property<string>("Name").HasColumnName("Ator");
+                .Property<string>("name").HasColumnName("Ator");
             modelBuilder.Entity<_vw_mc_diretor>()
-                .Property<string>("Name").HasColumnName("Diretor");
+                .Property<string>("name").HasColumnName("Diretor");
             modelBuilder.Entity<_vw_mc_genero>()
-                .Property<string>("Name").HasColumnName("Genero");
+                .Property<string>("name").HasColumnName("Genero");
 
 
 

@@ -15,8 +15,8 @@ namespace WebApi.Data.Converters
             if (origin == null) return new Genre();
             return new Genre
             {
-                Id = origin.Id,
-                Name = origin.Name
+                id = origin.Id,
+                name = origin.Name
             };
         }
 
@@ -25,8 +25,8 @@ namespace WebApi.Data.Converters
             if (origin == null) return new GenreVO();
             return new GenreVO
             {
-                Id = origin.Id,
-                Name = origin.Name
+                Id = origin.id,
+                Name = origin.name
             };
         }
 

@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 namespace WebApi.Model.Base
 {
     //[DataContract]
-    public class BaseEntity
+    public class BaseInterEntity
     {
-        public long? id { get; set; }
+        public long id_a { get; set; }
 
-        public string name { get; set; }
+        public long id_b { get; set; }
     }
 }
