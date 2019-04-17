@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS `db_a3f268_myasp`.`marvel_synergy` (
+  `id` INT NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
+  `desc` VARCHAR(45) NOT NULL,
+  `all` TINYINT NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;

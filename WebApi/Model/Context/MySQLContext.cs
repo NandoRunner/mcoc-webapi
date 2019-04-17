@@ -21,6 +21,7 @@ namespace WebApi.Model.Context
 
         public DbSet<MccAlliance> MccAlliances { get; set; }
         public DbSet<MccUser> MccUsers { get; set; }
+        public DbSet<MccHeroe> MccHeroes { get; set; }
 
         public DbSet<MccUserAlliance> MccUserAlliances { get; set; }
 

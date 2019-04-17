@@ -80,6 +80,7 @@ namespace WebApi
 
             services.AddScoped<IMccAllianceBusiness, MccAllianceBusinessImpl>();
             services.AddScoped<IMccUserBusiness, MccUserBusinessImpl>();
+            services.AddScoped<IMccHeroeBusiness, MccHeroeBusinessImpl>();
 
             services.AddScoped<IMccUserAllianceBusiness, MccUserAllianceBusinessImpl>();
 
