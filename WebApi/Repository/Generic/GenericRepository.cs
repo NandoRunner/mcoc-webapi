@@ -23,6 +23,8 @@ namespace WebApi.Repository.Generic
 
         public T Create(T item)
         {
+            if (Exists(item.name)) return null;
+
             try
             {
                 dataset.Add(item);
@@ -65,7 +67,11 @@ namespace WebApi.Repository.Generic
         public List<T> FindByName(string name)
         {
             return dataset.Where(a => a.name.Contains(name)).OrderBy(a => a.name).ToList();
+        }
 
+        public T FindByExactName(string name)
+        {
+            return dataset.SingleOrDefault(p => p.name.Equals(name));
         }
 
         public T Update(T item)
@@ -94,6 +100,11 @@ namespace WebApi.Repository.Generic
         private bool Exists(long? id)
         {
             return dataset.Any(p => p.id.Equals(id));
+        }
+
+        private bool Exists(string name)
+        {
+            return dataset.Any(p => p.name.Equals(name));
         }
     }
 }

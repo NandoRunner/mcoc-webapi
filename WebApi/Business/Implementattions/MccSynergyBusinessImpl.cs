@@ -9,14 +9,14 @@ using WebApi.Repository.Generic;
 
 namespace WebApi.Business.Implementattions
 {
-    public class MccHeroeBusinessImpl : IMccHeroeBusiness
+    public class MccSynergyBusinessImpl : IMccSynergyBusiness
     {
-        private readonly IRepository<MccHeroe> _repository;
+        private readonly IRepository<MccSynergy> _repository;
 
         //private readonly IViewRepository<_vw_mc_ator> _vrep;
 
 
-        public MccHeroeBusinessImpl(IRepository<MccHeroe> repository
+        public MccSynergyBusinessImpl(IRepository<MccSynergy> repository
             //, IViewRepository<_vw_mc_ator> vrep
             )
         {
@@ -24,34 +24,29 @@ namespace WebApi.Business.Implementattions
             //_vrep = vrep;
         }
 
-        public MccHeroe Create(MccHeroe mccHeroe)
+        public MccSynergy Create(MccSynergy mccSynergy)
         {
-            return _repository.Create(mccHeroe);
+            return _repository.Create(mccSynergy);
         }
 
-        public MccHeroe FindById(long id)
+        public MccSynergy FindById(long id)
         {
             return _repository.FindById(id);
         }
 
-        public List<MccHeroe> FindByName(string name)
+        public List<MccSynergy> FindByName(string name)
         {
             return _repository.FindByName(name);
         }
 
-        public MccHeroe FindByExactName(string name)
-        {
-            return _repository.FindByExactName(name);
-        }
-
-        public List<MccHeroe> FindAll()
+        public List<MccSynergy> FindAll()
         {
             return _repository.FindAll();
         }
 
-        public MccHeroe Update(MccHeroe mccHeroe)
+        public MccSynergy Update(MccSynergy mccSynergy)
         {
-            return  _repository.Update(mccHeroe);
+            return  _repository.Update(mccSynergy);
         }
 
         public void Delete(long id)

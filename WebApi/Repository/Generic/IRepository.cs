@@ -11,6 +11,7 @@ namespace WebApi.Repository.Generic
         T Create(T item);
         T FindById(long id);
         List<T> FindByName(string name);
+        T FindByExactName(string name);
         List<T> FindAll();
 
         T Update(T item);

@@ -8,6 +8,7 @@ namespace WebApi.Business
         MccHeroe Create(MccHeroe item);
         MccHeroe FindById(long id);
         List<MccHeroe> FindByName(string name);
+        MccHeroe FindByExactName(string name);
         List<MccHeroe> FindAll();
 
         MccHeroe Update(MccHeroe item);

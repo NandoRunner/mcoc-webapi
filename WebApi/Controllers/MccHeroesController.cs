@@ -13,9 +13,9 @@ namespace WebApi.Controllers
 
         /* Injeção de uma instancia de IMccHeroeBusiness ao criar
         uma instancia de ActorController */
-        public MccHeroesController(IMccHeroeBusiness usrBusiness)
+        public MccHeroesController(IMccHeroeBusiness itemBusiness)
         {
-            _mccHeroeBusiness = usrBusiness;
+            _mccHeroeBusiness = itemBusiness;
         }
 
         //Get sem parâmetros para o FindAll --> Busca Todos
@@ -28,9 +28,9 @@ namespace WebApi.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(long id)
         {
-            var usr = _mccHeroeBusiness.FindById(id);
-            if (usr == null) return NotFound();
-            return Ok(usr);
+            var item = _mccHeroeBusiness.FindById(id);
+            if (item == null) return NotFound();
+            return Ok(item);
         }
 
         [Route("[action]/{name}")]
@@ -41,19 +41,48 @@ namespace WebApi.Controllers
             if (ret == null) return NotFound();
             return Ok(ret);
         }
-        
-        [HttpPost]
-        public IActionResult Post([FromBody]MccHeroe usr)
+
+        [Route("[action]/{name}")]
+        [HttpGet]
+        public IActionResult GetByExactName(string name)
         {
-            if (usr == null) return BadRequest();
-            return new  ObjectResult(_mccHeroeBusiness.Create(usr));
+            var ret = _mccHeroeBusiness.FindByExactName(name);
+            if (ret == null) return NotFound();
+            return Ok(ret);
+        }
+
+        [HttpPost]
+        public IActionResult Post([FromBody]MccHeroe item)
+        {
+            if (item == null) return BadRequest();
+            var createdItem = _mccHeroeBusiness.Create(item);
+            if (createdItem == null) return BadRequest();
+            return new  ObjectResult(createdItem);
+        }
+
+        [Route("[action]")]
+        [HttpPost]
+        public IActionResult PostArray([FromBody]MccHeroe[] item)
+        {
+            if (item[0] == null) return BadRequest();
+
+            bool bok = false;
+            foreach (MccHeroe i in item)
+            {
+                if (_mccHeroeBusiness.Create(i) != null)
+                {
+                    bok = true;
+                }
+            }
+            if (bok) return Ok();
+            else return BadRequest();
         }
 
         [HttpPut]
-        public IActionResult Put([FromBody]MccHeroe usr)
+        public IActionResult Put([FromBody]MccHeroe item)
         {
-            if (usr == null) return BadRequest();
-            var updatedItem = _mccHeroeBusiness.Update(usr);
+            if (item == null) return BadRequest();
+            var updatedItem = _mccHeroeBusiness.Update(item);
             if (updatedItem == null) return NoContent(); 
             return new ObjectResult(updatedItem);
         }

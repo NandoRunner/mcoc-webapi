@@ -20,9 +20,9 @@ namespace WebApi.Model.Context
         public DbSet<Movie> Movies { get; set; }
 
         public DbSet<MccAlliance> MccAlliances { get; set; }
-        public DbSet<MccUser> MccUsers { get; set; }
         public DbSet<MccHeroe> MccHeroes { get; set; }
-
+        public DbSet<MccSynergy> MccSynergys { get; set; }
+        public DbSet<MccUser> MccUsers { get; set; }
         public DbSet<MccUserAlliance> MccUserAlliances { get; set; }
 
         public DbSet<_vw_mc_ator> vw_mc_ator { get; set; }
@@ -37,6 +37,9 @@ namespace WebApi.Model.Context
                 .Property<long>("id_a").HasColumnName("user_id");
             modelBuilder.Entity<MccUserAlliance>()
                 .Property<long>("id_b").HasColumnName("alliance_id");
+
+            modelBuilder.Entity<MccHeroe>()
+                .Property<int>("heroe_class").HasColumnName("class");
 
             modelBuilder.Entity<MccUserAlliance>()
                .HasKey(c => new { c.id_a, c.id_b });
