@@ -58,7 +58,6 @@ namespace WebApi.Business.Implementattions
         public void Delete(long id)
         {
             _repository.Delete(id);
-
         }
 
         public List<_vw_mc_genero> FindMovieCount(enMovieCount order)

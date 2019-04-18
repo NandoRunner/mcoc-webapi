@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Tapioca.HATEOAS;
+using Microsoft.AspNetCore.Mvc;
 using WebApi.Model;
 using WebApi.Business;
+using WebApi.Data.VO;
+
 namespace WebApi.Controllers
 {
 
@@ -20,17 +23,19 @@ namespace WebApi.Controllers
 
         //Get sem parâmetros para o FindAll --> Busca Todos
         [HttpGet]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Get()
         {
-            return Ok(_mccHeroeBusiness.FindAll());
+            return new OkObjectResult(_mccHeroeBusiness.FindAll());
         }
         
         [HttpGet("{id}")]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Get(long id)
         {
             var item = _mccHeroeBusiness.FindById(id);
             if (item == null) return NotFound();
-            return Ok(item);
+            return new OkObjectResult(item);
         }
 
         [Route("[action]/{name}")]
@@ -52,22 +57,23 @@ namespace WebApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody]MccHeroe item)
+        [TypeFilter(typeof(HyperMediaFilter))]
+        public IActionResult Post([FromBody]MccHeroeVO item)
         {
             if (item == null) return BadRequest();
             var createdItem = _mccHeroeBusiness.Create(item);
             if (createdItem == null) return BadRequest();
-            return new  ObjectResult(createdItem);
+            return new OkObjectResult(createdItem);
         }
 
         [Route("[action]")]
         [HttpPost]
-        public IActionResult PostArray([FromBody]MccHeroe[] item)
+        public IActionResult PostArray([FromBody]MccHeroeVO[] item)
         {
             if (item[0] == null) return BadRequest();
 
             bool bok = false;
-            foreach (MccHeroe i in item)
+            foreach (MccHeroeVO i in item)
             {
                 if (_mccHeroeBusiness.Create(i) != null)
                 {
@@ -79,15 +85,17 @@ namespace WebApi.Controllers
         }
 
         [HttpPut]
-        public IActionResult Put([FromBody]MccHeroe item)
+        [TypeFilter(typeof(HyperMediaFilter))]
+        public IActionResult Put([FromBody]MccHeroeVO item)
         {
             if (item == null) return BadRequest();
             var updatedItem = _mccHeroeBusiness.Update(item);
             if (updatedItem == null) return NoContent(); 
-            return new ObjectResult(updatedItem);
+            return new OkObjectResult(updatedItem);
         }
 
         [HttpDelete("{id}")]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Delete(int id)
         {
             _mccHeroeBusiness.Delete(id);

@@ -16,6 +16,8 @@ using Microsoft.EntityFrameworkCore;
 using Evolve.Migration;
 using WebApi.Repository.Generic;
 using Microsoft.Net.Http.Headers;
+using Tapioca.HATEOAS;
+using WebApi.HyperMedia;
 
 namespace WebApi
 {
@@ -71,6 +73,13 @@ namespace WebApi
             })
             .AddXmlSerializerFormatters();
 
+            //Define as opções do filtro HATEOAS
+            var filterOptions = new HyperMediaFilterOptions();
+            filterOptions.ObjectContentResponseEnricherList.Add(new MccHeroeEnricher());
+
+            //Injeta o serviço
+            services.AddSingleton(filterOptions);
+
             services.AddApiVersioning(option => option.ReportApiVersions = true);
 
             //Dependency Injection
@@ -87,7 +96,6 @@ namespace WebApi
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
             services.AddScoped(typeof(IRepositoryInter<>), typeof(GenericRepositoryInter<>));
 
-
             services.AddScoped(typeof(IViewRepository<>), typeof(ViewRepositoryImpl<>));
 
             services.AddScoped<IMovieBusiness, MovieBusinessImpl>();
@@ -100,7 +108,11 @@ namespace WebApi
             loggerFactory.AddConsole(_configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            app.UseMvc();
+            app.UseMvc(routes => {
+                routes.MapRoute(
+                    name: "DefaultApi",
+                    template: "{controller=Values}/{id?}");
+            });
         }
     }
 }

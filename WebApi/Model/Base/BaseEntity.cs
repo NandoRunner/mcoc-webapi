@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
+﻿
 using System.Runtime.Serialization;
-using System.Threading.Tasks;
 
 namespace WebApi.Model.Base
 {
@@ -15,5 +11,7 @@ namespace WebApi.Model.Base
 
         [DataMember(Order = 2)]
         public string name { get; set; }
+
+        
     }
 }

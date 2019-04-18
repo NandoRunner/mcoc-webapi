@@ -1,17 +1,18 @@
 ﻿using System.Collections.Generic;
-using WebApi.Model;
+using WebApi.Data.VO;
+
 
 namespace WebApi.Business
 {
     public interface IMccHeroeBusiness
     {
-        MccHeroe Create(MccHeroe item);
-        MccHeroe FindById(long id);
-        List<MccHeroe> FindByName(string name);
-        MccHeroe FindByExactName(string name);
-        List<MccHeroe> FindAll();
+        MccHeroeVO Create(MccHeroeVO item);
+        MccHeroeVO FindById(long id);
+        List<MccHeroeVO> FindByName(string name);
+        MccHeroeVO FindByExactName(string name);
+        List<MccHeroeVO> FindAll();
 
-        MccHeroe Update(MccHeroe item);
+        MccHeroeVO Update(MccHeroeVO item);
         void Delete(long id);
 
         //List<_vw_mc_ator> FindMovieCount(enMovieCount order);
