@@ -9,14 +9,14 @@ namespace WebApi.Controllers
 
     [ApiVersion("1")]
     [Route("api/[controller]/v{version:apiVersion}")]
-    public class MccHeroesController : Controller
+    public class McocHeroesController : Controller
     {
         //Declaração do serviço usado
         private IMccHeroeBusiness _mccHeroeBusiness;
 
         /* Injeção de uma instancia de IMccHeroeBusiness ao criar
         uma instancia de ActorController */
-        public MccHeroesController(IMccHeroeBusiness itemBusiness)
+        public McocHeroesController(IMccHeroeBusiness itemBusiness)
         {
             _mccHeroeBusiness = itemBusiness;
         }
@@ -83,6 +83,20 @@ namespace WebApi.Controllers
             if (bok) return Ok();
             else return BadRequest();
         }
+
+        [Route("[action]")]
+        [HttpPost]
+        public IActionResult PostImport(McocHeroeRequest item)
+        {
+            if (item == null) return BadRequest();
+
+            return Ok();
+
+            //var createdItem = _mccHeroeBusiness.Create(item);
+            //if (createdItem == null) return BadRequest();
+            //return new OkObjectResult(createdItem);
+        }
+
 
         [HttpPut]
         [TypeFilter(typeof(HyperMediaFilter))]

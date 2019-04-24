@@ -11,4 +11,6 @@ namespace WebApi.Model
         [DataMember(Order = 3)]
         public int heroe_class { get; set; }
     }
+
+
 }
