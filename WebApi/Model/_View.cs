@@ -11,4 +11,10 @@ namespace WebApi.Model
     {
         public List<T> server_response { get; set; }
     }
+
+    public class ViewResponseMovie<T> where T : BaseViewMovie
+    {
+        public List<T> server_response { get; set; }
+    }
+
 }

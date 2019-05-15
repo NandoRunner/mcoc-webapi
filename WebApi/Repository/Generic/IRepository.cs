@@ -8,6 +8,7 @@ namespace WebApi.Repository.Generic
 {
     public interface IRepository<T> where T : BaseEntity
     {
+        T FindOrCreate(T item);
         T Create(T item);
         T FindById(long id);
         List<T> FindByName(string name);

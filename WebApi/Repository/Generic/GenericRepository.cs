@@ -20,6 +20,13 @@ namespace WebApi.Repository.Generic
             dataset = _context.Set<T>();
         }
 
+        public T FindOrCreate(T item)
+        {
+            var ret = FindByExactName(item.name);
+            if (ret != null)
+                return ret;
+            return Create(item);
+        }
 
         public T Create(T item)
         {

@@ -33,6 +33,10 @@
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.1.1" />
     <PackageReference Include="Tapioca.HATEOAS" Version="1.0.4" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\_Resource\FandradeTecInfoUtils\FAndradeTecInfo.Utils.csproj" />
+  </ItemGroup>
   
     <Target Name="ChangeAliasesOfStrongNameAssemblies" BeforeTargets="FindReferenceAssembliesForReferences;ResolveReferences">
     <ItemGroup>

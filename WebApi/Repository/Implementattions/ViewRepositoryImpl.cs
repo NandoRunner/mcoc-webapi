@@ -24,7 +24,7 @@ namespace WebApi.Repository.Implementattions
         {
             if (order == enMovieCount.name)
             {
-                return dataset.OrderBy(p => p.Name).ToList();
+                return dataset.OrderBy(p => p.nome).ToList();
             }
             else
             {

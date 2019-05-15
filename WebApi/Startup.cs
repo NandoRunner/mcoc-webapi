@@ -48,7 +48,7 @@ namespace WebApi
                     var evolveConnection = new MySql.Data.MySqlClient.MySqlConnection(strconn);
                     var evolve = new Evolve.Evolve("evolve.json", evolveConnection, msg => _logger.LogInformation(msg))
                     {
-                        Locations = new List<string> { "db/migrations" },
+                        Locations = new List<string> { "fandradetecinfo.utils/db/migrations" },
                         IsEraseDisabled = true,
                     };
 
@@ -83,11 +83,10 @@ namespace WebApi
             services.AddApiVersioning(option => option.ReportApiVersions = true);
 
             //Dependency Injection
-            services.AddScoped<IActorBusiness, ActorBusinessImpl>();
-            services.AddScoped<IGenreBusiness, GenreBusinessImpl>();
-            services.AddScoped<IDirectorBusiness, DirectorBusinessImpl>();
 
+            services.AddScoped<IMccAbilityBusiness, MccAbilityBusinessImpl>();
             services.AddScoped<IMccAllianceBusiness, MccAllianceBusinessImpl>();
+            services.AddScoped<IMccHashtagBusiness, MccHashtagBusinessImpl>();
             services.AddScoped<IMccHeroeBusiness, MccHeroeBusinessImpl>();
             services.AddScoped<IMccSynergyBusiness, MccSynergyBusinessImpl>();
             services.AddScoped<IMccUserBusiness, MccUserBusinessImpl>();
@@ -98,8 +97,8 @@ namespace WebApi
 
             services.AddScoped(typeof(IViewRepository<>), typeof(ViewRepositoryImpl<>));
 
-            services.AddScoped<IMovieBusiness, MovieBusinessImpl>();
-            services.AddScoped<IMovieRepository, MovieRepositoryImpl>();
+            //services.AddScoped<IMovieBusiness, MovieBusinessImpl>();
+            //services.AddScoped<IMovieRepository, MovieRepositoryImpl>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

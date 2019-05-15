@@ -11,8 +11,22 @@ namespace WebApi.Model.Base
     public class BaseView
     {
         [Key]
-        public string Name { get; set; }
+        public string nome { get; set; }
 
-        public long Filmes { get; set; }
+        public long filmes { get; set; }
     }
+
+
+    public class BaseViewMovie
+    {
+        [Key]
+        public long id { get; set; }
+
+        public string titulo { get; set; }
+
+        public long ano { get; set; }
+
+        public decimal rating { get; set; }
+    }
+
 }
