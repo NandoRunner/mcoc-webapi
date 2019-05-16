@@ -6,11 +6,11 @@ using WebApi.Data.VO;
 
 namespace WebApi.HyperMedia
 {
-    public class MccHeroeEnricher : ObjectContentResponseEnricher<MccHeroeVO>
+    public class HashtagEnricher : ObjectContentResponseEnricher<HashtagVO>
     {
-        protected override Task EnrichModel(MccHeroeVO content, IUrlHelper urlHelper)
+        protected override Task EnrichModel(HashtagVO content, IUrlHelper urlHelper)
         {
-            var path = "api/mccheroes/v1";
+            var path = "hashtags/v1";
             var url = new { controller = path, id = content.Id };
 
             content.Links.Add(new HyperMediaLink()

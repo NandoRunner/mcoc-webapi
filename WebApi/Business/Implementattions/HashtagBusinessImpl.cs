@@ -11,23 +11,23 @@ using WebApi.Data.VO;
 
 namespace WebApi.Business.Implementattions
 {
-    public class MccHashtagBusinessImpl : IMccHashtagBusiness
+    public class HashtagBusinessImpl : IHashtagBusiness
     {
-        private readonly IRepository<MccHashtag> _repository;
+        private readonly IRepository<Hashtag> _repository;
 
-        private readonly MccHashtagConverter _converter;
+        private readonly HashtagConverter _converter;
 
 
-        public MccHashtagBusinessImpl(IRepository<MccHashtag> repository
+        public HashtagBusinessImpl(IRepository<Hashtag> repository
             //, IViewRepository<_vw_mc_ator> vrep
             )
         {
             _repository = repository;
-            _converter = new MccHashtagConverter();
+            _converter = new HashtagConverter();
             //_vrep = vrep;
         }
 
-        public MccHashtagVO Create(MccHashtagVO mccHashtag)
+        public HashtagVO Create(HashtagVO mccHashtag)
         {
             //return _repository.Create(mccHashtag);
 
@@ -36,27 +36,27 @@ namespace WebApi.Business.Implementattions
             return _converter.Parse(ent);
         }
 
-        public MccHashtagVO FindById(long id)
+        public HashtagVO FindById(long id)
         {
             return _converter.Parse(_repository.FindById(id));
         }
 
-        public List<MccHashtagVO> FindByName(string name)
+        public List<HashtagVO> FindByName(string name)
         {
             return _converter.ParseList(_repository.FindByName(name));
         }
 
-        public MccHashtagVO FindByExactName(string name)
+        public HashtagVO FindByExactName(string name)
         {
             return _converter.Parse(_repository.FindByExactName(name));
         }
 
-        public List<MccHashtagVO> FindAll()
+        public List<HashtagVO> FindAll()
         {
             return _converter.ParseList(_repository.FindAll());
         }
 
-        public MccHashtagVO Update(MccHashtagVO mccHashtag)
+        public HashtagVO Update(HashtagVO mccHashtag)
         {
             //return  _repository.Update(mccHashtag);
             var ent = _converter.Parse(mccHashtag);
@@ -69,16 +69,13 @@ namespace WebApi.Business.Implementattions
             _repository.Delete(id);
         }
 
-        public MccHashtagVO FindOrCreate(MccHashtagVO item)
+        public HashtagVO FindOrCreate(HashtagVO item)
         {
             var ent = _converter.Parse(item);
             ent = _repository.FindOrCreate(ent);
             return _converter.Parse(ent);
         }
 
-        //public List<_vw_mc_ator> FindMovieCount(enMovieCount order)
-        //{
-        //    return _vrep.FindMovieCount(order);
-        //}
+
     }
 }

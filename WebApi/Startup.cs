@@ -61,21 +61,17 @@ namespace WebApi
                 }
             }
 
-
-            //services.AddMvc();
-
             services.AddMvc(options =>
             {
                 options.RespectBrowserAcceptHeader = true;
-                options.FormatterMappings.SetMediaTypeMappingForFormat("xml", MediaTypeHeaderValue.Parse("text/xml"));
                 options.FormatterMappings.SetMediaTypeMappingForFormat("json", MediaTypeHeaderValue.Parse("application/json"));
-
+                options.FormatterMappings.SetMediaTypeMappingForFormat("xml", MediaTypeHeaderValue.Parse("text/xml"));
             })
             .AddXmlSerializerFormatters();
 
             //Define as opções do filtro HATEOAS
             var filterOptions = new HyperMediaFilterOptions();
-            filterOptions.ObjectContentResponseEnricherList.Add(new MccHeroeEnricher());
+            filterOptions.ObjectContentResponseEnricherList.Add(new HeroeEnricher());
 
             //Injeta o serviço
             services.AddSingleton(filterOptions);
@@ -83,11 +79,11 @@ namespace WebApi
             services.AddApiVersioning(option => option.ReportApiVersions = true);
 
             //Dependency Injection
-
-            services.AddScoped<IMccAbilityBusiness, MccAbilityBusinessImpl>();
+            services.AddScoped<IAbilityBusiness, MccAbilityBusinessImpl>();
             services.AddScoped<IMccAllianceBusiness, MccAllianceBusinessImpl>();
-            services.AddScoped<IMccHashtagBusiness, MccHashtagBusinessImpl>();
-            services.AddScoped<IMccHeroeBusiness, MccHeroeBusinessImpl>();
+            services.AddScoped<IHashtagBusiness, HashtagBusinessImpl>();
+            services.AddScoped<IHeroeBusiness, HeroeBusinessImpl>();
+            services.AddScoped<IHeroeHashtagBusiness, HeroeHashtagBusinessImpl>();
             services.AddScoped<IMccSynergyBusiness, MccSynergyBusinessImpl>();
             services.AddScoped<IMccUserBusiness, MccUserBusinessImpl>();
             services.AddScoped<IMccUserAllianceBusiness, MccUserAllianceBusinessImpl>();

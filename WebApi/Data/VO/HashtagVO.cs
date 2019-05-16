@@ -6,7 +6,7 @@ using Tapioca.HATEOAS;
 
 namespace WebApi.Data.VO
 {
-    public class MccAbilityVO : ISupportsHyperMedia
+    public class HashtagVO : ISupportsHyperMedia
     {
         public long? Id { get; set; }
 

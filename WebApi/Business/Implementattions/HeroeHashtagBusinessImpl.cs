@@ -9,14 +9,14 @@ using WebApi.Repository.Generic;
 
 namespace WebApi.Business.Implementattions
 {
-    public class MccUserAllianceBusinessImpl : IMccUserAllianceBusiness
+    public class HeroeHashtagBusinessImpl : IHeroeHashtagBusiness
     {
-        private readonly IRepositoryInter<MccUserAlliance> _repository;
+        private readonly IRepositoryInter<HeroeHashtag> _repository;
 
         //private readonly IViewRepository<_vw_mc_ator> _vrep;
 
 
-        public MccUserAllianceBusinessImpl(IRepositoryInter<MccUserAlliance> repository
+        public HeroeHashtagBusinessImpl(IRepositoryInter<HeroeHashtag> repository
             //, IViewRepository<_vw_mc_ator> vrep
             )
         {
@@ -24,22 +24,22 @@ namespace WebApi.Business.Implementattions
             //_vrep = vrep;
         }
 
-        public MccUserAlliance Create(MccUserAlliance mccUserAlliance)
+        public HeroeHashtag Create(HeroeHashtag mccHeroeHashtag)
         {
-            return _repository.Create(mccUserAlliance);
+            return _repository.Create(mccHeroeHashtag);
         }
 
-        public MccUserAlliance FindByIdA(long id)
+        public HeroeHashtag FindByIdA(long id)
         {
             return _repository.FindByIdA(id);
         }
 
-        public MccUserAlliance FindByIdB(long id)
+        public HeroeHashtag FindByIdB(long id)
         {
             return _repository.FindByIdB(id);
         }
 
-        public List<MccUserAlliance> FindAll()
+        public List<HeroeHashtag> FindAll()
         {
             return _repository.FindAll();
         }

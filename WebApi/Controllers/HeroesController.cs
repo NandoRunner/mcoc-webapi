@@ -1,31 +1,25 @@
 ﻿using Tapioca.HATEOAS;
 using Microsoft.AspNetCore.Mvc;
-using WebApi.Model;
 using WebApi.Business;
 using WebApi.Data.VO;
-using System.Collections.Generic;
 
 namespace WebApi.Controllers
 {
 
     [ApiVersion("1")]
-    [Route("api/[controller]/v{version:apiVersion}")]
-    public class McocHeroesController : Controller
+    [Route("[controller]/v{version:apiVersion}")]
+    public class HeroesController : Controller
     {
         //Declaração do serviço usado
-        private IMccHeroeBusiness _mccBusiness;
+        private IHeroeBusiness _mccBusiness;
 
         /* Injeção de uma instancia de IMccHeroeBusiness ao criar
-        uma instancia de ActorController */
-        public McocHeroesController(IMccHeroeBusiness itemBusiness)
+        uma instancia de Controller */
+        public HeroesController(IHeroeBusiness itemBusiness)
         {
             _mccBusiness = itemBusiness;
         }
-
-        public McocHeroesController()
-        {
-        }
-
+        
         //Get sem parâmetros para o FindAll --> Busca Todos
         [HttpGet]
         [TypeFilter(typeof(HyperMediaFilter))]
@@ -63,7 +57,7 @@ namespace WebApi.Controllers
 
         [HttpPost]
         [TypeFilter(typeof(HyperMediaFilter))]
-        public IActionResult Post([FromBody]MccHeroeVO item)
+        public IActionResult Post([FromBody]HeroeVO item)
         {
             if (item == null) return BadRequest();
             var createdItem = _mccBusiness.Create(item);
@@ -73,12 +67,12 @@ namespace WebApi.Controllers
 
         [Route("[action]")]
         [HttpPost]
-        public IActionResult PostArray([FromBody]MccHeroeVO[] item)
+        public IActionResult PostArray([FromBody]HeroeVO[] item)
         {
             if (item[0] == null) return BadRequest();
 
             bool bok = false;
-            foreach (MccHeroeVO i in item)
+            foreach (HeroeVO i in item)
             {
                 if (_mccBusiness.Create(i) != null)
                 {
@@ -90,40 +84,11 @@ namespace WebApi.Controllers
         }
 
 
-        // PASSAR ESSE IMPORT PARA UM OUTRO CONTROLER
-
-        [Route("[action]")]
-        [HttpPost]
-        public IActionResult PostImport(McocHeroeRequest item)
-        {
-            if (item == null) return BadRequest();
-
-            MccHeroeVO h = new MccHeroeVO();
-            h.Name = item.name;
-
-            var createdItem = _mccBusiness.Create(h);
-            if (createdItem == null) return BadRequest();
-
-            // Tratar Hashtags
-            MccHashtagVO ht = new MccHashtagVO();
-            MccHashtagsController hc = new MccHashtagsController();
-
-            foreach (string s in item.hashtags)
-            {
-                ht.Name = s;
-                var ret = hc.Post(ht);
-
-                // Implementar heroe/hashtag
-                //...
-                //...
-            }
-
-            return Ok();
-        }
+        
 
         [HttpPut]
         [TypeFilter(typeof(HyperMediaFilter))]
-        public IActionResult Put([FromBody]MccHeroeVO item)
+        public IActionResult Put([FromBody]HeroeVO item)
         {
             if (item == null) return BadRequest();
             var updatedItem = _mccBusiness.Update(item);

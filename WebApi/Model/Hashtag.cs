@@ -5,7 +5,7 @@ using WebApi.Model.Base;
 namespace WebApi.Model
 {
     [Table("marvel_hashtag")]
-    public class MccHashtag : BaseEntity {
+    public class Hashtag : BaseEntity {
 
     }
 }

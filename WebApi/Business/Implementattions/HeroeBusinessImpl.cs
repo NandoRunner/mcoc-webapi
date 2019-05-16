@@ -11,55 +11,55 @@ using WebApi.Data.VO;
 
 namespace WebApi.Business.Implementattions
 {
-    public class MccAbilityBusinessImpl : IMccAbilityBusiness
+    public class HeroeBusinessImpl : IHeroeBusiness
     {
-        private readonly IRepository<MccAbility> _repository;
+        private readonly IRepository<Heroe> _repository;
 
-        private readonly MccAbilityConverter _converter;
+        private readonly HeroeConverter _converter;
 
 
-        public MccAbilityBusinessImpl(IRepository<MccAbility> repository
+        public HeroeBusinessImpl(IRepository<Heroe> repository
             //, IViewRepository<_vw_mc_ator> vrep
             )
         {
             _repository = repository;
-            _converter = new MccAbilityConverter();
+            _converter = new HeroeConverter();
             //_vrep = vrep;
         }
 
-        public MccAbilityVO Create(MccAbilityVO mccAbility)
+        public HeroeVO Create(HeroeVO mccHeroe)
         {
-            //return _repository.Create(mccAbility);
+            //return _repository.Create(mccHeroe);
 
-            var ent = _converter.Parse(mccAbility);
+            var ent = _converter.Parse(mccHeroe);
             ent = _repository.Create(ent);
             return _converter.Parse(ent);
         }
 
-        public MccAbilityVO FindById(long id)
+        public HeroeVO FindById(long id)
         {
             return _converter.Parse(_repository.FindById(id));
         }
 
-        public List<MccAbilityVO> FindByName(string name)
+        public List<HeroeVO> FindByName(string name)
         {
             return _converter.ParseList(_repository.FindByName(name));
         }
 
-        public MccAbilityVO FindByExactName(string name)
+        public HeroeVO FindByExactName(string name)
         {
             return _converter.Parse(_repository.FindByExactName(name));
         }
 
-        public List<MccAbilityVO> FindAll()
+        public List<HeroeVO> FindAll()
         {
             return _converter.ParseList(_repository.FindAll());
         }
 
-        public MccAbilityVO Update(MccAbilityVO mccAbility)
+        public HeroeVO Update(HeroeVO mccHeroe)
         {
-            //return  _repository.Update(mccAbility);
-            var ent = _converter.Parse(mccAbility);
+            //return  _repository.Update(mccHeroe);
+            var ent = _converter.Parse(mccHeroe);
             ent = _repository.Update(ent);
             return _converter.Parse(ent);
         }
@@ -69,16 +69,11 @@ namespace WebApi.Business.Implementattions
             _repository.Delete(id);
         }
 
-        public MccAbilityVO FindOrCreate(MccAbilityVO item)
+        public HeroeVO FindOrCreate(HeroeVO item)
         {
             var ent = _converter.Parse(item);
             ent = _repository.FindOrCreate(ent);
             return _converter.Parse(ent);
         }
-
-        //public List<_vw_mc_ator> FindMovieCount(enMovieCount order)
-        //{
-        //    return _vrep.FindMovieCount(order);
-        //}
     }
 }

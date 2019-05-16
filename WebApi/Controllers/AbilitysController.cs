@@ -1,6 +1,5 @@
 ﻿using Tapioca.HATEOAS;
 using Microsoft.AspNetCore.Mvc;
-using WebApi.Model;
 using WebApi.Business;
 using WebApi.Data.VO;
 
@@ -8,21 +7,17 @@ namespace WebApi.Controllers
 {
 
     [ApiVersion("1")]
-    [Route("api/[controller]/v{version:apiVersion}")]
-    public class MccHashtagsController : Controller
+    [Route("[controller]/v{version:apiVersion}")]
+    public class AbilitysController : Controller
     {
         //Declaração do serviço usado
-        private IMccHashtagBusiness _mccBusiness;
+        private IAbilityBusiness _mccBusiness;
 
-        /* Injeção de uma instancia de IMccHashtagBusiness ao criar
-        uma instancia de ActorController */
-        public MccHashtagsController(IMccHashtagBusiness itemBusiness)
+        /* Injeção de uma instancia de IMccAbilityBusiness ao criar
+        uma instancia de Controller */
+        public AbilitysController(IAbilityBusiness itemBusiness)
         {
             _mccBusiness = itemBusiness;
-        }
-
-        public MccHashtagsController()
-        {
         }
 
         //Get sem parâmetros para o FindAll --> Busca Todos
@@ -62,7 +57,7 @@ namespace WebApi.Controllers
 
         [HttpPost]
         [TypeFilter(typeof(HyperMediaFilter))]
-        public IActionResult Post([FromBody]MccHashtagVO item)
+        public IActionResult Post([FromBody]AbilityVO item)
         {
             if (item == null) return BadRequest();
             var createdItem = _mccBusiness.Create(item);
@@ -72,12 +67,12 @@ namespace WebApi.Controllers
 
         [Route("[action]")]
         [HttpPost]
-        public IActionResult PostArray([FromBody]MccHashtagVO[] item)
+        public IActionResult PostArray([FromBody]AbilityVO[] item)
         {
             if (item[0] == null) return BadRequest();
 
             bool bok = false;
-            foreach(MccHashtagVO i in item)
+            foreach(AbilityVO i in item)
             {
                 if (_mccBusiness.Create(i) != null)
                 {
@@ -88,10 +83,9 @@ namespace WebApi.Controllers
             else return BadRequest();
         }
 
-
         [HttpPut]
         [TypeFilter(typeof(HyperMediaFilter))]
-        public IActionResult Put([FromBody]MccHashtagVO item)
+        public IActionResult Put([FromBody]AbilityVO item)
         {
             if (item == null) return BadRequest();
             var updatedItem = _mccBusiness.Update(item);

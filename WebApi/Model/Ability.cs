@@ -5,7 +5,7 @@ using WebApi.Model.Base;
 namespace WebApi.Model
 {
     [Table("marvel_ability")]
-    public class MccAbility : BaseEntity {
+    public class Ability : BaseEntity {
 
     }
 }

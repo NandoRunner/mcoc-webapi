@@ -5,7 +5,7 @@ using WebApi.Model.Base;
 namespace WebApi.Model
 {
     [Table("marvel_heroe")]
-    public class MccHeroe : BaseEntity
+    public class Heroe : BaseEntity
     {
 
         [DataMember(Order = 3)]

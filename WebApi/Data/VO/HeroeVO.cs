@@ -6,11 +6,13 @@ using Tapioca.HATEOAS;
 
 namespace WebApi.Data.VO
 {
-    public class MccHashtagVO : ISupportsHyperMedia
+    public class HeroeVO : ISupportsHyperMedia
     {
         public long? Id { get; set; }
 
         public string Name { get; set; }
+
+        public int heroe_class { get; set; }
 
         public List<HyperMediaLink> Links { get; set; } = new List<HyperMediaLink>();
     }

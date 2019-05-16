@@ -20,9 +20,18 @@ namespace WebApi.Repository.Generic
             dataset = _context.Set<T>();
         }
 
+        public T FindOrCreate(T item)
+        {
+            var ret = FindById(item.id_a, item.id_b);
+            if (ret != null)
+                return ret;
+            return Create(item);
+        }
 
         public T Create(T item)
         {
+            if (Exists(item.id_a, item.id_b)) return null;
+
             try
             {
                 dataset.Add(item);
@@ -49,6 +58,11 @@ namespace WebApi.Repository.Generic
         public T FindByIdB(long id)
         {
             return dataset.SingleOrDefault(p => p.id_b.Equals(id));
+        }
+
+        public T FindById(long id_a, long id_b)
+        {
+            return dataset.SingleOrDefault(p => p.id_a.Equals(id_a) && p.id_b.Equals(id_b));
         }
 
         public T Update(T item)
