@@ -2,10 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Business;
 using WebApi.Data.VO;
+using System.Collections.Generic;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace WebApi.Controllers
 {
-
     [ApiVersion("1")]
     [Route("[controller]/v{version:apiVersion}")]
     public class AbilitysController : Controller
@@ -22,6 +23,10 @@ namespace WebApi.Controllers
 
         //Get sem parâmetros para o FindAll --> Busca Todos
         [HttpGet]
+        [ProducesResponseType(typeof(List<AbilityVO>), 200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Get()
         {
@@ -29,6 +34,10 @@ namespace WebApi.Controllers
         }
         
         [HttpGet("{id}")]
+        [ProducesResponseType(typeof(AbilityVO), 200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Get(long id)
         {
@@ -39,6 +48,10 @@ namespace WebApi.Controllers
 
         [Route("[action]/{name}")]
         [HttpGet]
+        [ProducesResponseType(typeof(List<AbilityVO>), 200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         public IActionResult GetByName(string name)
         {
             var ret = _mccBusiness.FindByName(name);
@@ -48,6 +61,10 @@ namespace WebApi.Controllers
 
         [Route("[action]/{name}")]
         [HttpGet]
+        [ProducesResponseType(typeof(AbilityVO), 200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         public IActionResult GetByExactName(string name)
         {
             var ret = _mccBusiness.FindByExactName(name);
@@ -56,6 +73,9 @@ namespace WebApi.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(typeof(AbilityVO), 201)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Post([FromBody]AbilityVO item)
         {
@@ -67,6 +87,9 @@ namespace WebApi.Controllers
 
         [Route("[action]")]
         [HttpPost]
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         public IActionResult PostArray([FromBody]AbilityVO[] item)
         {
             if (item[0] == null) return BadRequest();
@@ -84,6 +107,9 @@ namespace WebApi.Controllers
         }
 
         [HttpPut]
+        [ProducesResponseType(typeof(AbilityVO), 202)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Put([FromBody]AbilityVO item)
         {
@@ -94,6 +120,9 @@ namespace WebApi.Controllers
         }
 
         [HttpDelete("{id}")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Delete(int id)
         {

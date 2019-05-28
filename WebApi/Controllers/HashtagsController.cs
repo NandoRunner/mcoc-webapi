@@ -2,10 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Business;
 using WebApi.Data.VO;
+using System.Collections.Generic;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace WebApi.Controllers
 {
-
     [ApiVersion("1")]
     [Route("[controller]/v{version:apiVersion}")]
     public class HashtagsController : Controller
@@ -22,6 +23,10 @@ namespace WebApi.Controllers
    
         //Get sem parâmetros para o FindAll --> Busca Todos
         [HttpGet]
+        [ProducesResponseType(typeof(List<HashtagVO>), 200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Get()
         {
@@ -29,6 +34,10 @@ namespace WebApi.Controllers
         }
         
         [HttpGet("{id}")]
+        [ProducesResponseType(typeof(HashtagVO), 200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Get(long id)
         {
@@ -39,6 +48,10 @@ namespace WebApi.Controllers
 
         [Route("[action]/{name}")]
         [HttpGet]
+        [ProducesResponseType(typeof(List<HashtagVO>), 200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         public IActionResult GetByName(string name)
         {
             var ret = _mccBusiness.FindByName(name);
@@ -48,6 +61,10 @@ namespace WebApi.Controllers
 
         [Route("[action]/{name}")]
         [HttpGet]
+        [ProducesResponseType(typeof(HashtagVO), 200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         public IActionResult GetByExactName(string name)
         {
             var ret = _mccBusiness.FindByExactName(name);
@@ -56,6 +73,9 @@ namespace WebApi.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(typeof(HashtagVO), 201)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Post([FromBody]HashtagVO item)
         {
@@ -67,6 +87,9 @@ namespace WebApi.Controllers
 
         [Route("[action]")]
         [HttpPost]
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         public IActionResult PostArray([FromBody]HashtagVO[] item)
         {
             if (item[0] == null) return BadRequest();
@@ -83,8 +106,10 @@ namespace WebApi.Controllers
             else return BadRequest();
         }
 
-
         [HttpPut]
+        [ProducesResponseType(typeof(HashtagVO), 202)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Put([FromBody]HashtagVO item)
         {
@@ -95,6 +120,9 @@ namespace WebApi.Controllers
         }
 
         [HttpDelete("{id}")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Delete(int id)
         {

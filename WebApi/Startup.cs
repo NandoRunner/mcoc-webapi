@@ -18,6 +18,8 @@ using WebApi.Repository.Generic;
 using Microsoft.Net.Http.Headers;
 using Tapioca.HATEOAS;
 using WebApi.HyperMedia;
+using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.AspNetCore.Rewrite;
 
 namespace WebApi
 {
@@ -78,6 +80,16 @@ namespace WebApi
 
             services.AddApiVersioning(option => option.ReportApiVersions = true);
 
+            services.AddSwaggerGen( c =>
+            {
+                c.SwaggerDoc("v1",
+                    new Info
+                    {
+                        Title = "Mcoc Library",
+                        Version = "v1"
+                    });
+            });
+
             //Dependency Injection
             services.AddScoped<IAbilityBusiness, MccAbilityBusinessImpl>();
             services.AddScoped<IMccAllianceBusiness, MccAllianceBusinessImpl>();
@@ -102,6 +114,18 @@ namespace WebApi
         {
             loggerFactory.AddConsole(_configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mcoc Library API v1");
+            });
+
+            //Starting our API in Swagger page
+            var option = new RewriteOptions();
+            option.AddRedirect("^$", "swagger");
+            app.UseRewriter(option);
 
             app.UseMvc(routes => {
                 routes.MapRoute(

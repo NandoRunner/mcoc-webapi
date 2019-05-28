@@ -18,6 +18,7 @@ namespace WebApi.Model.Context
         public DbSet<MccAlliance> MccAlliances { get; set; }
         public DbSet<Hashtag> MccHashtags { get; set; }
         public DbSet<Heroe> MccHeroes { get; set; }
+        public DbSet<HeroeAbility> MccHeroeAbilitys { get; set; }
         public DbSet<HeroeHashtag> MccHeroeHashtags { get; set; }
         public DbSet<MccSynergy> MccSynergys { get; set; }
         public DbSet<MccUser> MccUsers { get; set; }
@@ -37,6 +38,15 @@ namespace WebApi.Model.Context
                 .Property<long>("id_b").HasColumnName("hashtag_id");
             modelBuilder.Entity<HeroeHashtag>()
                 .HasKey(c => new { c.id_a, c.id_b });
+
+            modelBuilder.Entity<HeroeAbility>()
+                .Property<long>("id_a").HasColumnName("heroe_id");
+            modelBuilder.Entity<HeroeAbility>()
+                .Property<long>("id_b").HasColumnName("ability_id");
+            modelBuilder.Entity<HeroeAbility>()
+                .HasKey(c => new { c.id_a, c.id_b });
+
+
 
             modelBuilder.Entity<MccUserAlliance>()
                 .Property<long>("id_a").HasColumnName("user_id");

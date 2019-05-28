@@ -7,19 +7,19 @@ namespace WebApi.Controllers
 {
     [ApiVersion("1")]
     [Route("api/[controller]/v{version:apiVersion}")]
-    public class HeroeHashtagsController : Controller
+    public class HeroeAbilitysController : Controller
     {
         //Declaração do serviço usado
-        private IHeroeHashtagBusiness _mccBusiness;
+        private IHeroeAbilityBusiness _mccBusiness;
         
-        public HeroeHashtagsController(IHeroeHashtagBusiness itemBusiness)
+        public HeroeAbilitysController(IHeroeAbilityBusiness itemBusiness)
         {
             _mccBusiness = itemBusiness;
         }
 
         //Get sem parâmetros para o FindAll --> Busca Todos
         [HttpGet]
-        [ProducesResponseType(typeof(List<HeroeHashtag>), 200)]
+        [ProducesResponseType(typeof(List<HeroeAbility>), 200)]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
@@ -29,7 +29,7 @@ namespace WebApi.Controllers
         }
         
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(HeroeHashtag), 200)]
+        [ProducesResponseType(typeof(HeroeAbility), 200)]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
@@ -42,10 +42,10 @@ namespace WebApi.Controllers
 
      
         [HttpPost]
-        [ProducesResponseType(typeof(HeroeHashtag), 201)]
+        [ProducesResponseType(typeof(HeroeAbility), 201)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
-        public IActionResult Post([FromBody]HeroeHashtag item)
+        public IActionResult Post([FromBody]HeroeAbility item)
         {
             if (item == null) return BadRequest();
             return new  ObjectResult(_mccBusiness.Create(item));
