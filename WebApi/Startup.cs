@@ -97,7 +97,7 @@ namespace WebApi
             services.AddScoped<IHeroeBusiness, HeroeBusinessImpl>();
             services.AddScoped<IHeroeHashtagBusiness, HeroeHashtagBusinessImpl>();
             services.AddScoped<IMccSynergyBusiness, MccSynergyBusinessImpl>();
-            services.AddScoped<IMccUserBusiness, MccUserBusinessImpl>();
+            services.AddScoped<IUserBusiness, UserBusinessImpl>();
             services.AddScoped<IMccUserAllianceBusiness, MccUserAllianceBusinessImpl>();
 
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));

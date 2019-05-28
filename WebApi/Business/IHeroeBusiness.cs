@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using WebApi.Data.VO;
 
-
 namespace WebApi.Business
 {
     public interface IHeroeBusiness

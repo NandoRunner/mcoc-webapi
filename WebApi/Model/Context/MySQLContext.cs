@@ -21,7 +21,7 @@ namespace WebApi.Model.Context
         public DbSet<HeroeAbility> MccHeroeAbilitys { get; set; }
         public DbSet<HeroeHashtag> MccHeroeHashtags { get; set; }
         public DbSet<MccSynergy> MccSynergys { get; set; }
-        public DbSet<MccUser> MccUsers { get; set; }
+        public DbSet<User> MccUsers { get; set; }
         public DbSet<MccUserAlliance> MccUserAlliances { get; set; }
 
 

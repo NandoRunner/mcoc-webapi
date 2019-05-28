@@ -11,50 +11,45 @@ using WebApi.Data.VO;
 
 namespace WebApi.Business.Implementattions
 {
-    public class HeroeBusinessImpl : IHeroeBusiness
+    public class UserBusinessImpl : IUserBusiness
     {
-        private readonly IRepository<Heroe> _repository;
+        private readonly IRepository<User> _repository;
 
-        private readonly HeroeConverter _converter;
+        private readonly UserConverter _converter;
 
 
-        public HeroeBusinessImpl(IRepository<Heroe> repository
+        public UserBusinessImpl(IRepository<User> repository
             //, IViewRepository<_vw_mc_ator> vrep
             )
         {
             _repository = repository;
-            _converter = new HeroeConverter();
+            _converter = new UserConverter();
             //_vrep = vrep;
         }
 
-        public HeroeVO Create(HeroeVO item)
+        public UserVO Create(UserVO item)
         {
-            var ent = _converter.Parse(item);
+           var ent = _converter.Parse(item);
             ent = _repository.Create(ent);
             return _converter.Parse(ent);
-        }
+         }
 
-        public HeroeVO FindById(long id)
+        public UserVO FindById(long id)
         {
             return _converter.Parse(_repository.FindById(id));
         }
 
-        public List<HeroeVO> FindByName(string name)
+        public List<UserVO> FindByName(string name)
         {
             return _converter.ParseList(_repository.FindByName(name));
         }
 
-        public HeroeVO FindByExactName(string name)
-        {
-            return _converter.Parse(_repository.FindByExactName(name));
-        }
-
-        public List<HeroeVO> FindAll()
+        public List<UserVO> FindAll()
         {
             return _converter.ParseList(_repository.FindAll());
         }
 
-        public HeroeVO Update(HeroeVO item)
+        public UserVO Update(UserVO item)
         {
             var ent = _converter.Parse(item);
             ent = _repository.Update(ent);
@@ -66,11 +61,6 @@ namespace WebApi.Business.Implementattions
             _repository.Delete(id);
         }
 
-        public HeroeVO FindOrCreate(HeroeVO item)
-        {
-            var ent = _converter.Parse(item);
-            ent = _repository.FindOrCreate(ent);
-            return _converter.Parse(ent);
-        }
+
     }
 }
