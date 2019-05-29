@@ -5,7 +5,7 @@ using WebApi.Model.Base;
 namespace WebApi.Model
 {
     [Table("marvel_synergy")]
-    public class MccSynergy : BaseEntity {
+    public class Synergy : BaseEntity {
 
         [DataMember(Order = 3)]
         public string all_bonus { get; set; }

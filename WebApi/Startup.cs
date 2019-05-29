@@ -91,12 +91,12 @@ namespace WebApi
             });
 
             //Dependency Injection
-            services.AddScoped<IAbilityBusiness, MccAbilityBusinessImpl>();
-            services.AddScoped<IMccAllianceBusiness, MccAllianceBusinessImpl>();
+            services.AddScoped<IAbilityBusiness, AbilityBusinessImpl>();
+            services.AddScoped<IAllianceBusiness, AllianceBusinessImpl>();
             services.AddScoped<IHashtagBusiness, HashtagBusinessImpl>();
             services.AddScoped<IHeroeBusiness, HeroeBusinessImpl>();
             services.AddScoped<IHeroeHashtagBusiness, HeroeHashtagBusinessImpl>();
-            services.AddScoped<IMccSynergyBusiness, MccSynergyBusinessImpl>();
+            services.AddScoped<ISynergyBusiness, SynergyBusinessImpl>();
             services.AddScoped<IUserBusiness, UserBusinessImpl>();
             services.AddScoped<IMccUserAllianceBusiness, MccUserAllianceBusinessImpl>();
 

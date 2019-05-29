@@ -11,50 +11,50 @@ using WebApi.Data.VO;
 
 namespace WebApi.Business.Implementattions
 {
-    public class AbilityBusinessImpl : IAbilityBusiness
+    public class SynergyBusinessImpl : ISynergyBusiness
     {
-        private readonly IRepository<Ability> _repository;
+        private readonly IRepository<Synergy> _repository;
 
-        private readonly AbilityConverter _converter;
+        private readonly SynergyConverter _converter;
 
 
-        public AbilityBusinessImpl(IRepository<Ability> repository
+        public SynergyBusinessImpl(IRepository<Synergy> repository
             //, IViewRepository<_vw_mc_ator> vrep
             )
         {
             _repository = repository;
-            _converter = new AbilityConverter();
+            _converter = new SynergyConverter();
             //_vrep = vrep;
         }
 
-        public AbilityVO Create(AbilityVO item)
+        public SynergyVO Create(SynergyVO item)
         {
             var ent = _converter.Parse(item);
             ent = _repository.Create(ent);
             return _converter.Parse(ent);
         }
 
-        public AbilityVO FindById(long id)
+        public SynergyVO FindById(long id)
         {
             return _converter.Parse(_repository.FindById(id));
         }
 
-        public List<AbilityVO> FindByName(string name)
+        public List<SynergyVO> FindByName(string name)
         {
             return _converter.ParseList(_repository.FindByName(name));
         }
 
-        public AbilityVO FindByExactName(string name)
+        public SynergyVO FindByExactName(string name)
         {
             return _converter.Parse(_repository.FindByExactName(name));
         }
 
-        public List<AbilityVO> FindAll()
+        public List<SynergyVO> FindAll()
         {
             return _converter.ParseList(_repository.FindAll());
         }
 
-        public AbilityVO Update(AbilityVO item)
+        public SynergyVO Update(SynergyVO item)
         {
             var ent = _converter.Parse(item);
             ent = _repository.Update(ent);
@@ -66,12 +66,11 @@ namespace WebApi.Business.Implementattions
             _repository.Delete(id);
         }
 
-        public AbilityVO FindOrCreate(AbilityVO item)
+        public SynergyVO FindOrCreate(SynergyVO item)
         {
             var ent = _converter.Parse(item);
             ent = _repository.FindOrCreate(ent);
             return _converter.Parse(ent);
         }
-
     }
 }

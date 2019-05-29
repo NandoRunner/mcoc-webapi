@@ -11,50 +11,45 @@ using WebApi.Data.VO;
 
 namespace WebApi.Business.Implementattions
 {
-    public class AbilityBusinessImpl : IAbilityBusiness
+    public class AllianceBusinessImpl : IAllianceBusiness
     {
-        private readonly IRepository<Ability> _repository;
+        private readonly IRepository<Alliance> _repository;
 
-        private readonly AbilityConverter _converter;
+        private readonly AllianceConverter _converter;
 
 
-        public AbilityBusinessImpl(IRepository<Ability> repository
+        public AllianceBusinessImpl(IRepository<Alliance> repository
             //, IViewRepository<_vw_mc_ator> vrep
             )
         {
             _repository = repository;
-            _converter = new AbilityConverter();
+            _converter = new AllianceConverter();
             //_vrep = vrep;
         }
 
-        public AbilityVO Create(AbilityVO item)
+        public AllianceVO Create(AllianceVO item)
         {
             var ent = _converter.Parse(item);
             ent = _repository.Create(ent);
             return _converter.Parse(ent);
         }
 
-        public AbilityVO FindById(long id)
+        public AllianceVO FindById(long id)
         {
             return _converter.Parse(_repository.FindById(id));
         }
 
-        public List<AbilityVO> FindByName(string name)
+        public List<AllianceVO> FindByName(string name)
         {
             return _converter.ParseList(_repository.FindByName(name));
         }
 
-        public AbilityVO FindByExactName(string name)
-        {
-            return _converter.Parse(_repository.FindByExactName(name));
-        }
-
-        public List<AbilityVO> FindAll()
+        public List<AllianceVO> FindAll()
         {
             return _converter.ParseList(_repository.FindAll());
         }
 
-        public AbilityVO Update(AbilityVO item)
+        public AllianceVO Update(AllianceVO item)
         {
             var ent = _converter.Parse(item);
             ent = _repository.Update(ent);
@@ -66,12 +61,6 @@ namespace WebApi.Business.Implementattions
             _repository.Delete(id);
         }
 
-        public AbilityVO FindOrCreate(AbilityVO item)
-        {
-            var ent = _converter.Parse(item);
-            ent = _repository.FindOrCreate(ent);
-            return _converter.Parse(ent);
-        }
 
     }
 }
