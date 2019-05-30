@@ -65,9 +65,10 @@ namespace WebApi
 
             services.AddMvc(options =>
             {
-                options.RespectBrowserAcceptHeader = true;
+                //options.RespectBrowserAcceptHeader = true;
                 options.FormatterMappings.SetMediaTypeMappingForFormat("json", MediaTypeHeaderValue.Parse("application/json"));
                 options.FormatterMappings.SetMediaTypeMappingForFormat("xml", MediaTypeHeaderValue.Parse("text/xml"));
+                
             })
             .AddXmlSerializerFormatters();
 
@@ -98,7 +99,8 @@ namespace WebApi
             services.AddScoped<IHeroeHashtagBusiness, HeroeHashtagBusinessImpl>();
             services.AddScoped<ISynergyBusiness, SynergyBusinessImpl>();
             services.AddScoped<IUserBusiness, UserBusinessImpl>();
-            services.AddScoped<IMccUserAllianceBusiness, MccUserAllianceBusinessImpl>();
+            services.AddScoped<IUserAllianceBusiness, UserAllianceBusinessImpl>();
+            services.AddScoped<IUserHeroeBusiness, UserHeroeBusinessImpl>();
 
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
             services.AddScoped(typeof(IRepositoryInter<>), typeof(GenericRepositoryInter<>));

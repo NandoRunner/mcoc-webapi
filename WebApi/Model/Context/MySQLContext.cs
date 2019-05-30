@@ -22,7 +22,9 @@ namespace WebApi.Model.Context
         public DbSet<HeroeHashtag> MccHeroeHashtags { get; set; }
         public DbSet<Synergy> MccSynergys { get; set; }
         public DbSet<User> MccUsers { get; set; }
-        public DbSet<MccUserAlliance> MccUserAlliances { get; set; }
+        public DbSet<UserAlliance> MccUserAlliances { get; set; }
+        public DbSet<UserHeroe> MccUserHeroes { get; set; }
+
 
         //public DbSet<_vw_mc_filme_visto> vw_mc_filme_visto { get; set; }
 
@@ -47,11 +49,19 @@ namespace WebApi.Model.Context
 
 
 
-            modelBuilder.Entity<MccUserAlliance>()
+            modelBuilder.Entity<UserAlliance>()
                 .Property<long>("id_a").HasColumnName("user_id");
-            modelBuilder.Entity<MccUserAlliance>()
+            modelBuilder.Entity<UserAlliance>()
                 .Property<long>("id_b").HasColumnName("alliance_id");
-            modelBuilder.Entity<MccUserAlliance>()
+            modelBuilder.Entity<UserAlliance>()
+                .HasKey(c => new { c.id_a, c.id_b });
+
+
+            modelBuilder.Entity<UserHeroe>()
+            .Property<long>("id_a").HasColumnName("user_id");
+            modelBuilder.Entity<UserHeroe>()
+                .Property<long>("id_b").HasColumnName("heroe_id");
+            modelBuilder.Entity<UserHeroe>()
                 .HasKey(c => new { c.id_a, c.id_b });
 
         }

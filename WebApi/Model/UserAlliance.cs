@@ -6,7 +6,7 @@ using WebApi.Model.Base;
 namespace WebApi.Model
 {
     [Table("marvel_user_alliance")]
-    public class MccUserAlliance : BaseInterEntity {
+    public class UserAlliance : BaseInterEntity {
 
         [DataMember(Order = 3)]
         public DateTime start_date { get; set; }
