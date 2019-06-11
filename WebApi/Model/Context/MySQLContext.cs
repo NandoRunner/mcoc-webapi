@@ -25,6 +25,8 @@ namespace WebApi.Model.Context
         public DbSet<UserAlliance> MccUserAlliances { get; set; }
         public DbSet<UserHeroe> MccUserHeroes { get; set; }
 
+        public DbSet<WebUser> WebUsers { get; set; }
+
 
         //public DbSet<_vw_mc_filme_visto> vw_mc_filme_visto { get; set; }
 

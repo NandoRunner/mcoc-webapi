@@ -1,0 +1,2286 @@
+{
+	"info": {
+		"_postman_id": "66c6dea5-a413-47f4-ade7-5bed70b618ea",
+		"name": "Mcoc Library",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Abilitys",
+			"item": [
+				{
+					"name": "",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Abilitys/v{{version}}",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Abilitys",
+								"v{{version}}"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json-patch+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Abilitys/v{{version}}",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Abilitys",
+								"v{{version}}"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json-patch+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Abilitys/v{{version}}",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Abilitys",
+								"v{{version}}"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Abilitys/v{{version}}/:id",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Abilitys",
+								"v{{version}}",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								},
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Abilitys/v{{version}}/:id",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Abilitys",
+								"v{{version}}",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								},
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Abilitys/v{{version}}/GetByName/:name",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Abilitys",
+								"v{{version}}",
+								"GetByName",
+								":name"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "{{name}}"
+								},
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Abilitys/v{{version}}/GetByExactName/:name",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Abilitys",
+								"v{{version}}",
+								"GetByExactName",
+								":name"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "{{name}}"
+								},
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json-patch+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Abilitys/v{{version}}/PostArray",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Abilitys",
+								"v{{version}}",
+								"PostArray"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for Abilitys"
+		},
+		{
+			"name": "Alliances",
+			"item": [
+				{
+					"name": "",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Alliances/v{{version}}",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Alliances",
+								"v{{version}}"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json-patch+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Alliances/v{{version}}",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Alliances",
+								"v{{version}}"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json-patch+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Alliances/v{{version}}",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Alliances",
+								"v{{version}}"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Alliances/v{{version}}/:id",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Alliances",
+								"v{{version}}",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								},
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Alliances/v{{version}}/:id",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Alliances",
+								"v{{version}}",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								},
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Alliances/v{{version}}/GetByName/:name",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Alliances",
+								"v{{version}}",
+								"GetByName",
+								":name"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "{{name}}"
+								},
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for Alliances"
+		},
+		{
+			"name": "Hashtags",
+			"item": [
+				{
+					"name": "",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Hashtags/v{{version}}",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Hashtags",
+								"v{{version}}"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json-patch+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Hashtags/v{{version}}",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Hashtags",
+								"v{{version}}"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json-patch+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Hashtags/v{{version}}",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Hashtags",
+								"v{{version}}"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Hashtags/v{{version}}/:id",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Hashtags",
+								"v{{version}}",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								},
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Hashtags/v{{version}}/:id",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Hashtags",
+								"v{{version}}",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								},
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Hashtags/v{{version}}/GetByName/:name",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Hashtags",
+								"v{{version}}",
+								"GetByName",
+								":name"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "{{name}}"
+								},
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Hashtags/v{{version}}/GetByExactName/:name",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Hashtags",
+								"v{{version}}",
+								"GetByExactName",
+								":name"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "{{name}}"
+								},
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json-patch+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Hashtags/v{{version}}/PostArray",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Hashtags",
+								"v{{version}}",
+								"PostArray"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for Hashtags"
+		},
+		{
+			"name": "HeroeAbilitys",
+			"item": [
+				{
+					"name": "",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/HeroeAbilitys/v{{version}}",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"HeroeAbilitys",
+								"v{{version}}"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json-patch+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/HeroeAbilitys/v{{version}}",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"HeroeAbilitys",
+								"v{{version}}"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/HeroeAbilitys/v{{version}}/:id",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"HeroeAbilitys",
+								"v{{version}}",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								},
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for HeroeAbilitys"
+		},
+		{
+			"name": "HeroeHashtags",
+			"item": [
+				{
+					"name": "",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/HeroeHashtags/v{{version}}",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"HeroeHashtags",
+								"v{{version}}"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json-patch+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/HeroeHashtags/v{{version}}",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"HeroeHashtags",
+								"v{{version}}"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/HeroeHashtags/v{{version}}/:id",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"HeroeHashtags",
+								"v{{version}}",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								},
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for HeroeHashtags"
+		},
+		{
+			"name": "Heroes",
+			"item": [
+				{
+					"name": "",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Heroes/v{{version}}",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Heroes",
+								"v{{version}}"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json-patch+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Heroes/v{{version}}",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Heroes",
+								"v{{version}}"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json-patch+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Heroes/v{{version}}",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Heroes",
+								"v{{version}}"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Heroes/v{{version}}/:id",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Heroes",
+								"v{{version}}",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								},
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Heroes/v{{version}}/:id",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Heroes",
+								"v{{version}}",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								},
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Heroes/v{{version}}/GetByName/:name",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Heroes",
+								"v{{version}}",
+								"GetByName",
+								":name"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "{{name}}"
+								},
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Heroes/v{{version}}/GetByExactName/:name",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Heroes",
+								"v{{version}}",
+								"GetByExactName",
+								":name"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "{{name}}"
+								},
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json-patch+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Heroes/v{{version}}/PostArray",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Heroes",
+								"v{{version}}",
+								"PostArray"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for Heroes"
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json-patch+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Login/v{{version}}",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Login",
+								"v{{version}}"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for Login"
+		},
+		{
+			"name": "McocImport",
+			"item": [
+				{
+					"name": "",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json-patch+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/McocImport/v{{version}}/PostImport",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"McocImport",
+								"v{{version}}",
+								"PostImport"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for McocImport"
+		},
+		{
+			"name": "Synergys",
+			"item": [
+				{
+					"name": "",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Synergys/v{{version}}",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Synergys",
+								"v{{version}}"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json-patch+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Synergys/v{{version}}",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Synergys",
+								"v{{version}}"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json-patch+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Synergys/v{{version}}",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Synergys",
+								"v{{version}}"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Synergys/v{{version}}/:id",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Synergys",
+								"v{{version}}",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								},
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Synergys/v{{version}}/:id",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Synergys",
+								"v{{version}}",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								},
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Synergys/v{{version}}/GetByName/:name",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Synergys",
+								"v{{version}}",
+								"GetByName",
+								":name"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "{{name}}"
+								},
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Synergys/v{{version}}/GetByExactName/:name",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Synergys",
+								"v{{version}}",
+								"GetByExactName",
+								":name"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "{{name}}"
+								},
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json-patch+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Synergys/v{{version}}/PostArray",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Synergys",
+								"v{{version}}",
+								"PostArray"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for Synergys"
+		},
+		{
+			"name": "UserAlliances",
+			"item": [
+				{
+					"name": "",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/UserAlliances/v{{version}}",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"UserAlliances",
+								"v{{version}}"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json-patch+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/UserAlliances/v{{version}}",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"UserAlliances",
+								"v{{version}}"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/UserAlliances/v{{version}}/:id",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"UserAlliances",
+								"v{{version}}",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								},
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for UserAlliances"
+		},
+		{
+			"name": "UserHeroes",
+			"item": [
+				{
+					"name": "",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/UserHeroes/v{{version}}",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"UserHeroes",
+								"v{{version}}"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json-patch+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/UserHeroes/v{{version}}",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"UserHeroes",
+								"v{{version}}"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/UserHeroes/v{{version}}/:id",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"UserHeroes",
+								"v{{version}}",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								},
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for UserHeroes"
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Users/v{{version}}",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Users",
+								"v{{version}}"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json-patch+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Users/v{{version}}",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Users",
+								"v{{version}}"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json-patch+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Users/v{{version}}",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Users",
+								"v{{version}}"
+							],
+							"variable": [
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Users/v{{version}}/:id",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Users",
+								"v{{version}}",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								},
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Users/v{{version}}/:id",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Users",
+								"v{{version}}",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								},
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain, application/json, text/json, application/xml, text/xml"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/Users/v{{version}}/GetByName/:name",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"{{host}}:{{port}}",
+								"Users",
+								"v{{version}}",
+								"GetByName",
+								":name"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "{{name}}"
+								},
+								{
+									"key": "version",
+									"value": "{{version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for Users"
+		}
+	]
+}

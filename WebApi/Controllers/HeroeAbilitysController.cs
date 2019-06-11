@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace WebApi.Controllers
 {
     [ApiVersion("1")]
-    [Route("api/[controller]/v{version:apiVersion}")]
+    [Route("[controller]/v{version:apiVersion}")]
     public class HeroeAbilitysController : Controller
     {
         //Declaração do serviço usado

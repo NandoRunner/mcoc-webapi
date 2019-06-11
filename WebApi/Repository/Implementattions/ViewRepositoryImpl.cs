@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using WebApi.Model;
-using System.Threading;
-using WebApi.Model.Context;
-using System;
-using System.Linq;
+﻿using WebApi.Model.Context;
 using WebApi.Model.Base;
 using Microsoft.EntityFrameworkCore;
 
