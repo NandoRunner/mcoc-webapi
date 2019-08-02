@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using WebApi.Business;
 using WebApi.Data.VO;
 using System.Collections.Generic;
-using Swashbuckle.AspNetCore.SwaggerGen;
+
 
 namespace WebApi.Controllers
 {
@@ -12,13 +12,13 @@ namespace WebApi.Controllers
     public class AbilitysController : Controller
     {
         //Declaração do serviço usado
-        private IAbilityBusiness _mccBusiness;
+        private IAbilityBusiness _business;
 
         /* Injeção de uma instancia de IMccAbilityBusiness ao criar
         uma instancia de Controller */
         public AbilitysController(IAbilityBusiness itemBusiness)
         {
-            _mccBusiness = itemBusiness;
+            _business = itemBusiness;
         }
 
         //Get sem parâmetros para o FindAll --> Busca Todos
@@ -30,7 +30,7 @@ namespace WebApi.Controllers
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Get()
         {
-            return new OkObjectResult(_mccBusiness.FindAll());
+            return new OkObjectResult(_business.FindAll());
         }
         
         [HttpGet("{id}")]
@@ -41,7 +41,7 @@ namespace WebApi.Controllers
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Get(long id)
         {
-            var item = _mccBusiness.FindById(id);
+            var item = _business.FindById(id);
             if (item == null) return NotFound();
             return new OkObjectResult(item);
         }
@@ -54,7 +54,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(401)]
         public IActionResult GetByName(string name)
         {
-            var ret = _mccBusiness.FindByName(name);
+            var ret = _business.FindByName(name);
             if (ret == null) return NotFound();
             return Ok(ret);
         }
@@ -67,7 +67,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(401)]
         public IActionResult GetByExactName(string name)
         {
-            var ret = _mccBusiness.FindByExactName(name);
+            var ret = _business.FindByExactName(name);
             if (ret == null) return NotFound();
             return Ok(ret);
         }
@@ -80,9 +80,34 @@ namespace WebApi.Controllers
         public IActionResult Post([FromBody]AbilityVO item)
         {
             if (item == null) return BadRequest();
-            var createdItem = _mccBusiness.Create(item);
+            var createdItem = _business.Create(item);
             if (createdItem == null) return BadRequest();
             return new OkObjectResult(createdItem);
+        }
+
+
+        [HttpPut]
+        [ProducesResponseType(typeof(AbilityVO), 202)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
+        [TypeFilter(typeof(HyperMediaFilter))]
+        public IActionResult Put([FromBody]AbilityVO item)
+        {
+            if (item == null) return BadRequest();
+            var updatedItem = _business.Update(item);
+            if (updatedItem == null) return NoContent(); 
+            return new OkObjectResult(updatedItem);
+        }
+
+        [HttpDelete("{id}")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
+        [TypeFilter(typeof(HyperMediaFilter))]
+        public IActionResult Delete(int id)
+        {
+            _business.Delete(id);
+            return NoContent();
         }
 
         [Route("[action]")]
@@ -97,37 +122,13 @@ namespace WebApi.Controllers
             bool bok = false;
             foreach(AbilityVO i in item)
             {
-                if (_mccBusiness.Create(i) != null)
+                if (_business.Create(i) != null)
                 {
                     bok = true;
                 }
             }
             if (bok) return Ok();
             else return BadRequest();
-        }
-
-        [HttpPut]
-        [ProducesResponseType(typeof(AbilityVO), 202)]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(401)]
-        [TypeFilter(typeof(HyperMediaFilter))]
-        public IActionResult Put([FromBody]AbilityVO item)
-        {
-            if (item == null) return BadRequest();
-            var updatedItem = _mccBusiness.Update(item);
-            if (updatedItem == null) return NoContent(); 
-            return new OkObjectResult(updatedItem);
-        }
-
-        [HttpDelete("{id}")]
-        [ProducesResponseType(204)]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(401)]
-        [TypeFilter(typeof(HyperMediaFilter))]
-        public IActionResult Delete(int id)
-        {
-            _mccBusiness.Delete(id);
-            return NoContent();
         }
     }
 }

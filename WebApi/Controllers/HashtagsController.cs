@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using WebApi.Business;
 using WebApi.Data.VO;
 using System.Collections.Generic;
-using Swashbuckle.AspNetCore.SwaggerGen;
 using Microsoft.AspNetCore.Authorization;
 
 namespace WebApi.Controllers
@@ -28,7 +27,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
-        [Authorize("Bearer")]
+        //[Authorize("Bearer")]
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Get()
         {
