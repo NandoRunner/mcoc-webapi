@@ -8,6 +8,7 @@ using WebApi.Repository;
 using WebApi.Repository.Generic;
 using WebApi.Data.Converters;
 using WebApi.Data.VO;
+using WebApi.Integrations.Model;
 
 namespace WebApi.Business.Implementattions
 {
@@ -15,9 +16,12 @@ namespace WebApi.Business.Implementattions
     {
         private readonly IRepositoryId<FileRenamer> _repository;
 
+        private readonly FileRenamerConverter _converter;
+
         public FileRenamerBusinessImpl(IRepositoryId<FileRenamer> repository)
         {
             _repository = repository;
+            _converter = new FileRenamerConverter();
         }
 
         public FileRenamer Create(FileRenamer item)
@@ -28,6 +32,11 @@ namespace WebApi.Business.Implementattions
         public List<FileRenamer> FindAll()
         {
             return _repository.FindAll();
+        }
+
+        public List<FileRenamerRequest> FindAllRequest()
+        {
+            return _converter.ParseList(_repository.FindAll());
         }
 
     }

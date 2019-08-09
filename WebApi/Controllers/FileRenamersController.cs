@@ -35,6 +35,18 @@ namespace WebApi.Controllers
         }
 
         [Route("[action]")]
+        [HttpGet]
+        [ProducesResponseType(typeof(List<FileRenamerRequest>), 200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
+        public IActionResult GetImport()
+        {
+            return new OkObjectResult(_business.FindAllRequest());
+        }
+
+
+        [Route("[action]")]
         [HttpPost]
         public IActionResult PostImport([FromBody]FileRenamerRequest item)
         {
