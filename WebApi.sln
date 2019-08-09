@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FAndradeTecInfo.Utils", "..\..\_Resource\FandradeTecInfoUtils\FAndradeTecInfo.Utils.csproj", "{D27F1821-F7C8-4D31-BE57-8452279F0B4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mcoc.BusinessRules", "..\..\Mcoc\McocBusinessRules\Code\Mcoc.BusinessRules\Mcoc.BusinessRules.csproj", "{465F2FEA-A68D-4E29-832B-D3977483319B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Integrations", "..\..\_Resource\WebApi.Integrations\WebApi.Integrations\WebApi.Integrations.csproj", "{C98CDF31-006B-4488-86D7-8212D9985A3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{D27F1821-F7C8-4D31-BE57-8452279F0B4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D27F1821-F7C8-4D31-BE57-8452279F0B4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D27F1821-F7C8-4D31-BE57-8452279F0B4C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{465F2FEA-A68D-4E29-832B-D3977483319B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{465F2FEA-A68D-4E29-832B-D3977483319B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{465F2FEA-A68D-4E29-832B-D3977483319B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{465F2FEA-A68D-4E29-832B-D3977483319B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C98CDF31-006B-4488-86D7-8212D9985A3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C98CDF31-006B-4488-86D7-8212D9985A3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C98CDF31-006B-4488-86D7-8212D9985A3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C98CDF31-006B-4488-86D7-8212D9985A3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

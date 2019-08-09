@@ -6,11 +6,10 @@ using WebApi.Data.VO;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System;
-using Mcoc.BusinessRules.Model;
+using WebApi.Integrations.Model;
 
 namespace WebApi.Controllers
 {
-
     [ApiVersion("1")]
     [Route("[controller]/v{version:apiVersion}")]
     public class McocImportController : Controller

@@ -13,6 +13,7 @@
   <ItemGroup>
     <Content Remove="appsettings-dev.Development.json" />
     <Content Remove="appsettings-dev.json" />
+    <Content Remove="Evolve - Dev.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,8 +38,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Mcoc\McocBusinessRules\Code\Mcoc.BusinessRules\Mcoc.BusinessRules.csproj" />
     <ProjectReference Include="..\..\..\_Resource\FandradeTecInfoUtils\FAndradeTecInfo.Utils.csproj" />
+    <ProjectReference Include="..\..\..\_Resource\WebApi.Integrations\WebApi.Integrations\WebApi.Integrations.csproj" />
   </ItemGroup>
   
     <Target Name="ChangeAliasesOfStrongNameAssemblies" BeforeTargets="FindReferenceAssembliesForReferences;ResolveReferences">

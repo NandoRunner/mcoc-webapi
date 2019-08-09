@@ -136,9 +136,11 @@ namespace WebApi
             services.AddScoped<IUserBusiness, UserBusinessImpl>();
             services.AddScoped<IUserAllianceBusiness, UserAllianceBusinessImpl>();
             services.AddScoped<IUserHeroeBusiness, UserHeroeBusinessImpl>();
+            services.AddScoped<IFileRenamerBusiness, FileRenamerBusinessImpl>();
 
-			//Dependency Injection of GenericRepository
+            //Dependency Injection of GenericRepository
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
+            services.AddScoped(typeof(IRepositoryId<>), typeof(GenericRepositoryId<>));
             services.AddScoped(typeof(IRepositoryInter<>), typeof(GenericRepositoryInter<>));
 
             services.AddScoped<IWebUserRepository, WebUserRepositoryImpl>();
@@ -180,7 +182,12 @@ namespace WebApi
 
             app.UseSwaggerUI(c =>
             {
+#if DEBUG
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mcoc Library API v1");
+#else
+                   // To deploy on IIS
+                c.SwaggerEndpoint("../swagger/v1/swagger.json", "Mcoc Library API v1");
+#endif
             });
 
             //Starting our API in Swagger page
