@@ -29,6 +29,11 @@ namespace WebApi.Business.Implementattions
             return _repository.Create(item);
          }
 
+        public void Delete(long id)
+        {
+            _repository.Delete(id);
+        }
+
         public List<FileRenamer> FindAll()
         {
             return _repository.FindAll();

@@ -10,5 +10,7 @@ namespace WebApi.Business
         List<FileRenamer> FindAll();
 
         List<FileRenamerRequest> FindAllRequest();
+
+        void Delete(long id);
     }
 }

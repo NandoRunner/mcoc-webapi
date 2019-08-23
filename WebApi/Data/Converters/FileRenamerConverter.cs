@@ -28,6 +28,7 @@ namespace WebApi.Data.Converters
             if (origin == null) return new FileRenamerRequest();
             return new FileRenamerRequest
             {
+                id = origin.id,
                 caminho = origin.caminho,
                 extensao = origin.extensao,
                 prefixo = origin.prefixo,
@@ -40,13 +41,13 @@ namespace WebApi.Data.Converters
         public List<FileRenamer> ParseList(List<FileRenamerRequest> origin)
         {
             if (origin == null) return new List<FileRenamer>();
-            return origin.Select(item => Parse(item)).ToList();
+            return origin.Select(item => Parse(item)).OrderBy(a => a.substituir).OrderBy(a => a.caminho).ToList();
         }
 
         public List<FileRenamerRequest> ParseList(List<FileRenamer> origin)
         {
             if (origin == null) return new List<FileRenamerRequest>();
-            return origin.Select(item => Parse(item)).ToList();
+            return origin.Select(item => Parse(item)).OrderBy(a => a.substituir).OrderBy(a => a.caminho).ToList();
         }
     }
 }

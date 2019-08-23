@@ -40,7 +40,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
-        public IActionResult GetImport()
+        public IActionResult GetData()
         {
             return new OkObjectResult(_business.FindAllRequest());
         }
@@ -48,7 +48,7 @@ namespace WebApi.Controllers
 
         [Route("[action]")]
         [HttpPost]
-        public IActionResult PostImport([FromBody]FileRenamerRequest item)
+        public IActionResult PostData([FromBody]FileRenamerRequest item)
         {
             if (item == null) return BadRequest();
 
@@ -66,9 +66,16 @@ namespace WebApi.Controllers
             if (createdItem == null) return BadRequest();
             return new OkObjectResult(createdItem);
         }
-
-       
-
+        
+        [HttpDelete("{id}")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
+        public IActionResult Delete(long id)
+        {
+            _business.Delete(id);
+            return NoContent();
+        }
 
     }
 }
