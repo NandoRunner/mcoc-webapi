@@ -73,12 +73,42 @@ namespace WebApi.Repository.Generic
 
         public List<T> FindByName(string name)
         {
-            return dataset.Where(a => a.name.Contains(name)).OrderBy(a => a.name).ToList();
+            if (!string.IsNullOrEmpty(name))
+            { 
+                return dataset.Where(a => a.name.Contains(name)).OrderBy(a => a.name).ToList();
+            }
+            else
+            {
+                return dataset.OrderBy(a => a.name).ToList();
+            }
         }
 
         public T FindByExactName(string name)
         {
             return dataset.SingleOrDefault(p => p.name.Equals(name));
+        }
+
+        public List<T> FindWithPagedSearch(string query)
+        {
+            return dataset.FromSql<T>(query).ToList();
+        }
+
+        public int GetCount(string query)
+        {
+            // https://stackoverflow.com/questions/40557003/entity-framework-core-count-does-not-have-optimal-performance
+            var result = "";
+            using (var connection = _context.Database.GetDbConnection())
+            {
+                connection.Open();
+
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = query;
+                    result = command.ExecuteScalar().ToString();
+                }
+            }
+
+            return Int32.Parse(result);
         }
 
         public T Update(T item)

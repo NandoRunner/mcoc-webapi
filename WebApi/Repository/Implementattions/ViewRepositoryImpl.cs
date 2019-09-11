@@ -15,17 +15,7 @@ namespace WebApi.Repository.Implementattions
             dataset = _context.Set<T>();
         }
         
-        //public List<T> FindMovieCount(enMovieCount order)
-        //{
-        //    if (order == enMovieCount.name)
-        //    {
-        //        return dataset.OrderBy(p => p.nome).ToList();
-        //    }
-        //    else
-        //    {
-        //        return dataset.ToList();
-        //    }
-        //}
+
 
        
     }
