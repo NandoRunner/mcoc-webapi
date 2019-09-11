@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FAndradeTecInfo.Utils", "..\..\_Resource\FandradeTecInfoUtils\FAndradeTecInfo.Utils.csproj", "{D27F1821-F7C8-4D31-BE57-8452279F0B4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Integrations", "..\..\_Resource\WebApi.Integrations\WebApi.Integrations\WebApi.Integrations.csproj", "{C98CDF31-006B-4488-86D7-8212D9985A3A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Integrations", "..\..\_Resource\WebApiIntegrations\Code\WebApi.Integrations\WebApi.Integrations.csproj", "{C98CDF31-006B-4488-86D7-8212D9985A3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

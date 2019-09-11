@@ -39,7 +39,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\_Resource\FandradeTecInfoUtils\FAndradeTecInfo.Utils.csproj" />
-    <ProjectReference Include="..\..\..\_Resource\WebApi.Integrations\WebApi.Integrations\WebApi.Integrations.csproj" />
+    <ProjectReference Include="..\..\..\_Resource\WebApiIntegrations\Code\WebApi.Integrations\WebApi.Integrations.csproj" />
   </ItemGroup>
   
     <Target Name="ChangeAliasesOfStrongNameAssemblies" BeforeTargets="FindReferenceAssembliesForReferences;ResolveReferences">

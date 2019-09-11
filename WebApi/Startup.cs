@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using WebApi.Business;
@@ -16,7 +17,6 @@ using Microsoft.Net.Http.Headers;
 using Tapioca.HATEOAS;
 using WebApi.HyperMedia;
 using Swashbuckle.AspNetCore.Swagger;
-using Microsoft.AspNetCore.Rewrite;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using WebApi.Security.Configuration;
@@ -131,12 +131,13 @@ namespace WebApi
             services.AddScoped<IHashtagBusiness, HashtagBusinessImpl>();
             services.AddScoped<IHeroeBusiness, HeroeBusinessImpl>();
             services.AddScoped<IHeroeHashtagBusiness, HeroeHashtagBusinessImpl>();
-			services.AddScoped<ILoginBusiness, LoginBusinessImpl>();
-            services.AddScoped<ISynergyBusiness, SynergyBusinessImpl>();
+			      services.AddScoped<ISynergyBusiness, SynergyBusinessImpl>();
             services.AddScoped<IUserBusiness, UserBusinessImpl>();
             services.AddScoped<IUserAllianceBusiness, UserAllianceBusinessImpl>();
             services.AddScoped<IUserHeroeBusiness, UserHeroeBusinessImpl>();
             services.AddScoped<IFileRenamerBusiness, FileRenamerBusinessImpl>();
+            services.AddScoped<ILoginBusiness, LoginBusinessImpl>();
+            services.AddScoped<IFileBusiness, FileBusinessImpl>();
 
             //Dependency Injection of GenericRepository
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
