@@ -4,11 +4,17 @@ using WebApi.Business;
 using WebApi.Data.VO;
 using System.Collections.Generic;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using Microsoft.AspNetCore.Authorization;
+using WebApi.Model.Base;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
+using WebApi.Model;
 
 namespace WebApi.Controllers
 {
     [ApiVersion("1")]
     [Route("[controller]/v{version:apiVersion}")]
+    [EnableCors("AllowOrigin")]
     public class HeroesController : Controller
     {
         //Declaração do serviço usado
@@ -27,10 +33,18 @@ namespace WebApi.Controllers
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
-        [TypeFilter(typeof(HyperMediaFilter))]
-        public IActionResult Get()
+        //[TypeFilter(typeof(HyperMediaFilter))]
+        public IActionResult Get(int heroe_class = (int)enHeroeClass.ALL)
         {
-            return new OkObjectResult(_mccBusiness.FindAll());
+            //return new OkObjectResult(_mccBusiness.FindAll());
+
+            var ret = _mccBusiness.FindAll((enHeroeClass)heroe_class);
+            if (ret == null) return NotFound();
+            ResponseVO<HeroeVO> vr = new ResponseVO<HeroeVO>();
+            vr.server_response = ret;
+            return Ok(vr);
+
+
         }
         
         [HttpGet("{id}")]
@@ -76,6 +90,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(typeof(HeroeVO), 201)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
+        [Authorize("Bearer")]
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Post([FromBody]HeroeVO item)
         {
@@ -110,6 +125,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(typeof(HeroeVO), 202)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
+        [Authorize("Bearer")]
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Put([FromBody]HeroeVO item)
         {
@@ -123,6 +139,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
+        [Authorize("Bearer")]
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Delete(int id)
         {

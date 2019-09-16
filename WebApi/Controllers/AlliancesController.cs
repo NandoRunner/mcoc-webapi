@@ -4,12 +4,13 @@ using WebApi.Business;
 using WebApi.Data.VO;
 using System.Collections.Generic;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using Microsoft.AspNetCore.Cors;
 
 namespace WebApi.Controllers
 {
-
     [ApiVersion("1")]
     [Route("[controller]/v{version:apiVersion}")]
+    [EnableCors("AllowOrigin")]
     public class AlliancesController : Controller
     {
         //Declaração do serviço usado

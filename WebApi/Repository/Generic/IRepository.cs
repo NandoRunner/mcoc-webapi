@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApi.Model;
 using WebApi.Model.Base;
 
 namespace WebApi.Repository.Generic
@@ -14,6 +15,7 @@ namespace WebApi.Repository.Generic
         List<T> FindByName(string name);
         T FindByExactName(string name);
         List<T> FindAll();
+        List<Heroe> FindAllHeroe(enHeroeClass heroe_class);
 
         T Update(T item);
         void Delete(long id);

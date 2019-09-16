@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using WebApi.Data.VO;
+using WebApi.Model;
 
 namespace WebApi.Business
 {
@@ -10,7 +11,7 @@ namespace WebApi.Business
         HeroeVO FindById(long id);
         List<HeroeVO> FindByName(string name);
         HeroeVO FindByExactName(string name);
-        List<HeroeVO> FindAll();
+        List<HeroeVO> FindAll(enHeroeClass heroe_class);
 
         HeroeVO Update(HeroeVO item);
         void Delete(long id);

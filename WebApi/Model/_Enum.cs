@@ -5,6 +5,6 @@ using System.Threading.Tasks;
 
 namespace WebApi.Model
 {
-    public enum enHeroeClass { Cosmic, Tech, Mutant, Skill, Science, Mystic };
+    public enum enHeroeClass { Cosmic, Tech, Mutant, Skill, Science, Mystic, ALL };
 
 }

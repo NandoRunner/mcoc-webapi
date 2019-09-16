@@ -49,9 +49,9 @@ namespace WebApi.Business.Implementattions
             return _converter.Parse(_repository.FindByExactName(name));
         }
 
-        public List<HeroeVO> FindAll()
+        public List<HeroeVO> FindAll(enHeroeClass heroe_class)
         {
-            return _converter.ParseList(_repository.FindAll());
+            return _converter.ParseList(_repository.FindAllHeroe(heroe_class));
         }
 
         public HeroeVO Update(HeroeVO item)

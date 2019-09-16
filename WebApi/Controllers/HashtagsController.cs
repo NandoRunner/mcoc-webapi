@@ -4,11 +4,13 @@ using WebApi.Business;
 using WebApi.Data.VO;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 
 namespace WebApi.Controllers
 {
     [ApiVersion("1")]
     [Route("[controller]/v{version:apiVersion}")]
+    [EnableCors("AllowOrigin")]
     public class HashtagsController : Controller
     {
         //Declaração do serviço usado

@@ -1,5 +1,7 @@
 ﻿
+using System.Collections.Generic;
 using System.Runtime.Serialization;
+using WebApi.Data.VO;
 
 namespace WebApi.Model.Base
 {
@@ -14,4 +16,10 @@ namespace WebApi.Model.Base
 
         
     }
+
+    public class ResponseVO<T> where T : BaseVO
+    {
+        public List<T> server_response { get; set; }
+    }
+
 }

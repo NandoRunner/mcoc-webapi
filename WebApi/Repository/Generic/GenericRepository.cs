@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApi.Model;
 using WebApi.Model.Base;
 using WebApi.Model.Context;
 
@@ -11,13 +12,16 @@ namespace WebApi.Repository.Generic
     public class GenericRepository<T> : IRepository<T> where T : BaseEntity
     {
         private readonly MySQLContext _context;
-        private DbSet<T> dataset; 
+        private DbSet<T> dataset;
 
+        private DbSet<Heroe> dsHeroe;
 
         public GenericRepository(MySQLContext context)
         {
             _context = context;
             dataset = _context.Set<T>();
+
+            dsHeroe = _context.Set<Heroe>();
         }
 
         public T FindOrCreate(T item)
@@ -64,6 +68,18 @@ namespace WebApi.Repository.Generic
         public List<T> FindAll()
         {
             return dataset.OrderBy(a => a.name).ToList();
+        }
+
+        public List<Heroe> FindAllHeroe(enHeroeClass heroe_class)
+        {
+            if (((enHeroeClass)heroe_class) == enHeroeClass.ALL)
+            {
+                return dsHeroe.OrderBy(a => a.name).ToList();
+            }
+            else
+            {
+                return dsHeroe.Where(a => a.heroe_class == (int)heroe_class).OrderBy(a => a.name).ToList();
+            }
         }
 
         public T FindById(long id)

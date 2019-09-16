@@ -21,6 +21,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using WebApi.Security.Configuration;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 
 namespace WebApi
 {
@@ -40,7 +42,13 @@ namespace WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-			//Connection to database
+            // CORS 
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+            });
+
+            //Connection to database
             var strconn = _configuration["MySqlConnection:MySqlConnectionString"];
             services.AddDbContext<MySQLContext>(options => options.UseMySql(strconn));
 
@@ -104,7 +112,7 @@ namespace WebApi
             filterOptions.ObjectContentResponseEnricherList.Add(new AbilityEnricher());
             filterOptions.ObjectContentResponseEnricherList.Add(new AllianceEnricher());
             filterOptions.ObjectContentResponseEnricherList.Add(new HashtagEnricher());
-            filterOptions.ObjectContentResponseEnricherList.Add(new HeroeEnricher());
+            //filterOptions.ObjectContentResponseEnricherList.Add(new HeroeEnricher());
             filterOptions.ObjectContentResponseEnricherList.Add(new SynergyEnricher());
             filterOptions.ObjectContentResponseEnricherList.Add(new UserEnricher());
 
@@ -177,6 +185,8 @@ namespace WebApi
         {
             loggerFactory.AddConsole(_configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+            //app.UseCors("AllowAnyOrigin");
 
             //Enable Swagger
             app.UseSwagger();
