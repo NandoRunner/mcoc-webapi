@@ -105,6 +105,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
+        [Authorize("Bearer")]
         public IActionResult PostArray([FromBody]HeroeVO[] item)
         {
             if (item[0] == null) return BadRequest();

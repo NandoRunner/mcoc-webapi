@@ -11,12 +11,12 @@ namespace WebApi.Business.Implementattions
 {
     public class HeroeHashtagBusinessImpl : IHeroeHashtagBusiness
     {
-        private readonly IRepositoryInter<HeroeHashtag> _repository;
+        private readonly IRepositoryInter<HeroeHashtag, Heroe, Hashtag> _repository;
 
         //private readonly IViewRepository<_vw_mc_ator> _vrep;
 
 
-        public HeroeHashtagBusinessImpl(IRepositoryInter<HeroeHashtag> repository
+        public HeroeHashtagBusinessImpl(IRepositoryInter<HeroeHashtag, Heroe, Hashtag> repository
             //, IViewRepository<_vw_mc_ator> vrep
             )
         {
@@ -29,12 +29,12 @@ namespace WebApi.Business.Implementattions
             return _repository.Create(mccHeroeHashtag);
         }
 
-        public HeroeHashtag FindByIdA(long id)
+        public List<HeroeHashtag> FindByIdA(long id)
         {
             return _repository.FindByIdA(id);
         }
 
-        public HeroeHashtag FindByIdB(long id)
+        public List<HeroeHashtag> FindByIdB(long id)
         {
             return _repository.FindByIdB(id);
         }
@@ -42,6 +42,16 @@ namespace WebApi.Business.Implementattions
         public List<HeroeHashtag> FindAll()
         {
             return _repository.FindAll();
+        }
+
+        public List<Heroe> FindObjectA(long id_b)
+        {
+            return _repository.FindObjectA(id_b);
+        }
+
+        public List<Hashtag> FindObjectB(long id_a)
+        {
+            return _repository.FindObjectB(id_a);
         }
 
     }

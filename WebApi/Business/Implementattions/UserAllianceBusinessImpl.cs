@@ -11,12 +11,12 @@ namespace WebApi.Business.Implementattions
 {
     public class UserAllianceBusinessImpl : IUserAllianceBusiness
     {
-        private readonly IRepositoryInter<UserAlliance> _repository;
+        private readonly IRepositoryInter<UserAlliance, User, Alliance> _repository;
 
         //private readonly IViewRepository<_vw_mc_ator> _vrep;
 
 
-        public UserAllianceBusinessImpl(IRepositoryInter<UserAlliance> repository
+        public UserAllianceBusinessImpl(IRepositoryInter<UserAlliance, User, Alliance> repository
             //, IViewRepository<_vw_mc_ator> vrep
             )
         {
@@ -29,12 +29,12 @@ namespace WebApi.Business.Implementattions
             return _repository.Create(mccUserAlliance);
         }
 
-        public UserAlliance FindByIdA(long id)
+        public List<UserAlliance> FindByIdA(long id)
         {
             return _repository.FindByIdA(id);
         }
 
-        public UserAlliance FindByIdB(long id)
+        public List<UserAlliance> FindByIdB(long id)
         {
             return _repository.FindByIdB(id);
         }

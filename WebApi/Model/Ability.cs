@@ -7,5 +7,7 @@ namespace WebApi.Model
     [Table("marvel_ability")]
     public class Ability : BaseEntity {
 
+        [DataMember(Order = 3)]
+        public int type { get; set; }
     }
 }

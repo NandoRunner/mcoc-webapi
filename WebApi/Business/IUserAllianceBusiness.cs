@@ -6,8 +6,8 @@ namespace WebApi.Business
     public interface IUserAllianceBusiness
     {
         UserAlliance Create(UserAlliance item);
-        UserAlliance FindByIdA(long id);
-        UserAlliance FindByIdB(long id);
+        List<UserAlliance> FindByIdA(long id);
+        List<UserAlliance> FindByIdB(long id);
 
         List<UserAlliance> FindAll();
     }

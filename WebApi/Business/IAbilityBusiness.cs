@@ -10,7 +10,7 @@ namespace WebApi.Business
         AbilityVO Create(AbilityVO item);
         AbilityVO FindById(long id);
         List<AbilityVO> FindByName(string name);
-        AbilityVO FindByExactName(string name);
+        AbilityVO FindByExactName(string name, int type = -1);
         List<AbilityVO> FindAll();
 
         AbilityVO Update(AbilityVO item);

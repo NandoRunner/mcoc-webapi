@@ -3,21 +3,28 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApi.Model;
 using WebApi.Model.Base;
 using WebApi.Model.Context;
 
 namespace WebApi.Repository.Generic
 {
-    public class GenericRepositoryInter<T> : IRepositoryInter<T> where T : BaseInterEntity
+    public class GenericRepositoryInter<T, A, B> : IRepositoryInter<T, A, B> where T : BaseInterEntity
+        where A : BaseEntity
+        where B : BaseEntity
     {
         private readonly MySQLContext _context;
-        private DbSet<T> dataset; 
+        private DbSet<T> dataset;
+        private DbSet<A> dsa;
+        private DbSet<B> dsb;
 
 
         public GenericRepositoryInter(MySQLContext context)
         {
             _context = context;
             dataset = _context.Set<T>();
+            dsa = _context.Set<A>();
+            dsb = _context.Set<B>();
         }
 
         public T FindOrCreate(T item)
@@ -50,14 +57,14 @@ namespace WebApi.Repository.Generic
             return dataset.OrderBy(p => p.id_a).OrderBy(p => p.id_b).ToList();
         }
 
-        public T FindByIdA(long id)
+        public List<T> FindByIdA(long id)
         {
-            return dataset.SingleOrDefault(p => p.id_a.Equals(id));
+            return dataset.Where(p => p.id_a.Equals(id)).OrderBy(p => p.id_b).ToList(); 
         }
 
-        public T FindByIdB(long id)
+        public List<T> FindByIdB(long id)
         {
-            return dataset.SingleOrDefault(p => p.id_b.Equals(id));
+            return dataset.Where(p => p.id_b.Equals(id)).OrderBy(p => p.id_a).ToList(); 
         }
 
         public T FindById(long id_a, long id_b)
@@ -92,5 +99,32 @@ namespace WebApi.Repository.Generic
         {
             return dataset.Any(p => p.id_a.Equals(id_a) && p.id_b.Equals(id_b));
         }
+
+        public List<A> FindObjectA(long id_b)
+        {
+            var list = (from x in dataset.AsEnumerable()
+                        where x.id_b == id_b
+                        select x.id_a).ToList();
+
+            var ret = (from y in dsa.AsEnumerable()
+                      where list.Contains((long)y.id)
+                      select y).OrderBy(x => x.name).ToList(); 
+
+            return ret;
+        }
+
+        public List<B> FindObjectB(long id_a)
+        {
+            var list = (from x in dataset.AsEnumerable()
+                        where x.id_a == id_a
+                        select x.id_b).ToList();
+
+            var ret = (from y in dsb.AsEnumerable()
+                       where list.Contains((long)y.id)
+                       select y).OrderBy(x => x.name).ToList();
+
+            return ret;
+        }
+
     }
 }

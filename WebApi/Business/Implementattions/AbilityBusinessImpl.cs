@@ -44,9 +44,9 @@ namespace WebApi.Business.Implementattions
             return _converter.ParseList(_repository.FindByName(name));
         }
 
-        public AbilityVO FindByExactName(string name)
+        public AbilityVO FindByExactName(string name, int type = -1)
         {
-            return _converter.Parse(_repository.FindByExactName(name));
+            return _converter.Parse(_repository.FindByExactName(name, type));
         }
 
         public List<AbilityVO> FindAll()

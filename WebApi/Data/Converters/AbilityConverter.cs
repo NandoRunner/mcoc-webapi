@@ -16,7 +16,8 @@ namespace WebApi.Data.Converters
             return new Ability
             {
                 id = origin.Id,
-                name = origin.Name
+                name = origin.Name,
+                type = origin.Type
             };
         }
 
@@ -26,7 +27,8 @@ namespace WebApi.Data.Converters
             return new AbilityVO
             {
                 Id = origin.id,
-                Name = origin.name
+                Name = origin.name,
+                Type = origin.type
             };
         }
 

@@ -14,19 +14,16 @@ namespace WebApi.Repository.Generic
         private readonly MySQLContext _context;
         private DbSet<T> dataset;
 
-        private DbSet<Heroe> dsHeroe;
-
         public GenericRepository(MySQLContext context)
         {
             _context = context;
             dataset = _context.Set<T>();
-
-            dsHeroe = _context.Set<Heroe>();
         }
 
         public T FindOrCreate(T item)
         {
             var ret = FindByExactName(item.name);
+
             if (ret != null)
                 return ret;
             return Create(item);
@@ -72,6 +69,9 @@ namespace WebApi.Repository.Generic
 
         public List<Heroe> FindAllHeroe(enHeroeClass heroe_class)
         {
+
+            DbSet<Heroe> dsHeroe = _context.Set<Heroe>();
+
             if (((enHeroeClass)heroe_class) == enHeroeClass.ALL)
             {
                 return dsHeroe.OrderBy(a => a.name).ToList();
@@ -102,6 +102,15 @@ namespace WebApi.Repository.Generic
         public T FindByExactName(string name)
         {
             return dataset.SingleOrDefault(p => p.name.Equals(name));
+        }
+
+        public Ability FindByExactName(string name, int type = -1)
+        {
+            DbSet<Ability> ds = _context.Set<Ability>();
+
+            var ret = ds.SingleOrDefault(p => p.name.Equals(name) && (type == -1 || p.type == type));
+
+            return ret;
         }
 
         public List<T> FindWithPagedSearch(string query)

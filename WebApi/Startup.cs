@@ -23,6 +23,7 @@ using WebApi.Security.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Cors.Infrastructure;
+using WebApi.Model.Base;
 
 namespace WebApi
 {
@@ -138,8 +139,9 @@ namespace WebApi
             services.AddScoped<IAllianceBusiness, AllianceBusinessImpl>();
             services.AddScoped<IHashtagBusiness, HashtagBusinessImpl>();
             services.AddScoped<IHeroeBusiness, HeroeBusinessImpl>();
+            services.AddScoped<IHeroeAbilityBusiness, HeroeAbilityBusinessImpl>();
             services.AddScoped<IHeroeHashtagBusiness, HeroeHashtagBusinessImpl>();
-			      services.AddScoped<ISynergyBusiness, SynergyBusinessImpl>();
+			services.AddScoped<ISynergyBusiness, SynergyBusinessImpl>();
             services.AddScoped<IUserBusiness, UserBusinessImpl>();
             services.AddScoped<IUserAllianceBusiness, UserAllianceBusinessImpl>();
             services.AddScoped<IUserHeroeBusiness, UserHeroeBusinessImpl>();
@@ -150,7 +152,9 @@ namespace WebApi
             //Dependency Injection of GenericRepository
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
             services.AddScoped(typeof(IRepositoryId<>), typeof(GenericRepositoryId<>));
-            services.AddScoped(typeof(IRepositoryInter<>), typeof(GenericRepositoryInter<>));
+            services.AddScoped(typeof(IRepositoryInter<,,>), typeof(GenericRepositoryInter<,,>));
+
+//            services.AddScoped(typeof(IRepositoryInter<BaseInterEntity, BaseEntity, BaseEntity>), typeof(GenericRepositoryInter<BaseInterEntity, BaseEntity, BaseEntity>));
 
             services.AddScoped<IWebUserRepository, WebUserRepositoryImpl>();
             services.AddScoped(typeof(IViewRepository<>), typeof(ViewRepositoryImpl<>));

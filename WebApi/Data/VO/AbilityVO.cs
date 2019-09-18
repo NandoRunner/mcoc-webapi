@@ -12,6 +12,8 @@ namespace WebApi.Data.VO
 
         public string Name { get; set; }
 
+        public int Type { get; set; }
+
         public List<HyperMediaLink> Links { get; set; } = new List<HyperMediaLink>();
     }
 }

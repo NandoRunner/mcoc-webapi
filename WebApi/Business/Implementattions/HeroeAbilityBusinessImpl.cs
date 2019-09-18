@@ -11,12 +11,12 @@ namespace WebApi.Business.Implementattions
 {
     public class HeroeAbilityBusinessImpl : IHeroeAbilityBusiness
     {
-        private readonly IRepositoryInter<HeroeAbility> _repository;
+        private readonly IRepositoryInter<HeroeAbility, Heroe, Ability> _repository;
 
         //private readonly IViewRepository<_vw_mc_ator> _vrep;
 
 
-        public HeroeAbilityBusinessImpl(IRepositoryInter<HeroeAbility> repository
+        public HeroeAbilityBusinessImpl(IRepositoryInter<HeroeAbility, Heroe, Ability> repository
             //, IViewRepository<_vw_mc_ator> vrep
             )
         {
@@ -29,12 +29,12 @@ namespace WebApi.Business.Implementattions
             return _repository.Create(mccHeroeAbility);
         }
 
-        public HeroeAbility FindByIdA(long id)
+        public List<HeroeAbility> FindByIdA(long id)
         {
             return _repository.FindByIdA(id);
         }
 
-        public HeroeAbility FindByIdB(long id)
+        public List<HeroeAbility> FindByIdB(long id)
         {
             return _repository.FindByIdB(id);
         }

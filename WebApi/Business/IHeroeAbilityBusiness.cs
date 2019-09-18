@@ -6,8 +6,8 @@ namespace WebApi.Business
     public interface IHeroeAbilityBusiness
     {
         HeroeAbility Create(HeroeAbility item);
-        HeroeAbility FindByIdA(long id);
-        HeroeAbility FindByIdB(long id);
+        List<HeroeAbility> FindByIdA(long id);
+        List<HeroeAbility> FindByIdB(long id);
 
         List<HeroeAbility> FindAll();
     }

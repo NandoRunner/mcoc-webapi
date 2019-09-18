@@ -6,8 +6,8 @@ namespace WebApi.Business
     public interface IUserHeroeBusiness
     {
         UserHeroe Create(UserHeroe item);
-        UserHeroe FindByIdA(long id);
-        UserHeroe FindByIdB(long id);
+        List<UserHeroe> FindByIdA(long id);
+        List<UserHeroe> FindByIdB(long id);
 
         List<UserHeroe> FindAll();
     }

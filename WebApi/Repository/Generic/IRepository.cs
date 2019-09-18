@@ -14,6 +14,9 @@ namespace WebApi.Repository.Generic
         T FindById(long id);
         List<T> FindByName(string name);
         T FindByExactName(string name);
+
+        Ability FindByExactName(string name, int type = -1);
+
         List<T> FindAll();
         List<Heroe> FindAllHeroe(enHeroeClass heroe_class);
 

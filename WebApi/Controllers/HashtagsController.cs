@@ -30,7 +30,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
         //[Authorize("Bearer")]
-        [TypeFilter(typeof(HyperMediaFilter))]
+        //[TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Get()
         {
             return new OkObjectResult(_mccBusiness.FindAll());
@@ -79,6 +79,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(typeof(HashtagVO), 201)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
+        [Authorize("Bearer")]
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Post([FromBody]HashtagVO item)
         {
@@ -93,6 +94,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
+        [Authorize("Bearer")]
         public IActionResult PostArray([FromBody]HashtagVO[] item)
         {
             if (item[0] == null) return BadRequest();
@@ -113,6 +115,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(typeof(HashtagVO), 202)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
+        [Authorize("Bearer")]
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Put([FromBody]HashtagVO item)
         {
@@ -126,6 +129,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
+        [Authorize("Bearer")]
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Delete(int id)
         {

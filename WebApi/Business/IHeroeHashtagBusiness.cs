@@ -6,8 +6,11 @@ namespace WebApi.Business
     public interface IHeroeHashtagBusiness
     {
         HeroeHashtag Create(HeroeHashtag item);
-        HeroeHashtag FindByIdA(long id);
-        HeroeHashtag FindByIdB(long id);
+        List<HeroeHashtag> FindByIdA(long id);
+        List<HeroeHashtag> FindByIdB(long id);
+
+        List<Heroe> FindObjectA(long id_b);
+        List<Hashtag> FindObjectB(long id_a);
 
         List<HeroeHashtag> FindAll();
     }
