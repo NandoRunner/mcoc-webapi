@@ -45,6 +45,25 @@ namespace WebApi.Repository.Generic
             return item;
         }
 
+
+        public Ability CreateAbility(Ability item)
+        {
+            if (Exists(item.name, item.type)) return null;
+
+            DbSet<Ability> ds = _context.Set<Ability>();
+
+            try
+            {
+                ds.Add(item);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return item;
+        }
+
         public void Delete(long id)
         {
             var result = dataset.SingleOrDefault(p => p.id.Equals(id));
@@ -167,6 +186,13 @@ namespace WebApi.Repository.Generic
         private bool Exists(string name)
         {
             return dataset.Any(p => p.name.Equals(name));
+        }
+
+        private bool Exists(string name, int type = -1)
+        {
+            DbSet<Ability> ds = _context.Set<Ability>();
+
+            return ds.Any(p => p.name.Equals(name) && (type == -1 || p.type == type));
         }
     }
 }

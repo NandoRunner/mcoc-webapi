@@ -3,10 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using WebApi.Business;
 using WebApi.Data.VO;
 using System.Collections.Generic;
-using Swashbuckle.AspNetCore.SwaggerGen;
 using Microsoft.AspNetCore.Authorization;
 using WebApi.Model.Base;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Cors;
 using WebApi.Model;
 
@@ -18,13 +16,13 @@ namespace WebApi.Controllers
     public class HeroesController : Controller
     {
         //Declaração do serviço usado
-        private IHeroeBusiness _mccBusiness;
+        private IHeroeBusiness _business;
 
         /* Injeção de uma instancia de IMccHeroeBusiness ao criar
         uma instancia de Controller */
         public HeroesController(IHeroeBusiness itemBusiness)
         {
-            _mccBusiness = itemBusiness;
+            _business = itemBusiness;
         }
         
         //Get sem parâmetros para o FindAll --> Busca Todos
@@ -38,7 +36,7 @@ namespace WebApi.Controllers
         {
             //return new OkObjectResult(_mccBusiness.FindAll());
 
-            var ret = _mccBusiness.FindAll((enHeroeClass)heroe_class);
+            var ret = _business.FindAll((enHeroeClass)heroe_class);
             if (ret == null) return NotFound();
             ResponseVO<HeroeVO> vr = new ResponseVO<HeroeVO>();
             vr.server_response = ret;
@@ -55,7 +53,7 @@ namespace WebApi.Controllers
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Get(long id)
         {
-            var item = _mccBusiness.FindById(id);
+            var item = _business.FindById(id);
             if (item == null) return NotFound();
             return new OkObjectResult(item);
         }
@@ -68,7 +66,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(401)]
         public IActionResult GetByName(string name)
         {
-            var ret = _mccBusiness.FindByName(name);
+            var ret = _business.FindByName(name);
             if (ret == null) return NotFound();
             return Ok(ret);
         }
@@ -81,7 +79,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(401)]
         public IActionResult GetByExactName(string name)
         {
-            var ret = _mccBusiness.FindByExactName(name);
+            var ret = _business.FindByExactName(name);
             if (ret == null) return NotFound();
             return Ok(ret);
         }
@@ -95,7 +93,7 @@ namespace WebApi.Controllers
         public IActionResult Post([FromBody]HeroeVO item)
         {
             if (item == null) return BadRequest();
-            var createdItem = _mccBusiness.Create(item);
+            var createdItem = _business.Create(item);
             if (createdItem == null) return BadRequest();
             return new OkObjectResult(createdItem);
         }
@@ -113,7 +111,7 @@ namespace WebApi.Controllers
             bool bok = false;
             foreach (HeroeVO i in item)
             {
-                if (_mccBusiness.Create(i) != null)
+                if (_business.Create(i) != null)
                 {
                     bok = true;
                 }
@@ -131,7 +129,7 @@ namespace WebApi.Controllers
         public IActionResult Put([FromBody]HeroeVO item)
         {
             if (item == null) return BadRequest();
-            var updatedItem = _mccBusiness.Update(item);
+            var updatedItem = _business.Update(item);
             if (updatedItem == null) return NoContent(); 
             return new OkObjectResult(updatedItem);
         }
@@ -144,7 +142,7 @@ namespace WebApi.Controllers
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Delete(int id)
         {
-            _mccBusiness.Delete(id);
+            _business.Delete(id);
             return NoContent();
         }
     }

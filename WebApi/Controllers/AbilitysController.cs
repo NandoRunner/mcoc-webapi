@@ -3,12 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 using WebApi.Business;
 using WebApi.Data.VO;
 using System.Collections.Generic;
-
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 
 namespace WebApi.Controllers
 {
     [ApiVersion("1")]
     [Route("[controller]/v{version:apiVersion}")]
+    [EnableCors("AllowOrigin")]
     public class AbilitysController : Controller
     {
         //Declaração do serviço usado
@@ -27,7 +29,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
-        [TypeFilter(typeof(HyperMediaFilter))]
+        //[TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Get()
         {
             return new OkObjectResult(_business.FindAll());
@@ -76,6 +78,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(typeof(AbilityVO), 201)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
+        [Authorize("Bearer")]
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Post([FromBody]AbilityVO item)
         {
@@ -85,36 +88,12 @@ namespace WebApi.Controllers
             return new OkObjectResult(createdItem);
         }
 
-
-        [HttpPut]
-        [ProducesResponseType(typeof(AbilityVO), 202)]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(401)]
-        [TypeFilter(typeof(HyperMediaFilter))]
-        public IActionResult Put([FromBody]AbilityVO item)
-        {
-            if (item == null) return BadRequest();
-            var updatedItem = _business.Update(item);
-            if (updatedItem == null) return NoContent(); 
-            return new OkObjectResult(updatedItem);
-        }
-
-        [HttpDelete("{id}")]
-        [ProducesResponseType(204)]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(401)]
-        [TypeFilter(typeof(HyperMediaFilter))]
-        public IActionResult Delete(int id)
-        {
-            _business.Delete(id);
-            return NoContent();
-        }
-
         [Route("[action]")]
         [HttpPost]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
+        [Authorize("Bearer")]
         public IActionResult PostArray([FromBody]AbilityVO[] item)
         {
             if (item[0] == null) return BadRequest();
@@ -129,6 +108,32 @@ namespace WebApi.Controllers
             }
             if (bok) return Ok();
             else return BadRequest();
+        }
+
+        [HttpPut]
+        [ProducesResponseType(typeof(AbilityVO), 202)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
+        [Authorize("Bearer")]
+        [TypeFilter(typeof(HyperMediaFilter))]
+        public IActionResult Put([FromBody]AbilityVO item)
+        {
+            if (item == null) return BadRequest();
+            var updatedItem = _business.Update(item);
+            if (updatedItem == null) return NoContent(); 
+            return new OkObjectResult(updatedItem);
+        }
+
+        [HttpDelete("{id}")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
+        [Authorize("Bearer")]
+        [TypeFilter(typeof(HyperMediaFilter))]
+        public IActionResult Delete(int id)
+        {
+            _business.Delete(id);
+            return NoContent();
         }
     }
 }

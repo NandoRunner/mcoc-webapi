@@ -11,6 +11,7 @@ namespace WebApi.Repository.Generic
     {
         T FindOrCreate(T item);
         T Create(T item);
+        Ability CreateAbility(Ability item);
         T FindById(long id);
         List<T> FindByName(string name);
         T FindByExactName(string name);

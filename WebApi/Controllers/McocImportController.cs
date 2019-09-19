@@ -59,9 +59,9 @@ namespace WebApi.Controllers
             if (createdItem == null) return BadRequest();
 
             this.CreateHeroeHashtag(ref item, ref createdItem);
-            this.CreateHeroeAbility(ref item, ref createdItem);
-            this.CreateHeroeExtAbility(ref item, ref createdItem);
-            this.CreateHeroeCounters(ref item, ref createdItem);
+            this.CreateHeroeAbilities(item.abilities, ref createdItem, 0);
+            this.CreateHeroeAbilities(item.ext_abilities, ref createdItem, 1);
+            this.CreateHeroeAbilities(item.counters, ref createdItem, 2);
 
             return Ok();
         }
@@ -83,68 +83,24 @@ namespace WebApi.Controllers
         }
 
 
-        private void CreateHeroeAbility(ref McocHeroeRequest item, ref HeroeVO createdItem)
+        private void CreateHeroeAbilities(List<string> list, ref HeroeVO createdItem, int type)
         {
             HeroeAbility h = new HeroeAbility { id_a = createdItem.Id ?? default(long) };
 
-            foreach (string s in item.abilities)
+            foreach (string s in list)
             {
                 if (string.IsNullOrEmpty(s)) continue;
 
-                AbilityVO vo = new AbilityVO { Name = s, Type = 0 };
-                //var ret = _ability.FindOrCreate(vo);
-
-                var ret = _ability.FindByExactName(s, 0);
+                AbilityVO vo = new AbilityVO { Name = s, Type = type };
+                var ret = _ability.FindByExactName(vo.Name, vo.Type);
                 
-                if (ret == null)
-                    ret = _ability.Create(vo);
+                if (ret.Id == null) ret = _ability.Create(vo);
 
                 h.id_b = ret.Id ?? default(long);
                 _heroeAbility.Create(h);
             }
         }
-
-        private void CreateHeroeExtAbility(ref McocHeroeRequest item, ref HeroeVO createdItem)
-        {
-            HeroeAbility h = new HeroeAbility { id_a = createdItem.Id ?? default(long) };
-
-            foreach (string s in item.ext_abilities)
-            {
-                if (string.IsNullOrEmpty(s)) continue;
-
-                AbilityVO vo = new AbilityVO { Name = s, Type = 1 };
-                //var ret = _ability.FindOrCreate(vo);
-
-                var ret = _ability.FindByExactName(s, 1);
-
-                if (ret == null)
-                    ret = _ability.Create(vo);
-
-                h.id_b = ret.Id ?? default(long);
-                _heroeAbility.Create(h);
-            }
-        }
-
-        private void CreateHeroeCounters(ref McocHeroeRequest item, ref HeroeVO createdItem)
-        {
-            HeroeAbility h = new HeroeAbility { id_a = createdItem.Id ?? default(long) };
-
-            foreach (string s in item.counters)
-            {
-                if (string.IsNullOrEmpty(s)) continue;
-
-                AbilityVO vo = new AbilityVO { Name = s, Type = 2 };
-                //var ret = _ability.FindOrCreate(vo);
-
-                var ret = _ability.FindByExactName(s, 2);
-
-                if (ret == null)
-                    ret = _ability.Create(vo);
-
-                h.id_b = ret.Id ?? default(long);
-                _heroeAbility.Create(h);
-            }
-        }
+               
 
     }
 }

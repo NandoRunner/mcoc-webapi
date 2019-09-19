@@ -13,15 +13,10 @@ namespace WebApi.Business.Implementattions
     {
         private readonly IRepositoryInter<HeroeHashtag, Heroe, Hashtag> _repository;
 
-        //private readonly IViewRepository<_vw_mc_ator> _vrep;
-
-
         public HeroeHashtagBusinessImpl(IRepositoryInter<HeroeHashtag, Heroe, Hashtag> repository
-            //, IViewRepository<_vw_mc_ator> vrep
             )
         {
             _repository = repository;
-            //_vrep = vrep;
         }
 
         public HeroeHashtag Create(HeroeHashtag mccHeroeHashtag)

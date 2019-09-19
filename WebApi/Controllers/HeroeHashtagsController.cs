@@ -13,11 +13,11 @@ namespace WebApi.Controllers
     public class HeroeHashtagsController : Controller
     {
         //Declaração do serviço usado
-        private IHeroeHashtagBusiness _mccBusiness;
+        private IHeroeHashtagBusiness _business;
         
         public HeroeHashtagsController(IHeroeHashtagBusiness itemBusiness)
         {
-            _mccBusiness = itemBusiness;
+            _business = itemBusiness;
         }
 
         //Get sem parâmetros para o FindAll --> Busca Todos
@@ -28,7 +28,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(401)]
         public IActionResult Get()
         {
-            return Ok(_mccBusiness.FindAll());
+            return Ok(_business.FindAll());
         }
         
         [HttpGet("[action]/{id_b}")]
@@ -38,7 +38,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(401)]
         public IActionResult GetA(long id_b)
         {
-            var item = _mccBusiness.FindByIdA(id_b);
+            var item = _business.FindByIdA(id_b);
             if (item == null) return NotFound();
             return Ok(item);
         }
@@ -51,7 +51,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(401)]
         public IActionResult GetB(long id_a)
         {
-            var item = _mccBusiness.FindByIdB(id_a);
+            var item = _business.FindByIdB(id_a);
             if (item == null) return NotFound();
             return Ok(item);
         }
@@ -64,7 +64,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(401)]
         public IActionResult GetObjectA(long id_b)
         {
-            var item = _mccBusiness.FindObjectA(id_b);
+            var item = _business.FindObjectA(id_b);
             if (item == null) return NotFound();
             return Ok(item);
         }
@@ -77,7 +77,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(401)]
         public IActionResult GetObjectB(long id_a)
         {
-            var item = _mccBusiness.FindObjectB(id_a);
+            var item = _business.FindObjectB(id_a);
             if (item == null) return NotFound();
             return Ok(item);
         }
@@ -90,7 +90,7 @@ namespace WebApi.Controllers
         public IActionResult Post([FromBody]HeroeHashtag item)
         {
             if (item == null) return BadRequest();
-            return new  ObjectResult(_mccBusiness.Create(item));
+            return new  ObjectResult(_business.Create(item));
         }
 
 

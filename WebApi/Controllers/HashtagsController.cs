@@ -14,13 +14,13 @@ namespace WebApi.Controllers
     public class HashtagsController : Controller
     {
         //Declaração do serviço usado
-        private IHashtagBusiness _mccBusiness;
+        private IHashtagBusiness _business;
 
         /* Injeção de uma instancia de IMccHashtagBusiness ao criar
         uma instancia de Controller */
         public HashtagsController(IHashtagBusiness itemBusiness)
         {
-            _mccBusiness = itemBusiness;
+            _business = itemBusiness;
         }
    
         //Get sem parâmetros para o FindAll --> Busca Todos
@@ -29,11 +29,10 @@ namespace WebApi.Controllers
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
-        //[Authorize("Bearer")]
         //[TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Get()
         {
-            return new OkObjectResult(_mccBusiness.FindAll());
+            return new OkObjectResult(_business.FindAll());
         }
         
         [HttpGet("{id}")]
@@ -44,7 +43,7 @@ namespace WebApi.Controllers
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Get(long id)
         {
-            var item = _mccBusiness.FindById(id);
+            var item = _business.FindById(id);
             if (item == null) return NotFound();
             return new OkObjectResult(item);
         }
@@ -57,7 +56,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(401)]
         public IActionResult GetByName(string name)
         {
-            var ret = _mccBusiness.FindByName(name);
+            var ret = _business.FindByName(name);
             if (ret == null) return NotFound();
             return Ok(ret);
         }
@@ -70,7 +69,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(401)]
         public IActionResult GetByExactName(string name)
         {
-            var ret = _mccBusiness.FindByExactName(name);
+            var ret = _business.FindByExactName(name);
             if (ret == null) return NotFound();
             return Ok(ret);
         }
@@ -84,7 +83,7 @@ namespace WebApi.Controllers
         public IActionResult Post([FromBody]HashtagVO item)
         {
             if (item == null) return BadRequest();
-            var createdItem = _mccBusiness.Create(item);
+            var createdItem = _business.Create(item);
             if (createdItem == null) return BadRequest();
             return new OkObjectResult(createdItem);
         }
@@ -102,7 +101,7 @@ namespace WebApi.Controllers
             bool bok = false;
             foreach(HashtagVO i in item)
             {
-                if (_mccBusiness.Create(i) != null)
+                if (_business.Create(i) != null)
                 {
                     bok = true;
                 }
@@ -120,7 +119,7 @@ namespace WebApi.Controllers
         public IActionResult Put([FromBody]HashtagVO item)
         {
             if (item == null) return BadRequest();
-            var updatedItem = _mccBusiness.Update(item);
+            var updatedItem = _business.Update(item);
             if (updatedItem == null) return NoContent(); 
             return new OkObjectResult(updatedItem);
         }
@@ -133,7 +132,7 @@ namespace WebApi.Controllers
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Delete(int id)
         {
-            _mccBusiness.Delete(id);
+            _business.Delete(id);
             return NoContent();
         }
     }
