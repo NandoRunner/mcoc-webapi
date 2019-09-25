@@ -5,6 +5,7 @@ using WebApi.Data.VO;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
+using WebApi.Model;
 
 namespace WebApi.Controllers
 {
@@ -30,9 +31,9 @@ namespace WebApi.Controllers
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
         //[TypeFilter(typeof(HyperMediaFilter))]
-        public IActionResult Get()
+        public IActionResult Get(int type = (int)enAbility.all)
         {
-            return new OkObjectResult(_business.FindAll());
+            return new OkObjectResult(_business.FindAll((enAbility)type));
         }
         
         [HttpGet("{id}")]
@@ -67,9 +68,9 @@ namespace WebApi.Controllers
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
-        public IActionResult GetByExactName(string name)
+        public IActionResult GetByExactName(string name, int type = (int)enAbility.all)
         {
-            var ret = _business.FindByExactName(name);
+            var ret = _business.FindByExactName(name, (enAbility)type);
             if (ret == null) return NotFound();
             return Ok(ret);
         }

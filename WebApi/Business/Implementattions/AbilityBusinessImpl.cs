@@ -44,14 +44,14 @@ namespace WebApi.Business.Implementattions
             return _converter.ParseList(_repository.FindByName(name));
         }
 
-        public AbilityVO FindByExactName(string name, int type = -1)
+        public AbilityVO FindByExactName(string name, enAbility type = enAbility.all)
         {
             return _converter.Parse(_repository.FindByExactName(name, type));
         }
 
-        public List<AbilityVO> FindAll()
+        public List<AbilityVO> FindAll(enAbility type)
         {
-            return _converter.ParseList(_repository.FindAll());
+            return _converter.ParseList(_repository.FindAllAbility(type));
         }
 
         public AbilityVO Update(AbilityVO item)

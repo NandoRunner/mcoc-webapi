@@ -16,10 +16,13 @@ namespace WebApi.Repository.Generic
         List<T> FindByName(string name);
         T FindByExactName(string name);
 
-        Ability FindByExactName(string name, int type = -1);
+        Ability FindByExactName(string name, enAbility type);
 
         List<T> FindAll();
+
+        List<Heroe> FindByNameHeroe(string name, enHeroeClass heroe_class);
         List<Heroe> FindAllHeroe(enHeroeClass heroe_class);
+        List<Ability> FindAllAbility(enAbility type);
 
         T Update(T item);
         void Delete(long id);

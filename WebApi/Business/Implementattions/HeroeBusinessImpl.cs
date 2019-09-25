@@ -39,9 +39,9 @@ namespace WebApi.Business.Implementattions
             return _converter.Parse(_repository.FindById(id));
         }
 
-        public List<HeroeVO> FindByName(string name)
+        public List<HeroeVO> FindByName(string name, enHeroeClass heroe_class)
         {
-            return _converter.ParseList(_repository.FindByName(name));
+            return _converter.ParseList(_repository.FindByNameHeroe(name, heroe_class));
         }
 
         public HeroeVO FindByExactName(string name)

@@ -64,9 +64,9 @@ namespace WebApi.Controllers
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
-        public IActionResult GetByName(string name)
+        public IActionResult GetByName(string name, int heroe_class = (int)enHeroeClass.ALL)
         {
-            var ret = _business.FindByName(name);
+            var ret = _business.FindByName(name, (enHeroeClass)heroe_class);
             if (ret == null) return NotFound();
             return Ok(ret);
         }

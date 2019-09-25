@@ -92,7 +92,7 @@ namespace WebApi.Controllers
                 if (string.IsNullOrEmpty(s)) continue;
 
                 AbilityVO vo = new AbilityVO { Name = s, Type = type };
-                var ret = _ability.FindByExactName(vo.Name, vo.Type);
+                var ret = _ability.FindByExactName(vo.Name, (enAbility)vo.Type);
                 
                 if (ret.Id == null) ret = _ability.Create(vo);
 

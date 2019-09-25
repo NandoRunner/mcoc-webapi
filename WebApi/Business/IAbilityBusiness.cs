@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using WebApi.Data.VO;
-
+using WebApi.Model;
 
 namespace WebApi.Business
 {
@@ -10,8 +10,8 @@ namespace WebApi.Business
         AbilityVO Create(AbilityVO item);
         AbilityVO FindById(long id);
         List<AbilityVO> FindByName(string name);
-        AbilityVO FindByExactName(string name, int type = -1);
-        List<AbilityVO> FindAll();
+        AbilityVO FindByExactName(string name, enAbility type);
+        List<AbilityVO> FindAll(enAbility type);
 
         AbilityVO Update(AbilityVO item);
         void Delete(long id);

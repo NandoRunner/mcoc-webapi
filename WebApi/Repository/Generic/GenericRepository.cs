@@ -101,6 +101,21 @@ namespace WebApi.Repository.Generic
             }
         }
 
+        public List<Ability> FindAllAbility(enAbility type)
+        {
+
+            DbSet<Ability> dsAbility = _context.Set<Ability>();
+
+            if (((enAbility)type) == enAbility.all)
+            {
+                return dsAbility.OrderBy(a => a.name).ToList();
+            }
+            else
+            {
+                return dsAbility.Where(a => a.type == (int)type).OrderBy(a => a.name).ToList();
+            }
+        }
+
         public T FindById(long id)
         {
             return dataset.SingleOrDefault(p => p.id.Equals(id));
@@ -118,16 +133,30 @@ namespace WebApi.Repository.Generic
             }
         }
 
+        public List<Heroe> FindByNameHeroe(string name, enHeroeClass heroe_class)
+        {
+            DbSet<Heroe> dsHeroe = _context.Set<Heroe>();
+
+            if (((enHeroeClass)heroe_class) == enHeroeClass.ALL)
+            {
+                return dsHeroe.Where(a => a.name.Contains(name)).OrderBy(a => a.name).ToList();
+            }
+            else
+            {
+                return dsHeroe.Where(a => a.heroe_class == (int)heroe_class).Where(a => a.name.Contains(name)).OrderBy(a => a.name).ToList();
+            }
+        }
+
         public T FindByExactName(string name)
         {
             return dataset.SingleOrDefault(p => p.name.Equals(name));
         }
 
-        public Ability FindByExactName(string name, int type = -1)
+        public Ability FindByExactName(string name, enAbility type)
         {
             DbSet<Ability> ds = _context.Set<Ability>();
 
-            var ret = ds.SingleOrDefault(p => p.name.Equals(name) && (type == -1 || p.type == type));
+            var ret = ds.SingleOrDefault(p => p.name.Equals(name) && (((enAbility)type) == enAbility.all || p.type == (int)type));
 
             return ret;
         }
