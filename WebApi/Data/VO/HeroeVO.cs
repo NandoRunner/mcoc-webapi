@@ -12,5 +12,13 @@ namespace WebApi.Data.VO
         [DataMember(Order = 3)]
         public int heroe_class { get; set; }
 
+        [DataMember(Order = 4)]
+        public DateTime ?release_date { get; set; }
+
+        [DataMember(Order = 5)]
+        public string info_page { get; set; }
+
+                [DataMember(Order = 6)]
+        public string stars { get; set; }
     }
 }

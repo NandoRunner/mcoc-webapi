@@ -52,8 +52,22 @@ namespace WebApi.Controllers
             HeroeVO h = new HeroeVO
             {
                 Name = item.name,
-                heroe_class = nvc[item.heroe_class]
+                heroe_class = nvc[item.heroe_class],
+                release_date = item.released,
+                info_page = item.infopage,
+                stars = item.stars
             };
+
+            var exact_name = _heroe.FindByExactName(item.name);
+
+            if (exact_name != null)
+            {
+                h.Id = exact_name.Id;
+
+                var updatedItem = _heroe.Update(h);
+                if (updatedItem == null) return NoContent();
+                return Ok();
+            }
 
             var createdItem = _heroe.FindOrCreate(h);
             if (createdItem == null) return BadRequest();
