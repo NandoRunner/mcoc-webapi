@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using WebApi.Model;
 using System.Threading;
 using WebApi.Model.Context;

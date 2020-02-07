@@ -5,6 +5,10 @@
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
     <UserSecretsId>ddf76c05-49ec-40e4-8d8f-39cdbf6be114</UserSecretsId>
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+    <Authors>NandoRunner</Authors>
+    <Version>1.20.1</Version>
+    <AssemblyVersion>1.20.1.0</AssemblyVersion>
+    <FileVersion>1.20.1.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
