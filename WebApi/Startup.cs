@@ -11,19 +11,17 @@ using WebApi.Business.Implementattions;
 using WebApi.Repository;
 using WebApi.Repository.Implementattions;
 using WebApi.Model.Context;
-using Microsoft.EntityFrameworkCore;
 using WebApi.Repository.Generic;
 using Microsoft.Net.Http.Headers;
 using Tapioca.HATEOAS;
 using WebApi.HyperMedia;
-using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using WebApi.Security.Configuration;
 using Microsoft.Extensions.Options;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Cors.Infrastructure;
-using WebApi.Model.Base;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
+using Microsoft.Extensions.Hosting;
 
 namespace WebApi
 {
@@ -31,9 +29,9 @@ namespace WebApi
     {
         private readonly ILogger _logger;
         public IConfiguration _configuration { get; }
-        public IHostingEnvironment _environment { get; }
+        public IWebHostEnvironment _environment { get; }
 
-        public Startup(IConfiguration configuration, IHostingEnvironment environment, ILogger<Startup> logger)
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment, ILogger<Startup> logger)
         {
             _configuration = configuration;
             _environment = environment;
@@ -43,6 +41,8 @@ namespace WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+           
+
             // CORS 
             services.AddCors(c =>
             {
@@ -105,6 +105,8 @@ namespace WebApi
                 //options.RespectBrowserAcceptHeader = true;
                 options.FormatterMappings.SetMediaTypeMappingForFormat("json", MediaTypeHeaderValue.Parse("application/json"));
                 options.FormatterMappings.SetMediaTypeMappingForFormat("xml", MediaTypeHeaderValue.Parse("text/xml"));
+                options.EnableEndpointRouting = false;
+
             })
             .AddXmlSerializerFormatters();
 
@@ -127,7 +129,7 @@ namespace WebApi
             services.AddSwaggerGen( c =>
             {
                 c.SwaggerDoc("v1",
-                    new Info
+                    new OpenApiInfo
                     {
                         Title = "Mcoc Library",
                         Version = "v1"
@@ -170,10 +172,10 @@ namespace WebApi
                     var evolveConnection = new MySql.Data.MySqlClient.MySqlConnection(strconn);
                     var evolve = new Evolve.Evolve("evolve.json", evolveConnection, msg => _logger.LogInformation(msg))
                     {
-                        Locations = new List<string> { "fandradetecinfo.utils/db/migrations" },
+                        Locations = new List<string> { "db/migrations" },
                         IsEraseDisabled = true,
                     };
-
+                    
                     evolve.Migrate();
                 }
                 catch (Exception ex)
@@ -185,10 +187,13 @@ namespace WebApi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole(_configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
+            LoggerFactory.Create(builder =>
+            {
+                builder.AddConfiguration(_configuration.GetSection("Logging"));
+                builder.AddDebug();
+            });
 
             //app.UseCors("AllowAnyOrigin");
 
@@ -197,7 +202,7 @@ namespace WebApi
 
             app.UseSwaggerUI(c =>
             {
-#if DEBUG
+#if !DEBUG
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mcoc Library API v1");
 #else
                    // To deploy on IIS

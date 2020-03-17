@@ -163,7 +163,7 @@ namespace WebApi.Repository.Generic
 
         public List<T> FindWithPagedSearch(string query)
         {
-            return dataset.FromSql<T>(query).ToList();
+            return dataset.FromSqlRaw<T>(query).ToList();
         }
 
         public int GetCount(string query)

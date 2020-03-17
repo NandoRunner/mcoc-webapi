@@ -60,7 +60,7 @@ namespace WebApi.Controllers
 
             var exact_name = _heroe.FindByExactName(item.name);
 
-            if (exact_name != null)
+            if (exact_name.Name != null)
             {
                 h.Id = exact_name.Id;
 
@@ -72,7 +72,7 @@ namespace WebApi.Controllers
             var createdItem = _heroe.FindOrCreate(h);
             if (createdItem == null) return BadRequest();
 
-            this.CreateHeroeHashtag(ref item, ref createdItem);
+            this.CreateHeroeHashtag(item.hashtags, ref createdItem);
             this.CreateHeroeAbilities(item.abilities, ref createdItem, 0);
             this.CreateHeroeAbilities(item.ext_abilities, ref createdItem, 1);
             this.CreateHeroeAbilities(item.counters, ref createdItem, 2);
@@ -80,11 +80,11 @@ namespace WebApi.Controllers
             return Ok();
         }
 
-        private void CreateHeroeHashtag(ref McocHeroeRequest item, ref HeroeVO createdItem)
+        private void CreateHeroeHashtag(List<string> list, ref HeroeVO createdItem)
         { 
             HeroeHashtag h = new HeroeHashtag { id_a = createdItem.Id ?? default(long) };
 
-            foreach (string s in item.hashtags)
+            foreach (string s in list)
             {
                 if (string.IsNullOrEmpty(s)) continue;
 
@@ -95,7 +95,6 @@ namespace WebApi.Controllers
                 _heroeHashtag.Create(h);
             }
         }
-
 
         private void CreateHeroeAbilities(List<string> list, ref HeroeVO createdItem, int type)
         {
