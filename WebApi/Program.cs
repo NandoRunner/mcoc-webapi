@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace WebApi
 {
@@ -7,7 +9,11 @@ namespace WebApi
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+           
+            var host = BuildWebHost(args);
+            var logger = host.Services.GetRequiredService<ILogger<Program>>();
+            logger.LogInformation("Main");
+            host.Run();
         }
 
         public static IWebHost BuildWebHost(string[] args) =>

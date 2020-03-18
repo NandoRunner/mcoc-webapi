@@ -22,21 +22,29 @@ using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.Hosting;
+//using NLog;
+using System.IO;
+using McocApi.Util;
 
 namespace WebApi
 {
     public class Startup
     {
-        private readonly ILogger _logger;
+        private readonly Microsoft.Extensions.Logging.ILogger _logger;
         public IConfiguration _configuration { get; }
         public IWebHostEnvironment _environment { get; }
 
-        public Startup(IConfiguration configuration, IWebHostEnvironment environment, ILogger<Startup> logger)
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment, Microsoft.Extensions.Logging.ILogger<Startup> logger)
         {
             _configuration = configuration;
             _environment = environment;
             _logger = logger;
+
+            NLog.LogManager.LoadConfiguration(System.String.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
+            Configuration = _configuration;
         }
+
+        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -58,6 +66,9 @@ namespace WebApi
 
             var signingConfigurations = new SigningConfigurations();
             services.AddSingleton(signingConfigurations);
+
+            //todo: testar addScoped
+            services.AddSingleton<ILog, LogNLog>();
 
             var tokenConfigurations = new TokenConfiguration();
 

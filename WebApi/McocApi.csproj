@@ -7,12 +7,16 @@
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
     <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
     <RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
-    <Version>1.0.0.1</Version>
+    <Version>1.0.2.0</Version>
     <AssemblyName>McocApi</AssemblyName>
+    <Company>FAndrade TecInfo</Company>
+    <Authors>NandoRunner</Authors>
+    <AssemblyVersion>1.0.2.0</AssemblyVersion>
+    <FileVersion>1.0.2.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>TRACE;NO_OFFICE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;NO_OFFICE</DefineConstants>
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
 
@@ -57,6 +61,8 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.10" />
     <PackageReference Include="MySql.Data" Version="8.0.15" />
     <PackageReference Include="NETStandard.Library" Version="2.0.3" />
+    <PackageReference Include="NLog.Extended" Version="4.6.8" />
+    <PackageReference Include="NLog.Extensions.Logging" Version="1.6.2" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.1.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.1.0" />

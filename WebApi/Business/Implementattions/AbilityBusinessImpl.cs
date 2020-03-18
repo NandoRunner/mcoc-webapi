@@ -30,7 +30,15 @@ namespace WebApi.Business.Implementattions
         public AbilityVO Create(AbilityVO item)
         {
             var ent = _converter.Parse(item);
-            ent = _repository.CreateAbility(ent);
+            try
+            {
+                ent = _repository.CreateAbility(ent);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
             return _converter.Parse(ent);
         }
 

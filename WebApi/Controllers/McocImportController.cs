@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System;
 using WebApi.Integrations.Model;
+using McocApi.Util;
 
 namespace WebApi.Controllers
 {
@@ -20,17 +21,19 @@ namespace WebApi.Controllers
         private IHashtagBusiness _hashtag;
         private IHeroeHashtagBusiness _heroeHashtag;
         private IHeroeAbilityBusiness _heroeAbility;
+        private ILog _logger;
 
-        private Dictionary<string,int> nvc;
+        private Dictionary<string, int> nvc;
 
-        public McocImportController(IHeroeBusiness hBusiness, IAbilityBusiness abBusiness, 
-            IHashtagBusiness htBusiness, IHeroeHashtagBusiness hhtBusiness, IHeroeAbilityBusiness habBusiness)
+        public McocImportController(IHeroeBusiness hBusiness, IAbilityBusiness abBusiness,
+            IHashtagBusiness htBusiness, IHeroeHashtagBusiness hhtBusiness, IHeroeAbilityBusiness habBusiness, ILog logger)
         {
             _heroe = hBusiness;
             _ability = abBusiness;
             _hashtag = htBusiness;
             _heroeHashtag = hhtBusiness;
             _heroeAbility = habBusiness;
+            _logger = logger;
 
             nvc = new Dictionary<string, int>
             {
@@ -81,18 +84,30 @@ namespace WebApi.Controllers
         }
 
         private void CreateHeroeHashtag(List<string> list, ref HeroeVO createdItem)
-        { 
+        {
             HeroeHashtag h = new HeroeHashtag { id_a = createdItem.Id ?? default(long) };
 
+            var errou = false;
             foreach (string s in list)
             {
                 if (string.IsNullOrEmpty(s)) continue;
 
-                HashtagVO vo = new HashtagVO { Name = s };
-                var ret = _hashtag.FindOrCreate(vo);
-
-                h.id_b = ret.Id ?? default(long);
-                _heroeHashtag.Create(h);
+                HashtagVO vo = new HashtagVO { Name = s.ToLower() };
+                try
+                {
+                    var ret = _hashtag.FindOrCreate(vo);
+                    h.id_b = ret.Id ?? default(long);
+                    _heroeHashtag.Create(h);
+                }
+                catch
+                {
+                    if (!errou)
+                    {
+                        _logger.Information("> " + createdItem.Name + " - Hashtag");
+                        errou = true;
+                    }
+                    _logger.Error(s);
+                }
             }
         }
 
@@ -100,20 +115,33 @@ namespace WebApi.Controllers
         {
             HeroeAbility h = new HeroeAbility { id_a = createdItem.Id ?? default(long) };
 
+            var errou = false; 
             foreach (string s in list)
             {
                 if (string.IsNullOrEmpty(s)) continue;
 
-                AbilityVO vo = new AbilityVO { Name = s, Type = type };
-                var ret = _ability.FindByExactName(vo.Name, (enAbility)vo.Type);
-                
-                if (ret.Id == null) ret = _ability.Create(vo);
+                AbilityVO vo = new AbilityVO { Name = s.ToLower(), Type = type };
+                try
+                {
+                    var ret = _ability.FindByExactName(vo.Name, (enAbility)vo.Type);
 
-                h.id_b = ret.Id ?? default(long);
-                _heroeAbility.Create(h);
+                    if (ret.Id == null) ret = _ability.Create(vo);
+
+                    h.id_b = ret.Id ?? default(long);
+                    _heroeAbility.Create(h);
+                }
+                catch
+                {
+                    if (!errou)
+                    {
+                        _logger.Information("> " + createdItem.Name + " - Ability " + type.ToString());
+                        errou = true;
+                    }
+                    _logger.Error(s);
+                }
             }
         }
-               
+
 
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using McocApi.Util;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +12,16 @@ namespace WebApi.Repository.Generic
 {
     public class GenericRepository<T> : IRepository<T> where T : BaseEntity
     {
+        private ILog _logger;
+
         private readonly MySQLContext _context;
         private DbSet<T> dataset;
 
-        public GenericRepository(MySQLContext context)
+        public GenericRepository(MySQLContext context, ILog logger)
         {
             _context = context;
             dataset = _context.Set<T>();
+            _logger = logger;
         }
 
         public T FindOrCreate(T item)
@@ -26,7 +30,17 @@ namespace WebApi.Repository.Generic
 
             if (ret != null)
                 return ret;
-            return Create(item);
+            try
+            {
+                return Create(item);
+                return item;
+            }
+            catch (Exception ex)
+            {
+                //_logger.Error("FindOrCreate");
+                throw ex;
+            }
+
         }
 
         public T Create(T item)
@@ -37,12 +51,12 @@ namespace WebApi.Repository.Generic
             {
                 dataset.Add(item);
                 _context.SaveChanges();
+                return item;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            return item;
         }
 
 
@@ -124,7 +138,7 @@ namespace WebApi.Repository.Generic
         public List<T> FindByName(string name)
         {
             if (!string.IsNullOrEmpty(name))
-            { 
+            {
                 return dataset.Where(a => a.name.Contains(name)).OrderBy(a => a.name).ToList();
             }
             else

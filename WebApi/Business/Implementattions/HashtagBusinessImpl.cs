@@ -72,7 +72,15 @@ namespace WebApi.Business.Implementattions
         public HashtagVO FindOrCreate(HashtagVO item)
         {
             var ent = _converter.Parse(item);
-            ent = _repository.FindOrCreate(ent);
+            try
+            {
+                ent = _repository.FindOrCreate(ent);
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
             return _converter.Parse(ent);
         }
 
