@@ -26,7 +26,6 @@
 
   <ItemGroup>
     <Content Remove="appsettings-dev.Development.json" />
-    <Content Remove="appsettings-dev.json" />
     <Content Remove="Evolve - Dev.json" />
   </ItemGroup>
 

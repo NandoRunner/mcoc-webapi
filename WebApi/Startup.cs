@@ -206,8 +206,6 @@ namespace WebApi
                 builder.AddDebug();
             });
 
-            //app.UseCors("AllowAnyOrigin");
-
             //Enable Swagger
             app.UseSwagger();
 

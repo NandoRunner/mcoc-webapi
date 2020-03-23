@@ -1,6 +1,6 @@
 {
   "Evolve.Driver": "MySQL.Data",
-  "Evolve.ConnectionString": "",
+  "Evolve.ConnectionString": "Server=;DataBase=;Uid=;Pwd=;persistsecurityinfo=True;",
   "Evolve.Locations": "db",
   "Evolve.Command": "migrate",
   "Evolve.Placeholder.table4": "table_4"
