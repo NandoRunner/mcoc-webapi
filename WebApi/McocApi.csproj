@@ -7,12 +7,15 @@
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
     <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
     <RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
-    <Version>1.0.2.0</Version>
+    <Version>1.20.0.1</Version>
     <AssemblyName>McocApi</AssemblyName>
     <Company>FAndrade TecInfo</Company>
-    <Authors>NandoRunner</Authors>
-    <AssemblyVersion>1.0.2.0</AssemblyVersion>
-    <FileVersion>1.0.2.0</FileVersion>
+    <Authors>Fernando Andrade</Authors>
+    <AssemblyVersion>1.20.0.1</AssemblyVersion>
+    <FileVersion>1.20.0.1</FileVersion>
+    <PackageId>McoLib.Api</PackageId>
+    <Product>Mcoc Lib Api</Product>
+    <Copyright>Copyright © FAndrade TecInfo 2018-2020</Copyright>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -43,14 +46,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Evolve" Version="1.8.0" />
+    <PackageReference Include="Evolve" Version="2.4.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Analyzers" Version="3.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Analyzers" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Xml" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Razor" Version="2.2.0" />
-	<PackageReference Include="Microsoft.AspNetCore.Razor.Language" Version="2.2.0" />
+	<PackageReference Include="Microsoft.AspNetCore.Razor.Language" Version="3.1.2" />
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -63,8 +66,8 @@
     <PackageReference Include="NLog.Extended" Version="4.6.8" />
     <PackageReference Include="NLog.Extensions.Logging" Version="1.6.2" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.1" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.1.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.2.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.2.1" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.6.0" />
     <PackageReference Include="Tapioca.HATEOAS" Version="1.0.4" />
   </ItemGroup>

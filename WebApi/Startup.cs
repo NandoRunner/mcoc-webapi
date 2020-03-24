@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Rewrite;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using WebApi.Business;
@@ -11,20 +10,21 @@ using WebApi.Business.Implementattions;
 using WebApi.Repository;
 using WebApi.Repository.Implementattions;
 using WebApi.Model.Context;
+using Microsoft.EntityFrameworkCore;
 using WebApi.Repository.Generic;
 using Microsoft.Net.Http.Headers;
 using Tapioca.HATEOAS;
 using WebApi.HyperMedia;
+using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using WebApi.Security.Configuration;
 using Microsoft.Extensions.Options;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.Hosting;
-//using NLog;
-using System.IO;
 using McocApi.Util;
+using System.IO;
 
 namespace WebApi
 {
@@ -49,8 +49,6 @@ namespace WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-           
-
             // CORS 
             services.AddCors(c =>
             {
@@ -181,7 +179,7 @@ namespace WebApi
                 {
                     //var devconn = _configuration["MySqlConnection:MySqlConnectionString"];
                     var evolveConnection = new MySql.Data.MySqlClient.MySqlConnection(strconn);
-                    var evolve = new Evolve.Evolve("evolve.json", evolveConnection, msg => _logger.LogInformation(msg))
+                    var evolve = new Evolve.Evolve(evolveConnection, msg => _logger.LogInformation(msg))
                     {
                         Locations = new List<string> { "db/migrations" },
                         IsEraseDisabled = true,
