@@ -29,8 +29,15 @@ namespace WebApi.Model.Context
 
         public DbSet<FileRenamer> FileRenamers { get; set; }
 
+        public DbSet<HeroePerClass> vwHeroePerClass { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<HeroePerClass>()
+                .Property<int>("name").HasColumnName("class");
+            modelBuilder.Entity<HeroePerClass>()
+            .HasKey(c => new { c.name });
+
             modelBuilder.Entity<Heroe>()
                 .Property<int>("heroe_class").HasColumnName("class");
 

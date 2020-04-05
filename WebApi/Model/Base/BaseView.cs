@@ -7,26 +7,14 @@ using System.Threading.Tasks;
 
 namespace WebApi.Model.Base
 {
-    //[DataContract]
+    [DataContract]
     public class BaseView
     {
-        [Key]
-        public string nome { get; set; }
+        [DataMember(Order = 1)]
+        public int name { get; set; }
 
-        public long filmes { get; set; }
-    }
-
-
-    public class BaseViewMovie
-    {
-        [Key]
-        public long id { get; set; }
-
-        public string titulo { get; set; }
-
-        public long ano { get; set; }
-
-        public decimal rating { get; set; }
+        [DataMember(Order = 3)]
+        public long qty { get; set; }
     }
 
 }

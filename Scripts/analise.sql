@@ -15,8 +15,8 @@ select
 	307		63		148		905				1263
 */
 
-truncate table marvel_heroe_hashtag;
-truncate table marvel_heroe_ability;
+delete from marvel_heroe_hashtag;
+delete from marvel_heroe_ability;
 delete from marvel_ability;
 delete from marvel_hashtag;
 delete from marvel_heroe;

@@ -15,14 +15,15 @@ namespace WebApi.Business.Implementattions
     {
         private readonly IRepository<Heroe> _repository;
 
+        private readonly IViewRepository<HeroePerClass> _repview;
+
         private readonly HeroeConverter _converter;
 
 
-        public HeroeBusinessImpl(IRepository<Heroe> repository
-            //, IViewRepository<_vw_mc_ator> vrep
-            )
+        public HeroeBusinessImpl(IRepository<Heroe> repository, IViewRepository<HeroePerClass> repview)
         {
             _repository = repository;
+            _repview = repview;
             _converter = new HeroeConverter();
             //_vrep = vrep;
         }
@@ -71,6 +72,11 @@ namespace WebApi.Business.Implementattions
             var ent = _converter.Parse(item);
             ent = _repository.FindOrCreate(ent);
             return _converter.Parse(ent);
+        }
+
+        public List<HeroePerClass> FindAll()
+        {
+            return _repview.FindAll();
         }
     }
 }

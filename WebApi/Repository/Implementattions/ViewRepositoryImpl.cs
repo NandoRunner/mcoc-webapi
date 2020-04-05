@@ -1,6 +1,8 @@
 ﻿using WebApi.Model.Context;
 using WebApi.Model.Base;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace WebApi.Repository.Implementattions
 {
@@ -14,9 +16,12 @@ namespace WebApi.Repository.Implementattions
             _context = context;
             dataset = _context.Set<T>();
         }
-        
 
 
-       
+        public List<T> FindAll()
+        {
+            return dataset.OrderBy(a => a.name).ToList();
+        }
+
     }
 }

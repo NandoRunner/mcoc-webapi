@@ -145,5 +145,23 @@ namespace WebApi.Controllers
             _business.Delete(id);
             return NoContent();
         }
+
+        [Route("[action]")]
+        [HttpGet]
+        [ProducesResponseType(typeof(List<HeroePerClass>), 200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
+        //[TypeFilter(typeof(HyperMediaFilter))]
+        public IActionResult GetHeroeCountPerClass()
+        {
+            //return new OkObjectResult(_mccBusiness.FindAll());
+
+            var ret = _business.FindAll();
+            if (ret == null) return NotFound();
+              return Ok(ret);
+
+
+        }
     }
 }

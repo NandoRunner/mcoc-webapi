@@ -16,6 +16,8 @@ namespace WebApi.Business
         HeroeVO Update(HeroeVO item);
         void Delete(long id);
 
+        List<HeroePerClass> FindAll();
+
         //List<_vw_mc_ator> FindMovieCount(enMovieCount order);
     }
 }
