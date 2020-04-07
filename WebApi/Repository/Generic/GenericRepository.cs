@@ -33,7 +33,6 @@ namespace WebApi.Repository.Generic
             try
             {
                 return Create(item);
-                return item;
             }
             catch (Exception ex)
             {
@@ -100,18 +99,18 @@ namespace WebApi.Repository.Generic
             return dataset.OrderBy(a => a.name).ToList();
         }
 
-        public List<Heroe> FindAllHeroe(enHeroeClass heroe_class)
+        public List<Heroe> FindAllHeroe(enHeroeClass heroeClass)
         {
 
             DbSet<Heroe> dsHeroe = _context.Set<Heroe>();
 
-            if (((enHeroeClass)heroe_class) == enHeroeClass.ALL)
+            if (((enHeroeClass)heroeClass) == enHeroeClass.ALL)
             {
                 return dsHeroe.OrderBy(a => a.name).ToList();
             }
             else
             {
-                return dsHeroe.Where(a => a.heroe_class == (int)heroe_class).OrderBy(a => a.name).ToList();
+                return dsHeroe.Where(a => a.heroeClass == (int)heroeClass).OrderBy(a => a.name).ToList();
             }
         }
 
@@ -147,17 +146,17 @@ namespace WebApi.Repository.Generic
             }
         }
 
-        public List<Heroe> FindByNameHeroe(string name, enHeroeClass heroe_class)
+        public List<Heroe> FindByNameHeroe(string name, enHeroeClass heroeClass)
         {
             DbSet<Heroe> dsHeroe = _context.Set<Heroe>();
 
-            if (((enHeroeClass)heroe_class) == enHeroeClass.ALL)
+            if (((enHeroeClass)heroeClass) == enHeroeClass.ALL)
             {
                 return dsHeroe.Where(a => a.name.Contains(name)).OrderBy(a => a.name).ToList();
             }
             else
             {
-                return dsHeroe.Where(a => a.heroe_class == (int)heroe_class).Where(a => a.name.Contains(name)).OrderBy(a => a.name).ToList();
+                return dsHeroe.Where(a => a.heroeClass == (int)heroeClass).Where(a => a.name.Contains(name)).OrderBy(a => a.name).ToList();
             }
         }
 

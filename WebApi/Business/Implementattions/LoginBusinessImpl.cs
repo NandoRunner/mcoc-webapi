@@ -24,12 +24,16 @@ namespace WebApi.Business.Implementattions
 
         public object FindByLogin(WebUserVO WebUser)
         {
+            if (WebUser == null) throw new ArgumentNullException(nameof(WebUser));
+
+
             bool credentialsIsValid = false;
             if (WebUser != null && !string.IsNullOrWhiteSpace(WebUser.Login))
             {
                 var baseWebUser = _repository.FindByLogin(WebUser.Login);
                 credentialsIsValid = (baseWebUser != null && WebUser.Login == baseWebUser.Login && WebUser.AccessKey == baseWebUser.AccessKey);
             }
+
             if (credentialsIsValid)
             {
                 ClaimsIdentity identity = new ClaimsIdentity(

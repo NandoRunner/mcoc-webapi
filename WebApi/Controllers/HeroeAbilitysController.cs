@@ -31,53 +31,53 @@ namespace WebApi.Controllers
             return Ok(_business.FindAll());
         }
         
-        [HttpGet("[action]/{id_b}")]
+        [HttpGet("[action]/{idObjectB}")]
         [ProducesResponseType(typeof(HeroeAbility), 200)]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
-        public IActionResult GetA(long id_b)
+        public IActionResult GetA(long idObjectB)
         {
-            var item = _business.FindByIdA(id_b);
+            var item = _business.FindByIdA(idObjectB);
             if (item == null) return NotFound();
             return Ok(item);
         }
 
-        [Route("[action]/{id_a}")]
+        [Route("[action]/{idObjectA}")]
         [HttpGet]
         [ProducesResponseType(typeof(HeroeAbility), 200)]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
-        public IActionResult GetB(long id_a)
+        public IActionResult GetB(long idObjectA)
         {
-            var item = _business.FindByIdB(id_a);
+            var item = _business.FindByIdB(idObjectA);
             if (item == null) return NotFound();
             return Ok(item);
         }
 
-        [Route("[action]/{id_b}")]
+        [Route("[action]/{idObjectB}")]
         [HttpGet]
         [ProducesResponseType(typeof(List<Heroe>), 200)]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
-        public IActionResult GetObjectA(long id_b)
+        public IActionResult GetObjectA(long idObjectB)
         {
-            var item = _business.FindObjectA(id_b);
+            var item = _business.FindObjectA(idObjectB);
             if (item == null) return NotFound();
             return Ok(item);
         }
 
-        [Route("[action]/{id_a}")]
+        [Route("[action]/{idObjectA}")]
         [HttpGet]
         [ProducesResponseType(typeof(List<Ability>), 200)]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
-        public IActionResult GetObjectB(long id_a)
+        public IActionResult GetObjectB(long idObjectA)
         {
-            var item = _business.FindObjectB(id_a);
+            var item = _business.FindObjectB(idObjectA);
             if (item == null) return NotFound();
             return Ok(item);
         }

@@ -9,8 +9,8 @@ namespace WebApi.Business
         List<HeroeHashtag> FindByIdA(long id);
         List<HeroeHashtag> FindByIdB(long id);
 
-        List<Heroe> FindObjectA(long id_b);
-        List<Hashtag> FindObjectB(long id_a);
+        List<Heroe> FindObjectA(long idObjectB);
+        List<Hashtag> FindObjectB(long idObjectA);
 
         List<HeroeHashtag> FindAll();
     }

@@ -11,9 +11,9 @@ namespace WebApi.Model.Base
     public class BaseInterEntity
     {
         [DataMember(Order = 1)]
-        public long id_a { get; set; }
+        public long idObjectA { get; set; }
 
         [DataMember(Order = 2)]
-        public long id_b { get; set; }
+        public long idObjectB { get; set; }
     }
 }

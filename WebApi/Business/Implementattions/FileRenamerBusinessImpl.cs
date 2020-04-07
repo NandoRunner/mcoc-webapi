@@ -8,7 +8,7 @@ using WebApi.Repository;
 using WebApi.Repository.Generic;
 using WebApi.Data.Converters;
 using WebApi.Data.VO;
-using WebApi.Integrations.Model;
+using WebApi.Model.Integrations;
 
 namespace WebApi.Business.Implementattions
 {

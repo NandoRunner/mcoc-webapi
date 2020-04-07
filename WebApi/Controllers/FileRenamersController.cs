@@ -5,7 +5,7 @@ using WebApi.Data.VO;
 using System.Collections.Generic;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using WebApi.Model;
-using WebApi.Integrations.Model;
+using WebApi.Model.Integrations;
 
 namespace WebApi.Controllers
 {

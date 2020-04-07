@@ -39,38 +39,38 @@ namespace WebApi.Model.Context
             .HasKey(c => new { c.name });
 
             modelBuilder.Entity<Heroe>()
-                .Property<int>("heroe_class").HasColumnName("class");
+                .Property<int>("heroeClass").HasColumnName("class");
 
             modelBuilder.Entity<HeroeHashtag>()
-                .Property<long>("id_a").HasColumnName("heroe_id");
+                .Property<long>("idObjectA").HasColumnName("heroe_id");
             modelBuilder.Entity<HeroeHashtag>()
-                .Property<long>("id_b").HasColumnName("hashtag_id");
+                .Property<long>("idObjectB").HasColumnName("hashtag_id");
             modelBuilder.Entity<HeroeHashtag>()
-                .HasKey(c => new { c.id_a, c.id_b });
+                .HasKey(c => new { c.idObjectA, c.idObjectB });
 
             modelBuilder.Entity<HeroeAbility>()
-                .Property<long>("id_a").HasColumnName("heroe_id");
+                .Property<long>("idObjectA").HasColumnName("heroe_id");
             modelBuilder.Entity<HeroeAbility>()
-                .Property<long>("id_b").HasColumnName("ability_id");
+                .Property<long>("idObjectB").HasColumnName("ability_id");
             modelBuilder.Entity<HeroeAbility>()
-                .HasKey(c => new { c.id_a, c.id_b });
+                .HasKey(c => new { c.idObjectA, c.idObjectB });
 
 
 
             modelBuilder.Entity<UserAlliance>()
-                .Property<long>("id_a").HasColumnName("user_id");
+                .Property<long>("idObjectA").HasColumnName("user_id");
             modelBuilder.Entity<UserAlliance>()
-                .Property<long>("id_b").HasColumnName("alliance_id");
+                .Property<long>("idObjectB").HasColumnName("alliance_id");
             modelBuilder.Entity<UserAlliance>()
-                .HasKey(c => new { c.id_a, c.id_b });
+                .HasKey(c => new { c.idObjectA, c.idObjectB });
 
 
             modelBuilder.Entity<UserHeroe>()
-            .Property<long>("id_a").HasColumnName("user_id");
+            .Property<long>("idObjectA").HasColumnName("user_id");
             modelBuilder.Entity<UserHeroe>()
-                .Property<long>("id_b").HasColumnName("heroe_id");
+                .Property<long>("idObjectB").HasColumnName("heroe_id");
             modelBuilder.Entity<UserHeroe>()
-                .HasKey(c => new { c.id_a, c.id_b });
+                .HasKey(c => new { c.idObjectA, c.idObjectB });
 
         }
     }

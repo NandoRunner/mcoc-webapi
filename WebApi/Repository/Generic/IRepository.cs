@@ -20,8 +20,8 @@ namespace WebApi.Repository.Generic
 
         List<T> FindAll();
 
-        List<Heroe> FindByNameHeroe(string name, enHeroeClass heroe_class);
-        List<Heroe> FindAllHeroe(enHeroeClass heroe_class);
+        List<Heroe> FindByNameHeroe(string name, enHeroeClass heroeClass);
+        List<Heroe> FindAllHeroe(enHeroeClass heroeClass);
         List<Ability> FindAllAbility(enAbility type);
 
         T Update(T item);

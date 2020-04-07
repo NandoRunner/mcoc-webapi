@@ -32,14 +32,14 @@ namespace WebApi.Controllers
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
         //[TypeFilter(typeof(HyperMediaFilter))]
-        public IActionResult Get(int heroe_class = (int)enHeroeClass.ALL)
+        public IActionResult Get(int heroeClass = (int)enHeroeClass.ALL)
         {
             //return new OkObjectResult(_mccBusiness.FindAll());
 
-            var ret = _business.FindAll((enHeroeClass)heroe_class);
+            var ret = _business.FindAll((enHeroeClass)heroeClass);
             if (ret == null) return NotFound();
             ResponseVO<HeroeVO> vr = new ResponseVO<HeroeVO>();
-            vr.server_response = ret;
+            vr.serverResponse = ret;
             return Ok(vr);
 
 
@@ -64,9 +64,9 @@ namespace WebApi.Controllers
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
-        public IActionResult GetByName(string name, int heroe_class = (int)enHeroeClass.ALL)
+        public IActionResult GetByName(string name, int heroeClass = (int)enHeroeClass.ALL)
         {
-            var ret = _business.FindByName(name, (enHeroeClass)heroe_class);
+            var ret = _business.FindByName(name, (enHeroeClass)heroeClass);
             if (ret == null) return NotFound();
             return Ok(ret);
         }

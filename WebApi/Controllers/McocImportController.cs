@@ -6,7 +6,7 @@ using WebApi.Data.VO;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System;
-using WebApi.Integrations.Model;
+using WebApi.Model.Integrations;
 using McocApi.Util;
 
 namespace WebApi.Controllers
@@ -55,9 +55,9 @@ namespace WebApi.Controllers
             HeroeVO h = new HeroeVO
             {
                 Name = item.name,
-                heroe_class = nvc[item.heroe_class],
-                release_date = item.released,
-                info_page = item.infopage,
+                heroeClass = nvc[item.heroeClass],
+                releaseDate = item.released,
+                infoPage = item.infopage,
                 stars = item.stars
             };
 
@@ -77,7 +77,7 @@ namespace WebApi.Controllers
 
             this.CreateHeroeHashtag(item.hashtags, ref createdItem);
             this.CreateHeroeAbilities(item.abilities, ref createdItem, 0);
-            this.CreateHeroeAbilities(item.ext_abilities, ref createdItem, 1);
+            this.CreateHeroeAbilities(item.extAbilities, ref createdItem, 1);
             this.CreateHeroeAbilities(item.counters, ref createdItem, 2);
 
             return Ok();
@@ -85,7 +85,7 @@ namespace WebApi.Controllers
 
         private void CreateHeroeHashtag(List<string> list, ref HeroeVO createdItem)
         {
-            HeroeHashtag h = new HeroeHashtag { id_a = createdItem.Id ?? default(long) };
+            HeroeHashtag h = new HeroeHashtag { idObjectA = createdItem.Id ?? default(long) };
 
             var errou = false;
             foreach (string s in list)
@@ -96,7 +96,7 @@ namespace WebApi.Controllers
                 try
                 {
                     var ret = _hashtag.FindOrCreate(vo);
-                    h.id_b = ret.Id ?? default(long);
+                    h.idObjectB = ret.Id ?? default(long);
                     _heroeHashtag.Create(h);
                 }
                 catch
@@ -113,7 +113,7 @@ namespace WebApi.Controllers
 
         private void CreateHeroeAbilities(List<string> list, ref HeroeVO createdItem, int type)
         {
-            HeroeAbility h = new HeroeAbility { id_a = createdItem.Id ?? default(long) };
+            HeroeAbility h = new HeroeAbility { idObjectA = createdItem.Id ?? default(long) };
 
             var errou = false; 
             foreach (string s in list)
@@ -127,7 +127,7 @@ namespace WebApi.Controllers
 
                     if (ret.Id == null) ret = _ability.Create(vo);
 
-                    h.id_b = ret.Id ?? default(long);
+                    h.idObjectB = ret.Id ?? default(long);
                     _heroeAbility.Create(h);
                 }
                 catch

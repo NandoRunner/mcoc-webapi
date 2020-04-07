@@ -9,10 +9,10 @@ namespace WebApi.Model
     public class UserAlliance : BaseInterEntity {
 
         [DataMember(Order = 3)]
-        public DateTime start_date { get; set; }
+        public DateTime startDate { get; set; }
 
         [DataMember(Order = 4)]
-        public DateTime? end_date { get; set; }
+        public DateTime? endDate { get; set; }
 
     }
 }

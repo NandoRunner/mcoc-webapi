@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using WebApi.Data.Converter;
-using WebApi.Integrations.Model;
+using WebApi.Model.Integrations;
 using WebApi.Model;
 
 namespace WebApi.Data.Converters

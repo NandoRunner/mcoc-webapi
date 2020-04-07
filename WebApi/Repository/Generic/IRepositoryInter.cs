@@ -12,13 +12,13 @@ namespace WebApi.Repository.Generic
         where B : BaseEntity
     {
         T Create(T item);
-        List<T> FindByIdA(long id_a);
-        List<T> FindByIdB(long id_b);
+        List<T> FindByIdA(long idObjectA);
+        List<T> FindByIdB(long idObjectB);
 
         List<T> FindAll();
 
-        List<A> FindObjectA(long id_b);
-        List<B> FindObjectB(long id_a);
+        List<A> FindObjectA(long idObjectB);
+        List<B> FindObjectB(long idObjectA);
             
         T Update(T item);
     }

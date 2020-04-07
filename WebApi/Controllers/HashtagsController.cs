@@ -5,6 +5,7 @@ using WebApi.Data.VO;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
+using System;
 
 namespace WebApi.Controllers
 {
@@ -96,7 +97,9 @@ namespace WebApi.Controllers
         [Authorize("Bearer")]
         public IActionResult PostArray([FromBody]HashtagVO[] item)
         {
-            if (item[0] == null) return BadRequest();
+            if (item == null) throw new ArgumentNullException(nameof(item));
+
+            //if (item[0] == null) return BadRequest();
 
             bool bok = false;
             foreach(HashtagVO i in item)

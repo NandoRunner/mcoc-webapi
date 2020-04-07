@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
-using WebApi.Integrations.Model;
+
 using WebApi.Model;
+using WebApi.Model.Integrations;
 
 namespace WebApi.Business
 {

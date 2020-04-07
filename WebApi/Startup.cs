@@ -29,18 +29,18 @@ namespace WebApi
 {
     public class Startup
     {
-        private readonly Microsoft.Extensions.Logging.ILogger _logger;
-        public IConfiguration _configuration { get; }
-        public IWebHostEnvironment _environment { get; }
+        private readonly Microsoft.Extensions.Logging.ILogger logger;
+        public IConfiguration configuration { get; }
+        public IWebHostEnvironment environment { get; }
 
         public Startup(IConfiguration configuration, IWebHostEnvironment environment, Microsoft.Extensions.Logging.ILogger<Startup> logger)
         {
-            _configuration = configuration;
-            _environment = environment;
-            _logger = logger;
+            this.configuration = configuration;
+            this.environment = environment;
+            this.logger = logger;
 
             NLog.LogManager.LoadConfiguration(System.String.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
-            Configuration = _configuration;
+            Configuration = this.configuration;
         }
 
         public IConfiguration Configuration { get; }
@@ -55,7 +55,7 @@ namespace WebApi
             });
 
             //Connection to database
-            var strconn = _configuration["MySqlConnection:MySqlConnectionString"];
+            var strconn = this.configuration["MySqlConnection:MySqlConnectionString"];
             services.AddDbContext<MySQLContext>(options => options.UseMySql(strconn));
 
             //Adding Migrations Support
@@ -70,7 +70,7 @@ namespace WebApi
             var tokenConfigurations = new TokenConfiguration();
 
             new ConfigureFromConfigurationOptions<TokenConfiguration>(
-                _configuration.GetSection("TokenConfigurations")
+                this.configuration.GetSection("TokenConfigurations")
             )
             .Configure(tokenConfigurations);
 
@@ -172,15 +172,15 @@ namespace WebApi
 
         private void ExecuteMigrations(string strconn)
         {
-            if (_environment.IsDevelopment())
+            if (this.environment.IsDevelopment())
             {
                 try
                 {
                     //var devconn = _configuration["MySqlConnection:MySqlConnectionString"];
                     var evolveConnection = new MySql.Data.MySqlClient.MySqlConnection(strconn);
-                    var evolve = new Evolve.Evolve(evolveConnection, msg => _logger.LogInformation(msg))
+                    var evolve = new Evolve.Evolve(evolveConnection, msg => this.logger.LogInformation(msg))
                     {
-                        Locations = new List<string> { "db/migrations" },
+                        Locations = new List<string> { "db/migrations", "db/dataset" },
                         IsEraseDisabled = true,
                     };
                     
@@ -188,7 +188,7 @@ namespace WebApi
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogCritical("Database migration failed.", ex);
+                    this.logger.LogCritical("Database migration failed.", ex);
                     throw;
                 }
             }
@@ -199,7 +199,7 @@ namespace WebApi
         {
             LoggerFactory.Create(builder =>
             {
-                builder.AddConfiguration(_configuration.GetSection("Logging"));
+                builder.AddConfiguration(this.configuration.GetSection("Logging"));
                 builder.AddDebug();
             });
 

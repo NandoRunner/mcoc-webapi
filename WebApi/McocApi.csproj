@@ -5,14 +5,14 @@
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
     <UserSecretsId>ddf76c05-49ec-40e4-8d8f-39cdbf6be114</UserSecretsId>
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
-    <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+    <RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
     <RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
-    <Version>1.20.2.0</Version>
+    <Version>1.20.3.0</Version>
     <AssemblyName>McocApi</AssemblyName>
     <Company>FAndrade TecInfo</Company>
     <Authors>Fernando Andrade</Authors>
-    <AssemblyVersion>1.20.2.0</AssemblyVersion>
-    <FileVersion>1.20.2.0</FileVersion>
+    <AssemblyVersion>1.20.3.0</AssemblyVersion>
+    <FileVersion>1.20.3.0</FileVersion>
     <PackageId>McoLib.Api</PackageId>
     <Product>Mcoc Lib Api</Product>
     <Copyright>Copyright © FAndrade TecInfo 2018-2020</Copyright>
@@ -21,6 +21,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>DEBUG;TRACE;NO_OFFICE</DefineConstants>
     <PlatformTarget>x64</PlatformTarget>
+    <NoWarn>1701;1702;1305;1062</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -63,17 +64,12 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.10" />
     <PackageReference Include="MySql.Data" Version="8.0.15" />
     <PackageReference Include="NETStandard.Library" Version="2.0.3" />
-    <PackageReference Include="NLog.Extended" Version="4.6.8" />
     <PackageReference Include="NLog.Extensions.Logging" Version="1.6.2" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.2.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.2.1" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.6.0" />
     <PackageReference Include="Tapioca.HATEOAS" Version="1.0.4" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\_Resource\WebApiIntegrations\Code\WebApi.Integrations\WebApi.Integrations.csproj" />
   </ItemGroup>
 
   <ItemGroup>

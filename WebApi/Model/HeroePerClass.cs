@@ -9,7 +9,7 @@ namespace WebApi.Model
     public class HeroePerClass : BaseView
     {
         [DataMember(Order = 2)]
-        public string class_name { get; set; }
+        public string className { get; set; }
 
     }
 }

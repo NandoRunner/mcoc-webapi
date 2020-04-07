@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using WebApi.Model;
+using System;
 
 namespace WebApi.Controllers
 {
@@ -35,7 +36,7 @@ namespace WebApi.Controllers
         {
             return new OkObjectResult(_business.FindAll((enAbility)type));
         }
-        
+
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(AbilityVO), 200)]
         [ProducesResponseType(204)]
@@ -97,18 +98,28 @@ namespace WebApi.Controllers
         [Authorize("Bearer")]
         public IActionResult PostArray([FromBody]AbilityVO[] item)
         {
-            if (item[0] == null) return BadRequest();
-
-            bool bok = false;
-            foreach(AbilityVO i in item)
+            if (item == null)
             {
-                if (_business.Create(i) != null)
-                {
-                    bok = true;
-                }
+                throw new ArgumentNullException(nameof(item));
             }
-            if (bok) return Ok();
-            else return BadRequest();
+
+            try
+            {
+                bool bok = false;
+                foreach (AbilityVO i in item)
+                {
+                    if (_business.Create(i) != null)
+                    {
+                        bok = true;
+                    }
+                }
+                if (bok) return Ok();
+                else return BadRequest();
+            }
+            catch
+            {
+                throw new ArgumentNullException(nameof(item));
+            }
         }
 
         [HttpPut]
@@ -121,7 +132,7 @@ namespace WebApi.Controllers
         {
             if (item == null) return BadRequest();
             var updatedItem = _business.Update(item);
-            if (updatedItem == null) return NoContent(); 
+            if (updatedItem == null) return NoContent();
             return new OkObjectResult(updatedItem);
         }
 

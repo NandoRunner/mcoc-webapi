@@ -19,7 +19,7 @@ namespace WebApi.Model.Base
 
     public class ResponseVO<T> where T : BaseVO
     {
-        public List<T> server_response { get; set; }
+        public List<T> serverResponse { get; set; }
     }
 
 }

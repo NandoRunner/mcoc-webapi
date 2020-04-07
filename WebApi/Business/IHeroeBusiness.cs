@@ -9,9 +9,9 @@ namespace WebApi.Business
         HeroeVO FindOrCreate(HeroeVO item);
         HeroeVO Create(HeroeVO item);
         HeroeVO FindById(long id);
-        List<HeroeVO> FindByName(string name, enHeroeClass heroe_class);
+        List<HeroeVO> FindByName(string name, enHeroeClass heroeClass);
         HeroeVO FindByExactName(string name);
-        List<HeroeVO> FindAll(enHeroeClass heroe_class);
+        List<HeroeVO> FindAll(enHeroeClass heroeClass);
 
         HeroeVO Update(HeroeVO item);
         void Delete(long id);

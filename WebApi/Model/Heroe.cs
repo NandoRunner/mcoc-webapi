@@ -10,13 +10,13 @@ namespace WebApi.Model
     {
 
         [DataMember(Order = 3)]
-        public int heroe_class { get; set; }
+        public int heroeClass { get; set; }
 
         [DataMember(Order = 4)]
-        public DateTime ?release_date { get; set; }
+        public DateTime ?releaseDate { get; set; }
 
         [DataMember(Order = 5)]
-        public string info_page { get; set; }
+        public string infoPage { get; set; }
 
         [DataMember(Order = 6)]
         public string stars { get; set; }

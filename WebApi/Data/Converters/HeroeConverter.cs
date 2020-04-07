@@ -17,9 +17,9 @@ namespace WebApi.Data.Converters
             {
                 id = origin.Id,
                 name = origin.Name,
-                heroe_class = origin.heroe_class,
-                release_date = origin.release_date,
-                info_page = origin.info_page,
+                heroeClass = origin.heroeClass,
+                releaseDate = origin.releaseDate,
+                infoPage = origin.infoPage,
                 stars = origin.stars
             };
         }
@@ -31,9 +31,9 @@ namespace WebApi.Data.Converters
             {
                 Id = origin.id,
                 Name = origin.name,
-                heroe_class = origin.heroe_class,
-                release_date = origin.release_date,
-                info_page = origin.info_page,
+                heroeClass = origin.heroeClass,
+                releaseDate = origin.releaseDate,
+                infoPage = origin.infoPage,
                 stars = origin.stars
             };
         }

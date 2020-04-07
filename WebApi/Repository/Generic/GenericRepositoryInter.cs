@@ -29,7 +29,7 @@ namespace WebApi.Repository.Generic
 
         public T FindOrCreate(T item)
         {
-            var ret = FindById(item.id_a, item.id_b);
+            var ret = FindById(item.idObjectA, item.idObjectB);
             if (ret != null)
                 return ret;
             return Create(item);
@@ -37,7 +37,7 @@ namespace WebApi.Repository.Generic
 
         public T Create(T item)
         {
-            if (Exists(item.id_a, item.id_b)) return null;
+            if (Exists(item.idObjectA, item.idObjectB)) return null;
 
             try
             {
@@ -54,32 +54,32 @@ namespace WebApi.Repository.Generic
     
         public List<T> FindAll()
         {
-            return dataset.OrderBy(p => p.id_a).OrderBy(p => p.id_b).ToList();
+            return dataset.OrderBy(p => p.idObjectA).OrderBy(p => p.idObjectB).ToList();
         }
 
         public List<T> FindByIdA(long id)
         {
-            return dataset.Where(p => p.id_a.Equals(id)).OrderBy(p => p.id_b).ToList(); 
+            return dataset.Where(p => p.idObjectA.Equals(id)).OrderBy(p => p.idObjectB).ToList(); 
         }
 
         public List<T> FindByIdB(long id)
         {
-            return dataset.Where(p => p.id_b.Equals(id)).OrderBy(p => p.id_a).ToList(); 
+            return dataset.Where(p => p.idObjectB.Equals(id)).OrderBy(p => p.idObjectA).ToList(); 
         }
 
-        public T FindById(long id_a, long id_b)
+        public T FindById(long idObjectA, long idObjectB)
         {
-            return dataset.SingleOrDefault(p => p.id_a.Equals(id_a) && p.id_b.Equals(id_b));
+            return dataset.SingleOrDefault(p => p.idObjectA.Equals(idObjectA) && p.idObjectB.Equals(idObjectB));
         }
 
         public T Update(T item)
         {
             // Se não existir retornamos uma instancia vazia de pessoa
-            if (!Exists(item.id_a, item.id_b)) return null;
+            if (!Exists(item.idObjectA, item.idObjectB)) return null;
 
             // Pega o estado atual do registro no banco
             // seta as alterações e salva
-            var result = dataset.SingleOrDefault(p => p.id_a == item.id_a && p.id_b == item.id_b);
+            var result = dataset.SingleOrDefault(p => p.idObjectA == item.idObjectA && p.idObjectB == item.idObjectB);
             if (result != null)
             {
                 try
@@ -95,16 +95,16 @@ namespace WebApi.Repository.Generic
             return result;
         }
 
-        private bool Exists(long id_a, long id_b)
+        private bool Exists(long idObjectA, long idObjectB)
         {
-            return dataset.Any(p => p.id_a.Equals(id_a) && p.id_b.Equals(id_b));
+            return dataset.Any(p => p.idObjectA.Equals(idObjectA) && p.idObjectB.Equals(idObjectB));
         }
 
-        public List<A> FindObjectA(long id_b)
+        public List<A> FindObjectA(long idObjectB)
         {
             var list = (from x in dataset.AsEnumerable()
-                        where x.id_b == id_b
-                        select x.id_a).ToList();
+                        where x.idObjectB == idObjectB
+                        select x.idObjectA).ToList();
 
             var ret = (from y in dsa.AsEnumerable()
                       where list.Contains((long)y.id)
@@ -113,11 +113,11 @@ namespace WebApi.Repository.Generic
             return ret;
         }
 
-        public List<B> FindObjectB(long id_a)
+        public List<B> FindObjectB(long idObjectA)
         {
             var list = (from x in dataset.AsEnumerable()
-                        where x.id_a == id_a
-                        select x.id_b).ToList();
+                        where x.idObjectA == idObjectA
+                        select x.idObjectB).ToList();
 
             var ret = (from y in dsb.AsEnumerable()
                        where list.Contains((long)y.id)

@@ -40,9 +40,9 @@ namespace WebApi.Business.Implementattions
             return _converter.Parse(_repository.FindById(id));
         }
 
-        public List<HeroeVO> FindByName(string name, enHeroeClass heroe_class)
+        public List<HeroeVO> FindByName(string name, enHeroeClass heroeClass)
         {
-            return _converter.ParseList(_repository.FindByNameHeroe(name, heroe_class));
+            return _converter.ParseList(_repository.FindByNameHeroe(name, heroeClass));
         }
 
         public HeroeVO FindByExactName(string name)
@@ -50,9 +50,9 @@ namespace WebApi.Business.Implementattions
             return _converter.Parse(_repository.FindByExactName(name));
         }
 
-        public List<HeroeVO> FindAll(enHeroeClass heroe_class)
+        public List<HeroeVO> FindAll(enHeroeClass heroeClass)
         {
-            return _converter.ParseList(_repository.FindAllHeroe(heroe_class));
+            return _converter.ParseList(_repository.FindAllHeroe(heroeClass));
         }
 
         public HeroeVO Update(HeroeVO item)

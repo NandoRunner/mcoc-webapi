@@ -39,14 +39,14 @@ namespace WebApi.Business.Implementattions
             return _repository.FindAll();
         }
 
-        public List<Heroe> FindObjectA(long id_b)
+        public List<Heroe> FindObjectA(long idObjectB)
         {
-            return _repository.FindObjectA(id_b);
+            return _repository.FindObjectA(idObjectB);
         }
 
-        public List<Ability> FindObjectB(long id_a)
+        public List<Ability> FindObjectB(long idObjectA)
         {
-            return _repository.FindObjectB(id_a);
+            return _repository.FindObjectB(idObjectA);
         }
 
     }

@@ -8,15 +8,15 @@ namespace WebApi.Model
     public class Synergy : BaseEntity {
 
         [DataMember(Order = 3)]
-        public string all_bonus { get; set; }
+        public string allBonus { get; set; }
 
         [DataMember(Order = 4)]
         public int star { get; set; }
 
         [DataMember(Order = 5)]
-        public string parent_bonus { get; set; }
+        public string parentBonus { get; set; }
 
         [DataMember(Order = 6)]
-        public string child_bonus { get; set; }
+        public string childBonus { get; set; }
     }
 }
