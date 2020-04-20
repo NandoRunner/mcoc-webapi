@@ -208,7 +208,7 @@ namespace WebApi
 
             app.UseSwaggerUI(c =>
             {
-#if !DEBUG
+#if DEBUG
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mcoc Library API v1");
 #else
                    // To deploy on IIS

@@ -36,10 +36,17 @@ namespace WebApi.Model.Context
             modelBuilder.Entity<HeroePerClass>()
                 .Property<int>("name").HasColumnName("class");
             modelBuilder.Entity<HeroePerClass>()
+                .Property<string>("className").HasColumnName("class_name");
+
+            modelBuilder.Entity<HeroePerClass>()
             .HasKey(c => new { c.name });
 
             modelBuilder.Entity<Heroe>()
                 .Property<int>("heroeClass").HasColumnName("class");
+            modelBuilder.Entity<Heroe>()
+                .Property<string>("infoPage").HasColumnName("info_page");
+            modelBuilder.Entity<Heroe>()
+                .Property<DateTime?>("releaseDate").HasColumnName("release_date");
 
             modelBuilder.Entity<HeroeHashtag>()
                 .Property<long>("idObjectA").HasColumnName("heroe_id");
