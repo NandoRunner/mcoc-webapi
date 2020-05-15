@@ -116,7 +116,7 @@ namespace WebApi.Repository.Generic
 
         public List<Ability> FindAllAbility(enAbility type)
         {
-
+            //todo: Pesquisar em case sensitive
             DbSet<Ability> dsAbility = _context.Set<Ability>();
 
             if (((enAbility)type) == enAbility.all)
@@ -144,6 +144,28 @@ namespace WebApi.Repository.Generic
             {
                 return dataset.OrderBy(a => a.name).ToList();
             }
+        }
+
+        public List<Ability> FindByName(string name, enAbility abilityType)
+        {
+            IQueryable<Ability> q;
+
+            DbSet<Ability> ds = _context.Set<Ability>();
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                q = ds.Where(a => a.name.Contains(name)).OrderBy(a => a.name);
+            }
+            else
+            {
+                q = ds.OrderBy(a => a.name);
+            }
+
+            if (((enAbility)abilityType) != enAbility.all)
+            {
+                q = q.Where(a => a.type == (int)abilityType).OrderBy(a => a.name);
+            }
+            return q.ToList();
         }
 
         public List<Heroe> FindByNameHeroe(string name, enHeroeClass heroeClass)

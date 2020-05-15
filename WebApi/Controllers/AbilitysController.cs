@@ -56,9 +56,9 @@ namespace WebApi.Controllers
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
-        public IActionResult GetByName(string name)
+        public IActionResult GetByName(string name, int type = (int)enAbility.all)
         {
-            var ret = _business.FindByName(name);
+            var ret = _business.FindByName(name, (enAbility)type);
             if (ret == null) return NotFound();
             return Ok(ret);
         }

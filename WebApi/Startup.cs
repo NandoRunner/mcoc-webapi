@@ -55,7 +55,11 @@ namespace WebApi
             });
 
             //Connection to database
-            var strconn = this.configuration["MySqlConnection:MySqlConnectionString"];
+#if DEBUG
+            var strconn = this.configuration["MySqlConnection:Local"];
+#else
+            var strconn = this.configuration["MySqlConnection:AzureInApp"];
+#endif
             services.AddDbContext<MySQLContext>(options => options.UseMySql(strconn));
 
             //Adding Migrations Support
@@ -176,7 +180,6 @@ namespace WebApi
             {
                 try
                 {
-                    //var devconn = _configuration["MySqlConnection:MySqlConnectionString"];
                     var evolveConnection = new MySql.Data.MySqlClient.MySqlConnection(strconn);
                     var evolve = new Evolve.Evolve(evolveConnection, msg => this.logger.LogInformation(msg))
                     {
@@ -208,12 +211,20 @@ namespace WebApi
 
             app.UseSwaggerUI(c =>
             {
+                
+                if (string.Equals(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"), "Development"))
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mcoc Library API v1 (DEBUG)");
+                }
+                else
+                {
 #if DEBUG
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mcoc Library API v1");
+                    c.SwaggerEndpoint("../swagger/v1/swagger.json", "Mcoc Library API v1 (BETA)");
 #else
-                   // To deploy on IIS
-                c.SwaggerEndpoint("../swagger/v1/swagger.json", "Mcoc Library API v1");
+                    c.SwaggerEndpoint("../swagger/v1/swagger.json", "Mcoc Library API v1");
 #endif
+
+                }
             });
 
             //Starting our API in Swagger page

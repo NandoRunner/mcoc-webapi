@@ -18,6 +18,7 @@
 --
 -- Temporary view structure for view `actormovies`
 --
+use webapi;
 
 DROP TABLE IF EXISTS `actormovies`;
 /*!50001 DROP VIEW IF EXISTS `actormovies`*/;

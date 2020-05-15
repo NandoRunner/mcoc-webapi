@@ -13,6 +13,7 @@ namespace WebApi.Repository.Generic
         T Create(T item);
         Ability CreateAbility(Ability item);
         T FindById(long id);
+        List<Ability> FindByName(string name, enAbility type);
         List<T> FindByName(string name);
         T FindByExactName(string name);
 

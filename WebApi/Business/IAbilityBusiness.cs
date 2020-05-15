@@ -9,7 +9,7 @@ namespace WebApi.Business
         AbilityVO FindOrCreate(AbilityVO item);
         AbilityVO Create(AbilityVO item);
         AbilityVO FindById(long id);
-        List<AbilityVO> FindByName(string name);
+        List<AbilityVO> FindByName(string name, enAbility type);
         AbilityVO FindByExactName(string name, enAbility type);
         List<AbilityVO> FindAll(enAbility type);
 
