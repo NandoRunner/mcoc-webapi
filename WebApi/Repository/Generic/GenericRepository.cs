@@ -138,7 +138,7 @@ namespace WebApi.Repository.Generic
         {
             if (!string.IsNullOrEmpty(name))
             {
-                return dataset.Where(a => a.name.Contains(name)).OrderBy(a => a.name).ToList();
+                return dataset.Where(a => a.name.ToLower().Contains(name.ToLower())).OrderBy(a => a.name).ToList();
             }
             else
             {
@@ -154,7 +154,7 @@ namespace WebApi.Repository.Generic
 
             if (!string.IsNullOrEmpty(name))
             {
-                q = ds.Where(a => a.name.Contains(name)).OrderBy(a => a.name);
+                q = ds.Where(a => a.name.ToLower().Contains(name.ToLower())).OrderBy(a => a.name);
             }
             else
             {
@@ -174,11 +174,11 @@ namespace WebApi.Repository.Generic
 
             if (((enHeroeClass)heroeClass) == enHeroeClass.ALL)
             {
-                return dsHeroe.Where(a => a.name.Contains(name)).OrderBy(a => a.name).ToList();
+                return dsHeroe.Where(a => a.name.ToLower().Contains(name.ToLower())).OrderBy(a => a.name).ToList();
             }
             else
             {
-                return dsHeroe.Where(a => a.heroeClass == (int)heroeClass).Where(a => a.name.Contains(name)).OrderBy(a => a.name).ToList();
+                return dsHeroe.Where(a => a.heroeClass == (int)heroeClass).Where(a => a.name.ToLower().Contains(name.ToLower())).OrderBy(a => a.name).ToList();
             }
         }
 
