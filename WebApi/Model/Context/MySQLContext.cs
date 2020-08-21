@@ -27,8 +27,6 @@ namespace WebApi.Model.Context
 
         public DbSet<WebUser> WebUsers { get; set; }
 
-        public DbSet<FileRenamer> FileRenamers { get; set; }
-
         public DbSet<HeroePerClass> vwHeroePerClass { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

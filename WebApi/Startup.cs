@@ -159,7 +159,6 @@ namespace WebApi
             services.AddScoped<IUserBusiness, UserBusinessImpl>();
             services.AddScoped<IUserAllianceBusiness, UserAllianceBusinessImpl>();
             services.AddScoped<IUserHeroeBusiness, UserHeroeBusinessImpl>();
-            services.AddScoped<IFileRenamerBusiness, FileRenamerBusinessImpl>();
             services.AddScoped<ILoginBusiness, LoginBusinessImpl>();
             services.AddScoped<IFileBusiness, FileBusinessImpl>();
 
