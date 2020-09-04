@@ -7,12 +7,12 @@
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
     <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
     <RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
-    <Version>1.20.5</Version>
+    <Version>1.20.6</Version>
     <AssemblyName>McocApi</AssemblyName>
     <Company>FAndrade TecInfo</Company>
     <Authors>Fernando Andrade</Authors>
-    <AssemblyVersion>1.20.5</AssemblyVersion>
-    <FileVersion>1.20.5</FileVersion>
+    <AssemblyVersion>1.20.6</AssemblyVersion>
+    <FileVersion>1.20.6</FileVersion>
     <PackageId>McoLib.Api</PackageId>
     <Product>Mcoc Lib Api</Product>
     <Copyright>Copyright © FAndrade TecInfo 2018-2020</Copyright>
@@ -160,5 +160,7 @@
       </ReferencePath>
     </ItemGroup>
   </Target>
+  
+    <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>
