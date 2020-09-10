@@ -175,8 +175,8 @@ namespace WebApi
 
         private void ExecuteMigrations(string strconn)
         {
-            if (this.environment.IsDevelopment())
-            {
+            //if (this.environment.IsDevelopment())
+            //{
                 try
                 {
                     var evolveConnection = new MySql.Data.MySqlClient.MySqlConnection(strconn);
@@ -184,8 +184,8 @@ namespace WebApi
                     {
                         Locations = new List<string> { "db/migrations", "db/dataset" },
                         IsEraseDisabled = true,
+                        MetadataTableSchema = "webapi"
                     };
-                    
                     evolve.Migrate();
                 }
                 catch (Exception ex)
@@ -193,7 +193,7 @@ namespace WebApi
                     this.logger.LogCritical("Database migration failed.", ex);
                     throw;
                 }
-            }
+            //}
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -7,12 +7,12 @@
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
     <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
     <RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
-    <Version>1.20.6</Version>
+    <Version>1.20.7</Version>
     <AssemblyName>McocApi</AssemblyName>
     <Company>FAndrade TecInfo</Company>
     <Authors>Fernando Andrade</Authors>
-    <AssemblyVersion>1.20.6</AssemblyVersion>
-    <FileVersion>1.20.6</FileVersion>
+    <AssemblyVersion>1.20.7</AssemblyVersion>
+    <FileVersion>1.20.7</FileVersion>
     <PackageId>McoLib.Api</PackageId>
     <Product>Mcoc Lib Api</Product>
     <Copyright>Copyright © FAndrade TecInfo 2018-2020</Copyright>
@@ -38,10 +38,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="db\migrations\V1_0_0_4__Marvel_Create_Table_User_Alliance.sql" />
+    <Content Include="db\migrations\V1_0_0_4__Marvel_Create_Table_User_Alliance.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Log\" />
     <Folder Include="Security\Configuration\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
@@ -73,8 +76,56 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="appsettings-dev.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="db\dataset\V1_0_1_8__webapi_marvel_ability.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="db\dataset\V1_0_1_9__webapi_marvel_alliance.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="db\dataset\V1_0_2_0__webapi_marvel_hashtag.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="db\dataset\V1_0_2_1__webapi_marvel_heroe.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="db\dataset\V1_0_2_2__webapi_marvel_heroe_ability.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="db\dataset\V1_0_2_3__webapi_marvel_heroe_hashtag.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="db\dataset\V1_0_2_4__webapi_marvel_heroe_synergy.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="db\dataset\V1_0_2_5__webapi_marvel_synergy.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="db\dataset\V1_0_2_6__webapi_marvel_user.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="db\dataset\V1_0_2_7__webapi_marvel_user_alliance.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="db\dataset\V1_0_2_8__webapi_marvel_user_heroe.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="db\dataset\V1_0_2_9__webapi_web_users.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="db\migrations\V1_0_1_2__Marvel_Create_View_Hero_Hashtag.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="db\migrations\V1_0_1_6__Marvel_Alter_Table_Heroe_Ability.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="db\migrations\V1_0_1_7__Marvel_Create_View_Heroe_per_Class.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="db\migrations\V1_0_1__Create_Table_Ator.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -89,22 +140,22 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="db\migrations\V1_0_0_1__Marvel_Create_Table_User.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="db\migrations\V1_0_0_2__Marvel_Create_Table_Alliance.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="db\migrations\V1_0_0_3__Marvel_Create_Table_Heroe.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="db\migrations\V1_0_0_5__Marvel_Create_Table_User_Heroe.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="db\migrations\V1_0_0_6__Marvel_Create_Table_Synergy.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="db\migrations\V1_0_0_7__Marvel_Create_Table_Heroe_Synergy.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="db\migrations\V1_1_3__Alter_View_Genero.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -116,22 +167,22 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="db\migrations\V1_0_0_8__Marvel_Create_Table_Ability.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="db\migrations\V1_0_0_9__Marvel_Create_Table_Heroe_Ability.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="db\migrations\V1_0_1_0__Marvel_Create_Table_Hashtag.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="db\migrations\V1_0_1_1__Marvel_Create_Table_Heroe_Hashtag.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="db\migrations\V1_2_0__Create_View_Hero_Hashtag.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="db\migrations\V1_0_1_3__Create_table_web_users.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="db\migrations\V1_2_2__Create_View_filme_por_ator.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -146,10 +197,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="db\migrations\V1_0_1_4__Marvel_Alter_Table_Ability.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="db\migrations\V1_0_1_5__Marvel_Alter_Table_Heroe.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   
