@@ -184,6 +184,7 @@ namespace WebApi
                     {
                         Locations = new List<string> { "db/migrations", "db/dataset" },
                         IsEraseDisabled = true,
+                        Encoding = Encoding.UTF8
                         MetadataTableSchema = "webapi"
                     };
                     evolve.Migrate();
