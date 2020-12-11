@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using WebApi.Data.VO;
-
+using WebApi.Model;
 
 namespace WebApi.Business
 {
@@ -15,6 +15,8 @@ namespace WebApi.Business
 
         HashtagVO Update(HashtagVO item);
         void Delete(long id);
+
+        List<HeroePerHashtag> FindHeroeCountPerHashtag();
 
         //List<_vw_mc_ator> FindMovieCount(enMovieCount order);
     }

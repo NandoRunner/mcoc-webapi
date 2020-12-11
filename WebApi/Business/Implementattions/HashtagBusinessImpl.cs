@@ -15,14 +15,17 @@ namespace WebApi.Business.Implementattions
     {
         private readonly IRepository<Hashtag> _repository;
 
+        private readonly IViewRepository<HeroePerHashtag> _repview;
+
         private readonly HashtagConverter _converter;
 
 
-        public HashtagBusinessImpl(IRepository<Hashtag> repository
+        public HashtagBusinessImpl(IRepository<Hashtag> repository, IViewRepository<HeroePerHashtag> repview
             //, IViewRepository<_vw_mc_ator> vrep
             )
         {
             _repository = repository;
+            _repview = repview;
             _converter = new HashtagConverter();
             //_vrep = vrep;
         }
@@ -84,6 +87,9 @@ namespace WebApi.Business.Implementattions
             return _converter.Parse(ent);
         }
 
-
+        public List<HeroePerHashtag> FindHeroeCountPerHashtag()
+        {
+            return _repview.FindAll();
+        }
     }
 }

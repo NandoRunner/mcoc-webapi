@@ -183,7 +183,8 @@ namespace WebApi
 					var evolveConnection = new MySql.Data.MySqlClient.MySqlConnection(strconn);
 					var evolve = new Evolve.Evolve(evolveConnection, msg => this.logger.LogInformation(msg))
 					{
-						Locations = new List<string> { "db/migrations", "db/dataset" },
+						///Locations = new List<string> { "db/migrations", "db/dataset" },
+						Locations = new List<string> { "db/migrations" },
 						IsEraseDisabled = true,
 						Encoding = Encoding.UTF8,
 						MetadataTableSchema = "webapi"

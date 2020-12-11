@@ -121,7 +121,7 @@
     <None Update="db\migrations\V1_0_1_2__Marvel_Create_View_Hero_Hashtag.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="db\migrations\V1_0_1_6__Marvel_Alter_Table_Heroe_Ability.sql">
+    <None Update="db\migrations\V1_0_1_6__Marvel_Create_View_Heroes_per_Hashtag.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="db\migrations\V1_0_1_7__Marvel_Create_View_Heroe_per_Class.sql">

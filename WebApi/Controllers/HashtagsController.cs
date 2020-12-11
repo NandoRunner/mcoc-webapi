@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using System;
+using WebApi.Model;
 
 namespace WebApi.Controllers
 {
@@ -137,6 +138,24 @@ namespace WebApi.Controllers
         {
             _business.Delete(id);
             return NoContent();
+        }
+
+        [Route("[action]")]
+        [HttpGet]
+        [ProducesResponseType(typeof(List<HeroePerHashtag>), 200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
+        //[TypeFilter(typeof(HyperMediaFilter))]
+        public IActionResult GetHeroeCountPerHashtag()
+        {
+            //return new OkObjectResult(_mccBusiness.FindAll());
+
+            var ret = _business.FindHeroeCountPerHashtag();
+            if (ret == null) return NotFound();
+            return Ok(ret);
+
+
         }
     }
 }

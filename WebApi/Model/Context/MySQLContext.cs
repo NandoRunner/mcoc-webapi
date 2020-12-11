@@ -29,6 +29,8 @@ namespace WebApi.Model.Context
 
         public DbSet<HeroePerClass> vwHeroePerClass { get; set; }
 
+        public DbSet<HeroePerHashtag> vwHashtagPerHeroe { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<HeroePerClass>()
@@ -37,6 +39,14 @@ namespace WebApi.Model.Context
                 .Property<string>("className").HasColumnName("class_name");
 
             modelBuilder.Entity<HeroePerClass>()
+            .HasKey(c => new { c.name });
+
+            modelBuilder.Entity<HeroePerHashtag>()
+                .Property<int>("name").HasColumnName("hashtag_id");
+            modelBuilder.Entity<HeroePerHashtag>()
+                .Property<string>("hashtagName").HasColumnName("hashtag_name");
+
+            modelBuilder.Entity<HeroePerHashtag>()
             .HasKey(c => new { c.name });
 
             modelBuilder.Entity<Heroe>()
