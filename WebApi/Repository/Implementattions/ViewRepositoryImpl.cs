@@ -20,7 +20,7 @@ namespace WebApi.Repository.Implementattions
 
         public List<T> FindAll()
         {
-            return dataset.OrderBy(a => a.name).ToList();
+            return dataset.ToList();
         }
 
     }
