@@ -30,12 +30,18 @@ namespace WebApi.Business.Implementattions
             //_vrep = vrep;
         }
 
-        public HashtagVO Create(HashtagVO mccHashtag)
+        public HashtagVO Create(HashtagVO item)
         {
-            //return _repository.Create(mccHashtag);
-
-            var ent = _converter.Parse(mccHashtag);
+            var ent = _converter.Parse(item);
+            try
+            {
             ent = _repository.Create(ent);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
             return _converter.Parse(ent);
         }
 

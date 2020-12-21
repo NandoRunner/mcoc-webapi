@@ -5,8 +5,11 @@ using WebApi.Model.Base;
 
 namespace WebApi.Model
 {
-    [Table("vw_heroe_per_hashtag")]
-    public class HeroePerHashtag : BaseView
+    [Table("vw_heroe_per_ability")]
+    public class HeroePerAbility : BaseView
     {
+        [DataMember(Order = 4)]
+        public int abilityType { get; set; }
+
     }
 }

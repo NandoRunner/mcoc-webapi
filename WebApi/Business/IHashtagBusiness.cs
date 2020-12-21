@@ -17,7 +17,5 @@ namespace WebApi.Business
         void Delete(long id);
 
         List<HeroePerHashtag> FindHeroeCountPerHashtag();
-
-        //List<_vw_mc_ator> FindMovieCount(enMovieCount order);
     }
 }

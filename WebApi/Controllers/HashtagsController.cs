@@ -100,18 +100,23 @@ namespace WebApi.Controllers
         {
             if (item == null) throw new ArgumentNullException(nameof(item));
 
-            //if (item[0] == null) return BadRequest();
-
-            bool bok = false;
-            foreach(HashtagVO i in item)
+            try
             {
-                if (_business.Create(i) != null)
+                bool bok = false;
+                foreach (HashtagVO i in item)
                 {
-                    bok = true;
+                    if (_business.Create(i) != null)
+                    {
+                        bok = true;
+                    }
                 }
+                if (bok) return Ok();
+                else return BadRequest();
             }
-            if (bok) return Ok();
-            else return BadRequest();
+            catch
+            {
+                throw new ArgumentNullException(nameof(item));
+            }
         }
 
         [HttpPut]
@@ -149,8 +154,6 @@ namespace WebApi.Controllers
         //[TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult GetHeroeCountPerHashtag()
         {
-            //return new OkObjectResult(_mccBusiness.FindAll());
-
             var ret = _business.FindHeroeCountPerHashtag();
             if (ret == null) return NotFound();
             return Ok(ret);

@@ -5,8 +5,8 @@ using WebApi.Data.VO;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
-using WebApi.Model;
 using System;
+using WebApi.Model;
 
 namespace WebApi.Controllers
 {
@@ -98,10 +98,7 @@ namespace WebApi.Controllers
         [Authorize("Bearer")]
         public IActionResult PostArray([FromBody]AbilityVO[] item)
         {
-            if (item == null)
-            {
-                throw new ArgumentNullException(nameof(item));
-            }
+            if (item == null) throw new ArgumentNullException(nameof(item));
 
             try
             {
@@ -146,6 +143,22 @@ namespace WebApi.Controllers
         {
             _business.Delete(id);
             return NoContent();
+        }
+
+        [Route("[action]")]
+        [HttpGet]
+        [ProducesResponseType(typeof(List<HeroePerAbility>), 200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
+        //[TypeFilter(typeof(HyperMediaFilter))]
+        public IActionResult GetHeroeCountPerAbility(int type = (int)enAbility.all)
+        {
+            var ret = _business.FindHeroeCountPerAbility((enAbility)type);
+            if (ret == null) return NotFound();
+            return Ok(ret);
+
+
         }
     }
 }

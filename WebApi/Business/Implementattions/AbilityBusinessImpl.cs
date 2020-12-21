@@ -15,16 +15,17 @@ namespace WebApi.Business.Implementattions
     {
         private readonly IRepository<Ability> _repository;
 
+        private readonly IViewRepository<HeroePerAbility> _repview;
+
         private readonly AbilityConverter _converter;
 
 
-        public AbilityBusinessImpl(IRepository<Ability> repository
-            //, IViewRepository<_vw_mc_ator> vrep
+        public AbilityBusinessImpl(IRepository<Ability> repository, IViewRepository<HeroePerAbility> repview
             )
         {
             _repository = repository;
+            _repview = repview;
             _converter = new AbilityConverter();
-            //_vrep = vrep;
         }
 
         public AbilityVO Create(AbilityVO item)
@@ -81,5 +82,9 @@ namespace WebApi.Business.Implementattions
             return _converter.Parse(ent);
         }
 
+        public List<HeroePerAbility> FindHeroeCountPerAbility(enAbility type)
+        {
+            return _repview.FindAll().Where(t => t.abilityType == (int)type || type == enAbility.all).ToList();
+        }
     }
 }

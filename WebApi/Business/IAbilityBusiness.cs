@@ -16,6 +16,6 @@ namespace WebApi.Business
         AbilityVO Update(AbilityVO item);
         void Delete(long id);
 
-        //List<_vw_mc_ator> FindMovieCount(enMovieCount order);
+        List<HeroePerAbility> FindHeroeCountPerAbility(enAbility type);
     }
 }

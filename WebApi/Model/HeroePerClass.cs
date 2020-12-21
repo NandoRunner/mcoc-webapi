@@ -8,8 +8,5 @@ namespace WebApi.Model
     [Table("vw_heroe_per_class")]
     public class HeroePerClass : BaseView
     {
-        [DataMember(Order = 2)]
-        public string className { get; set; }
-
     }
 }

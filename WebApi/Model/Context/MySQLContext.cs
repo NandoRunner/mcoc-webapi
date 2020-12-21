@@ -29,25 +29,30 @@ namespace WebApi.Model.Context
 
         public DbSet<HeroePerClass> vwHeroePerClass { get; set; }
 
-        public DbSet<HeroePerHashtag> vwHashtagPerHeroe { get; set; }
+        public DbSet<HeroePerHashtag> vwHeroePerHashtag { get; set; }
+
+
+        public DbSet<HeroePerAbility> vwHeroePerAbility { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<HeroePerClass>()
-                .Property<int>("name").HasColumnName("class");
-            modelBuilder.Entity<HeroePerClass>()
-                .Property<string>("className").HasColumnName("class_name");
+            modelBuilder.Entity<HeroePerClass>().Property<int>("id").HasColumnName("class");
+            modelBuilder.Entity<HeroePerClass>().Property<string>("name").HasColumnName("class_name");
 
-            modelBuilder.Entity<HeroePerClass>()
-            .HasKey(c => new { c.name });
+            modelBuilder.Entity<HeroePerClass>().HasKey(c => new { c.id });
 
-            modelBuilder.Entity<HeroePerHashtag>()
-                .Property<int>("name").HasColumnName("hashtag_id");
-            modelBuilder.Entity<HeroePerHashtag>()
-                .Property<string>("hashtagName").HasColumnName("hashtag_name");
+            modelBuilder.Entity<HeroePerHashtag>().Property<int>("id").HasColumnName("hashtag_id");
+            modelBuilder.Entity<HeroePerHashtag>().Property<string>("name").HasColumnName("hashtag_name");
 
-            modelBuilder.Entity<HeroePerHashtag>()
-            .HasKey(c => new { c.name });
+            modelBuilder.Entity<HeroePerHashtag>().HasKey(c => new { c.id });
+
+
+            modelBuilder.Entity<HeroePerAbility>().Property<int>("id").HasColumnName("ability_id");
+            modelBuilder.Entity<HeroePerAbility>().Property<string>("name").HasColumnName("ability_name");
+            modelBuilder.Entity<HeroePerAbility>().Property<int>("abilityType").HasColumnName("ability_type");
+
+            modelBuilder.Entity<HeroePerAbility>().HasKey(c => new { c.id });
+
 
             modelBuilder.Entity<Heroe>()
                 .Property<int>("heroeClass").HasColumnName("class");
