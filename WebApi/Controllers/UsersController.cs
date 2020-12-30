@@ -4,11 +4,15 @@ using WebApi.Business;
 using WebApi.Data.VO;
 using System.Collections.Generic;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using Microsoft.AspNetCore.Authorization;
+using WebApi.Model;
+using Microsoft.AspNetCore.Cors;
 
 namespace WebApi.Controllers
 {
     [ApiVersion("1")]
     [Route("[controller]/v{version:apiVersion}")]
+    [EnableCors("MyPolicy")]
     public class UsersController : Controller
     {
         //Declaração do serviço usado
@@ -58,16 +62,15 @@ namespace WebApi.Controllers
             if (ret == null) return NotFound();
             return Ok(ret);
         }
-        
+
         [HttpPost]
-        [ProducesResponseType(typeof(UserVO), 201)]
+        [ProducesResponseType(typeof(User), 201)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
-        [TypeFilter(typeof(HyperMediaFilter))]
-        public IActionResult Post([FromBody]UserVO item)
+        public IActionResult Post([FromBody]User item)
         {
             if (item == null) return BadRequest();
-            var createdItem = _mccBusiness.Create(item);
+            var createdItem = _mccBusiness.FindOrCreate(item);
             if (createdItem == null) return BadRequest();
             return new OkObjectResult(createdItem);
         }
@@ -76,8 +79,9 @@ namespace WebApi.Controllers
         [ProducesResponseType(typeof(UserVO), 202)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
+        [Authorize("Bearer")]
         [TypeFilter(typeof(HyperMediaFilter))]
-        public IActionResult Put([FromBody]UserVO item)
+        public IActionResult Put([FromBody]User item)
         {
             if (item == null) return BadRequest();
             var updatedItem = _mccBusiness.Update(item);
@@ -89,6 +93,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
+        [Authorize("Bearer")]
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Delete(int id)
         {

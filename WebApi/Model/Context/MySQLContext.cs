@@ -85,6 +85,11 @@ namespace WebApi.Model.Context
                 .HasKey(c => new { c.idObjectA, c.idObjectB });
 
 
+            modelBuilder.Entity<UserAlliance>()
+                .Property<DateTime>("startDate").HasColumnName("start_date");
+            modelBuilder.Entity<UserAlliance>()
+                .Property<DateTime?>("endDate").HasColumnName("end_date");
+
             modelBuilder.Entity<UserHeroe>()
             .Property<long>("idObjectA").HasColumnName("user_id");
             modelBuilder.Entity<UserHeroe>()

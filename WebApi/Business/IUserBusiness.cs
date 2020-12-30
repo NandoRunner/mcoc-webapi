@@ -1,16 +1,19 @@
 ﻿using System.Collections.Generic;
 using WebApi.Data.VO;
+using WebApi.Model;
 
 namespace WebApi.Business
 {
     public interface IUserBusiness
     {
-        UserVO Create(UserVO usr);
+        User FindOrCreate(User item);
+
+        User Create(User item);
         UserVO FindById(long id);
         List<UserVO> FindByName(string name);
         List<UserVO> FindAll();
 
-        UserVO Update(UserVO usr);
+        User Update(User item);
         void Delete(long id);
     }
 }

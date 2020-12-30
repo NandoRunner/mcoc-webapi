@@ -2,6 +2,7 @@
 using WebApi.Model;
 using WebApi.Business;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApi.Controllers
 {
@@ -44,6 +45,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(typeof(UserAlliance), 201)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
+        [Authorize("Bearer")]
         public IActionResult Post([FromBody]UserAlliance item)
         {
             if (item == null) return BadRequest();

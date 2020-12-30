@@ -1,0 +1,1 @@
+ALTER TABLE `marvel_user_heroe` MODIFY `signature` INTEGER;

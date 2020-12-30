@@ -53,6 +53,12 @@ namespace WebApi
 			services.AddCors(c =>
 			{
 				c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+				c.AddPolicy("MyPolicy", builder =>
+				{
+					builder.AllowAnyOrigin()
+						   .AllowAnyMethod()
+						   .AllowAnyHeader();
+				});
 			});
 
 			//Connection to database

@@ -4,6 +4,7 @@ using WebApi.Business;
 using WebApi.Data.VO;
 using System.Collections.Generic;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApi.Controllers
 {
@@ -77,6 +78,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(typeof(SynergyVO), 201)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
+        [Authorize("Bearer")]
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Post([FromBody]SynergyVO item)
         {
@@ -91,6 +93,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
+        [Authorize("Bearer")]
         public IActionResult PostArray([FromBody]SynergyVO[] item)
         {
             if (item[0] == null) return BadRequest();
@@ -111,6 +114,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(typeof(SynergyVO), 202)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
+        [Authorize("Bearer")]
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Put([FromBody]SynergyVO item)
         {
@@ -124,6 +128,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
+        [Authorize("Bearer")]
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Delete(int id)
         {

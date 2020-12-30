@@ -27,12 +27,11 @@ namespace WebApi.Business.Implementattions
             //_vrep = vrep;
         }
 
-        public UserVO Create(UserVO item)
+        public User Create(User item)
         {
-           var ent = _converter.Parse(item);
-            ent = _repository.Create(ent);
-            return _converter.Parse(ent);
-         }
+            return _repository.Create(item);
+            
+        }
 
         public UserVO FindById(long id)
         {
@@ -49,11 +48,9 @@ namespace WebApi.Business.Implementattions
             return _converter.ParseList(_repository.FindAll());
         }
 
-        public UserVO Update(UserVO item)
+        public User Update(User item)
         {
-            var ent = _converter.Parse(item);
-            ent = _repository.Update(ent);
-            return _converter.Parse(ent);
+            return _repository.Update(item);
         }
 
         public void Delete(long id)
@@ -61,6 +58,10 @@ namespace WebApi.Business.Implementattions
             _repository.Delete(id);
         }
 
+        public User FindOrCreate(User item)
+        {
+            return _repository.FindOrCreate(item);
+        }
 
     }
 }

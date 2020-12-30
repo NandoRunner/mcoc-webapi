@@ -7,12 +7,12 @@
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
     <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
     <RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
-    <Version>1.20.8</Version>
+    <Version>1.20.10</Version>
     <AssemblyName>McocApi</AssemblyName>
     <Company>FAndrade TecInfo</Company>
     <Authors>Fernando Andrade</Authors>
-    <AssemblyVersion>1.20.8</AssemblyVersion>
-    <FileVersion>1.20.8</FileVersion>
+    <AssemblyVersion>1.20.10</AssemblyVersion>
+    <FileVersion>1.20.10</FileVersion>
     <PackageId>McoLib.Api</PackageId>
     <Product>Mcoc Lib Api</Product>
     <Copyright>Copyright © FAndrade TecInfo 2018-2020</Copyright>
@@ -119,6 +119,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="db\migrations\V1_0_1_2__Marvel_Create_View_Hero_Hashtag.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="db\migrations\V1_0_1_9__Marvel_Alter_Table_User_Heroe.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="db\migrations\V1_0_1_8__Marvel_Create_View_Heroes_per_Ability.sql">
